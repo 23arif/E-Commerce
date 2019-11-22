@@ -1,0 +1,10 @@
+.btn-special {
+    font-size: 20px;
+    width: 40px;
+}
+.label{
+    font-size: 12px;
+}
+.panel-heading a:hover a{
+    color:#fe980f!important;
+}

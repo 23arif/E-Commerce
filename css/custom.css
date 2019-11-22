@@ -1,0 +1,28 @@
+/*Product conunter style of cart icon*/
+.cart-count {
+    position: relative;
+    font-size: 8px;
+    background: #e63e32;
+    top: -9px;
+}
+
+/*Cart page*/
+.table-responsive{
+    box-shadow: 0 0 8px rgba(5,5,5,.3);
+}
+.cartAlert{
+    font-size: 22px;
+    box-shadow: 0 4px 8px rgba(5,5,5,.3);
+}
+.infoContainer {
+    display: flex;
+    justify-content: space-around;
+    background: #fe980f;
+    color:#fff;
+    position: relative;
+    font-size: 18px;
+    top:-15px;
+}
+.cartSpecialText{
+    color:#e43326;
+}
