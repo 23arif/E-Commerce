@@ -26,10 +26,10 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                                     <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                                     <h2> <?php echo parayaz($urun['urun_fiyat']) ?> </h2>
                                     <p><?php echo $urun['urun_title'] ?></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>
+                                    <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>
                                         Add
                                         to cart
-                                    </a>
+                                    </button>
                                     <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>" class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read
                                         More</a>
                                 </div>
@@ -52,9 +52,9 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                                     <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                                     <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
                                     <p><?php echo $urun['urun_title'] ?></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
+                                    <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
                                         to
-                                        cart</a>
+                                        cart</button>
                                     <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>" class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read
                                         More</a>
                                 </div>
@@ -78,9 +78,9 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                                     <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                                     <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
                                     <p><?php echo $urun['urun_title'] ?></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
+                                    <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
                                         to
-                                        cart</a>
+                                        cart</button>
                                     <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>" class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read
                                         More</a>
                                 </div>
@@ -103,9 +103,9 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                                     <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                                     <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
                                     <p><?php echo $urun['urun_title'] ?></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
+                                    <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
                                         to
-                                        cart</a>
+                                        cart</button>
                                     <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>" class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read More</a>
                                 </div>
 
@@ -127,8 +127,8 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                             <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                             <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
                             <p><?php echo $urun['urun_title'] ?></p>
-                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
-                                cart</a>
+                            <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
+                                cart</button>
                             <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>" class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read More</a>
                         </div>
 

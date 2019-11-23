@@ -34,8 +34,7 @@ $(document).ready(function () {
             type: "POST",
             data: cartData,
             success: function (response) {
-                // $('#loginAlert').html(cevab).hide().fadeIn(700);
-                alert(response);
+                $('.cart-count').text(response);
             }
         });
     })

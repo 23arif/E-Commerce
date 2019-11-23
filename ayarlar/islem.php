@@ -78,9 +78,21 @@ if(isset($_POST['p'])){
         $id = $_POST['product_id'];
         $products = $db->prepare("SELECT *FROM urunler where urun_id=?");
         $products->execute(array($id));
-        $product = $products->fetchALL(PDO::FETCH_ASSOC);
-        addToCart($product);
+        $product = $products->fetch(PDO::FETCH_OBJ);
+        $product->count=1;
+        echo addToCart($product);
     }elseif ($islem == 'removeFromCart'){
 
     }
+
+}
+// Cart Section Total Price and Total Count
+if (isset($_SESSION['shoppingCart'])) {
+    $shoppingCart = $_SESSION['shoppingCart'];
+    $total_count=$shoppingCart['summary']['total_count'];
+    $total_price=$shoppingCart['summary']['total_price'];
+    $shopping_products = $shoppingCart['products'];
+} else {
+    $total_count = 0;
+    $total_price = 0.0;
 }

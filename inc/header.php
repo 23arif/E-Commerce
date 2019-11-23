@@ -98,7 +98,7 @@ include_once 'ayarlar/islem.php';
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="shop/E%20Shopper%20Free%20Website%20Template%20-%20Free-CSS.com/checkout.html"><i
                                                 class="fa fa-crosshairs"></i> Checkout</a></li>
-                                <li><a href="index.php?islem=cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge cart-count">10</span></a></li>
+                                <li><a href="index.php?islem=cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge cart-count"><?php echo $total_count ?></span></a></li>
 
                                 <?php
                             }
