@@ -18,11 +18,13 @@ function g($par)
     $par = temiz(@$_GET[$par]);
     return $par;
 }
+
 function p($par)
 {
     $par = htmlspecialchars((trim($_POST[$par])));
     return $par;
 }
+
 function parayaz($para)
 {
     $para = number_format($para, 2, ',', '.') . " $";
@@ -70,3 +72,33 @@ function takip()
     $ekleme = $veri->execute(array($kullaniciIp, $gecerliAdress, $birOncekiDizin, $kullaniciDil));
 
 }
+
+//Cart islemleri
+function addToCart($product_item)
+{
+    if($_SESSION['shoppingCart']){
+        $shoppingCart = $_SESSION['shoppingCart'];
+        $products = $shoppingCart['products'];
+    }else{
+        $products = array();
+    }
+
+    $products[$product_item->id]=$product_item;
+    print_r($products);
+}
+
+function removeFromCart($product_id)
+{
+
+}
+
+function incCount($product_id)
+{
+
+}
+
+function decCount($product_id)
+{
+
+}
+

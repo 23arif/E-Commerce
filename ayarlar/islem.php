@@ -70,3 +70,17 @@ if (g('islem') == 'signIn') {
 
     }
 }
+
+//Cart Proccess
+if(isset($_POST['p'])){
+    $islem = $_POST['p'];
+    if($islem == 'addToCart'){
+        $id = $_POST['product_id'];
+        $products = $db->prepare("SELECT *FROM urunler where urun_id=?");
+        $products->execute(array($id));
+        $product = $products->fetchALL(PDO::FETCH_ASSOC);
+        addToCart($product);
+    }elseif ($islem == 'removeFromCart'){
+
+    }
+}

@@ -30,7 +30,7 @@ $(document).ready(function () {
             product_id : $(this).attr('product-id'),
         }
         $.ajax({
-            url: "ayarlar/cart_db.php",
+            url: "ayarlar/islem.php",
             type: "POST",
             data: cartData,
             success: function (response) {
