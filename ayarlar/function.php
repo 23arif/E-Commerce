@@ -99,8 +99,8 @@ function addToCart($product_item)
         $total_price = $total_price + $product->total_price;
         $total_count += $product->count;
     }
-    $summary['total_price']=$total_price;
-    $summary['total_count']=$total_count;
+    $summary['total_price'] = $total_price;
+    $summary['total_count'] = $total_count;
 
     $_SESSION['shoppingCart']['products'] = $products;
     $_SESSION['shoppingCart']['summary'] = $summary;
@@ -110,15 +110,93 @@ function addToCart($product_item)
 
 function removeFromCart($product_id)
 {
+    if (isset($_SESSION['shoppingCart'])) {
+        $shoppingCart = $_SESSION['shoppingCart'];
+        $products = $shoppingCart['products'];
+
+        // Delete Product from Cart
+        if (array_key_exists($product_id, $products)) {
+            unset($products[$product_id]);
+        }
+
+        //Counting Cart
+        $total_price = 0.0;
+        $total_count = 0;
+        foreach ($products as $product) {
+
+            $product->total_price = $product->count * $product->urun_fiyat;
+            $total_price = $total_price + $product->total_price;
+            $total_count += $product->count;
+        }
+        $summary['total_price'] = $total_price;
+        $summary['total_count'] = $total_count;
+
+        $_SESSION['shoppingCart']['products'] = $products;
+        $_SESSION['shoppingCart']['summary'] = $summary;
+
+        return true;
+
+    }
 }
 
 function incCount($product_id)
 {
+    if (isset($_SESSION['shoppingCart'])) {
+        $shoppingCart = $_SESSION['shoppingCart'];
+        $products = $shoppingCart['products'];
+
+
+//    PRODUCT CONTROL
+        if (array_key_exists($product_id, $products)) {
+            $products[$product_id]->count++;
+        }
+        // Calculating Cart
+        $total_price = 0.0;
+        $total_count = 0;
+        foreach ($products as $product) {
+
+            $product->total_price = $product->count * $product->urun_fiyat;
+            $total_price = $total_price + $product->total_price;
+            $total_count += $product->count;
+        }
+        $summary['total_price'] = $total_price;
+        $summary['total_count'] = $total_count;
+
+        $_SESSION['shoppingCart']['products'] = $products;
+        $_SESSION['shoppingCart']['summary'] = $summary;
+
+        return true;
+    }
 
 }
 
 function decCount($product_id)
 {
+    if (isset($_SESSION['shoppingCart'])) {
+        $shoppingCart = $_SESSION['shoppingCart'];
+        $products = $shoppingCart['products'];
 
+
+//    PRODUCT CONTROL
+        if (array_key_exists($product_id, $products)) {
+            $products[$product_id]->count--;
+        }
+        // Counting Cart
+        $total_price = 0.0;
+        $total_count = 0;
+        foreach ($products as $product) {
+
+            $product->total_price = $product->count * $product->urun_fiyat;
+            $total_price = $total_price + $product->total_price;
+            $total_count += $product->count;
+        }
+        $summary['total_price'] = $total_price;
+        $summary['total_count'] = $total_count;
+
+        $_SESSION['shoppingCart']['products'] = $products;
+        $_SESSION['shoppingCart']['summary'] = $summary;
+
+        return true;
+    }
 }
 

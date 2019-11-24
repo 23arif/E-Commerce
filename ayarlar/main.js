@@ -38,4 +38,19 @@ $(document).ready(function () {
             }
         });
     })
+
+    $('.cart_quantity_delete').on('click', function () {
+        var cartData = {
+            p : 'removeFromCart',
+            product_id : $(this).attr('product-id'),
+        }
+        $.ajax({
+            url: "ayarlar/islem.php",
+            type: "POST",
+            data: cartData,
+            success: function (response) {
+                window.location.reload();
+            }
+        });
+    })
 })

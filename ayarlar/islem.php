@@ -53,9 +53,9 @@ if (g('islem') == 'signIn') {
         $p = $veri->rowCount();
         foreach ($v as $pull) ;
         if ($p) {
-            if($pull['yonetim_durum'] !=1){
+            if ($pull['yonetim_durum'] != 1) {
                 echo '<div class="alert alert-warning text-center">User is not confirmed !</div><meta http-equiv="refresh" content="3;url=index.php?islem=login">';
-            }else{
+            } else {
                 $_SESSION['id'] = $pull['yonetim_id'];
                 $_SESSION['isim'] = $pull['yonetim_isim'];
                 $_SESSION['soyisim'] = $pull['yonetim_soyisim'];
@@ -72,16 +72,18 @@ if (g('islem') == 'signIn') {
 }
 
 //Cart Proccess
-if(isset($_POST['p'])){
+if (isset($_POST['p'])) {
     $islem = $_POST['p'];
-    if($islem == 'addToCart'){
+    if ($islem == 'addToCart') {
         $id = $_POST['product_id'];
         $products = $db->prepare("SELECT *FROM urunler where urun_id=?");
         $products->execute(array($id));
         $product = $products->fetch(PDO::FETCH_OBJ);
-        $product->count=1;
+        $product->count = 1;
         echo addToCart($product);
-    }elseif ($islem == 'removeFromCart'){
+    } elseif ($islem == 'removeFromCart') {
+        $id = $_POST['product_id'];
+        echo removeFromCart($id);
 
     }
 
@@ -89,10 +91,25 @@ if(isset($_POST['p'])){
 // Cart Section Total Price and Total Count
 if (isset($_SESSION['shoppingCart'])) {
     $shoppingCart = $_SESSION['shoppingCart'];
-    $total_count=$shoppingCart['summary']['total_count'];
-    $total_price=$shoppingCart['summary']['total_price'];
+    $total_count = $shoppingCart['summary']['total_count'];
+    $total_price = $shoppingCart['summary']['total_price'];
     $shopping_products = $shoppingCart['products'];
 } else {
     $total_count = 0;
     $total_price = 0.0;
+}
+if (isset($_GET['p'])) {
+    $islem = $_GET['p'];
+    if ($islem == 'incCount') {
+        $id = $_GET['product_id'];
+        if (incCount($id)) {
+            header('location:index.php?islem=cart');
+        }
+    } elseif ($islem == 'decCount') {
+        $id = $_GET['product_id'];
+        if (decCount($id)) {
+            header('location:index.php?islem=cart');
+        }
+    }
+
 }

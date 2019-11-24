@@ -1673,14 +1673,15 @@ h2.title {
 }
 
 
-.cart_delete a {
+.cart_delete button {
   background:#ffd280;
   color: #FFFFFF;
   padding: 5px 7px;
-  font-size: 16px
+  font-size: 16px;
+  border:0;
 }
 
-.cart_delete a:hover {
+.cart_delete button:hover {
   background:#FE980F
 }
 
