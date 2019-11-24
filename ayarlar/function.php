@@ -180,6 +180,9 @@ function decCount($product_id)
 //    PRODUCT CONTROL
         if (array_key_exists($product_id, $products)) {
             $products[$product_id]->count--;
+            if ($products[$product_id]->count == 0) {
+                unset($products[$product_id]);
+            }
         }
         // Counting Cart
         $total_price = 0.0;

@@ -46,12 +46,6 @@ switch ($islem) {
                             ?>
                             <!--/brands_products-->
 
-                            <!--price-range-->
-                            <?php
-                            include 'moduller/leftSideMenu-priceRange.php';
-                            ?>
-                            <!--/price-range-->
-
                             <!--shipping-->
                             <?php
                             include 'moduller/leftSideMenu-shipping.php';

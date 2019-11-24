@@ -6,6 +6,8 @@ if (g('islem') == 'registration') {
     $name = p('name');
     $email = p('email');
     $pass = p('pass');
+    $onay_kod = md5(rand(0, 9999));
+
     if (empty($name)) {
         echo '<div class="alert alert-warning text-center">Please,Fill the name blank</div>';
     } elseif (empty($email)) {
@@ -25,12 +27,61 @@ if (g('islem') == 'registration') {
             $url = $_SERVER['HTTP_REFERER'];  // hangi sayfadan gelindigi degerini verir.
             echo '<meta http-equiv="refresh" content="3;URL=".$url."">';
         } else {
-            $veri = $db->prepare("INSERT INTO yonetim SET yonetim_eposta=?,yonetim_isim=?,yonetim_sifre=?");
-            $ekleme = $veri->execute(array($email, $name, $pass));
+            $veri = $db->prepare("INSERT INTO yonetim SET yonetim_eposta=?,yonetim_isim=?,yonetim_sifre=?,yonetim_onay_kod=?");
+            $ekleme = $veri->execute(array($email, $name, $pass, $onay_kod));
             if ($ekleme) {
+
+                include_once '../mailer/PHPMailer.php';
+                include_once '../mailer/OAuth.php';
+                include_once '../mailer/SMTP.php';
+                include_once '../mailer/POP3.php';
+                // Instantiation and passing `true` enables exceptions
+                $mail = new PHPMailer;
+
+                try {
+                    //Server settings
+                    $mail->SMTPDebug = 2;
+                    $mail->isSMTP();                                            // Send using SMTP
+                    $mail->Host = 'ssl://smtp1.gmail.com';                    // Set the SMTP server to send through
+                    $mail->SMTPAuth = true;                                   // Enable SMTP authentication
+                    $mail->Username = 'arifabdurahman5@gmail.com';                     // SMTP username
+                    $mail->Password = 'Pf@WXqL!a5y%#ydq';                               // SMTP password
+                    $mail->SMTPSecure = "tls";         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+                    $mail->Port = 465;                                    // TCP port to connect to
+
+                    //Recipients
+                    $mail->setFrom('arifabdurahman5@gmail.com', 'AlikExpress');
+                    $mail->addAddress($email, $name);     // Add a recipient
+//                    $mail->addAddress('ellen@example.com');               // Name is optional
+//                    $mail->addReplyTo('info@example.com', 'Information');
+//                    $mail->addCC('cc@example.com');
+//                    $mail->addBCC('bcc@example.com');
+
+//                    // Attachments
+//                    $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+//                    $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+                    // Content
+                    $mail->isHTML(true);                                  // Set email format to HTML
+                    $mail->Subject = "AlikExpress Onay Kodu";
+                    $mail->Body = 'http://localhost:82/shoping_page2_NEW/index.php';
+//                    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+                    if($mail->send()){
+                        echo "<div class='alert alert-success text-center'>Message has been sent</div>";
+                    }else{
+                        echo "<div class='alert alert-success text-center'>Message could not be sent</div>";
+
+                    }
+
+                } catch (Exception $e) {
+                    echo "$e->getMessage()";
+                }
+
                 echo "<div class='alert alert-success text-center'>Account Created Successfully! Redirecting...</div>";
-                $url = $_SERVER['HTTP_REFERER'];  // hangi sayfadan gelindigi degerini verir.
-                echo '<meta http-equiv="refresh" content="3;URL=".$url."">';
+//                $url = $_SERVER['HTTP_REFERER'];  // hangi sayfadan gelindigi degerini verir.
+//                echo '<meta http-equiv="refresh" content="3;URL=".$url."">';
+
             } else {
                 echo "<div class='alert alert-danger text-center'>There is some problems with Creating new Account! Redirecting...</div>";
                 $url = $_SERVER['HTTP_REFERER'];  // hangi sayfadan gelindigi degerini verir.
@@ -81,6 +132,7 @@ if (isset($_POST['p'])) {
         $product = $products->fetch(PDO::FETCH_OBJ);
         $product->count = 1;
         echo addToCart($product);
+
     } elseif ($islem == 'removeFromCart') {
         $id = $_POST['product_id'];
         echo removeFromCart($id);

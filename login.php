@@ -27,8 +27,9 @@
 						<h2>New User Signup!</h2>
 						<form id="signUpForm" method="post">
 							<input type="text" name='name'placeholder="Name"/>
-							<input type="email"name='email' placeholder="Email Address"/>
-							<input type="password" name='pass' placeholder="Password"/>
+							<input type="email"name='email' aria-describedby="emailHelp" placeholder="Email Address" style="margin-bottom:0"/>
+                            <small id="emailHelp" class="form-text text-danger" style="padding-left: 6px">You'll confirm registration with this email.</small>
+							<input type="password" name='pass' placeholder="Password" style="margin-top: 5px"/>
 							<div id="signUpBtn" class="btn" style="background: #fe980f;color:#fff">Signup</div>
                         </form>
 					</div><!--/sign up form-->
