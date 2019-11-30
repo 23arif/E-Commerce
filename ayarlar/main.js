@@ -26,8 +26,8 @@ $('#signInBtn').on('click', function () {
 $(document).ready(function () {
     $('.add-to-cart').on('click', function () {
         var cartData = {
-            p : 'addToCart',
-            product_id : $(this).attr('product-id'),
+            p: 'addToCart',
+            product_id: $(this).attr('product-id'),
         }
         $.ajax({
             url: "ayarlar/islem.php",
@@ -41,8 +41,8 @@ $(document).ready(function () {
 
     $('.cart_quantity_delete').on('click', function () {
         var cartData = {
-            p : 'removeFromCart',
-            product_id : $(this).attr('product-id'),
+            p: 'removeFromCart',
+            product_id: $(this).attr('product-id'),
         }
         $.ajax({
             url: "ayarlar/islem.php",
@@ -54,3 +54,5 @@ $(document).ready(function () {
         });
     })
 })
+
+

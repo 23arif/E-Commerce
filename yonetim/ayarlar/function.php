@@ -164,3 +164,11 @@ function onlinemi($ip){
         return 0;
     }
 }
+// ------ZIYARETCI ISLEMLERI
+
+//Urun Eklerken Meta Title ve Meta Desc Convertor
+function metawords($string){
+    $string = strtolower(preg_replace('/\s+/', '-', $string));
+    return $string;
+}
+//----Urun Eklerken Meta Title ve Meta Desc Convertor

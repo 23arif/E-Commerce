@@ -1,3 +1,10 @@
 RewriteEngine on
+#RewriteCond %{REQUEST_FILENAME} !-f
+
 ErrorDocument 404 http://localhost:82/alik_express/404.php
+
+#RewriteRule ^login$ index.php?islem=login
+#RewriteBase /
+#RewriteRule ^([0-9a-zA-Z-_]+).html$ ?islem=pDetails&urun_id=$1
+
 

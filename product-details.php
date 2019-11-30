@@ -74,7 +74,7 @@ foreach ($v as $urun) ;
                             <div class="product-information"><!--/product-information-->
                                 <img src="images/product-details/new.jpg" class="newarrival" alt=""/>
                                 <h2><?php echo $urun['urun_desc'] ?></h2>
-                                <img src="images/product-details/rating.png" alt=""/><br><br/>
+                                <img src="images/product-details/rating.png" alt="" /><br><br/>
                                 <span id="money">US <?php echo parayaz2($urun['urun_fiyat']) ?></span><br/><br/>
                                 <span>
 									<label>Quantity:</label>

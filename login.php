@@ -1,4 +1,4 @@
-	<section id="form"><!--form-->
+<section id="form"><!--form-->
 		<div class="container">
 			<div class="row">
                 <div class="col-sm-9 col-sm-offset-1" id="loginAlert"></div>

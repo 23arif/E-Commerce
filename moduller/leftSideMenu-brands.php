@@ -1,14 +1,17 @@
+<?php
+$veri = $db->prepare("SELECT urun_firma,COUNT(*) FROM urunler group by urun_firma ORDER BY COUNT(*) DESC");
+$veri->execute(array());
+$v = $veri->fetchALL(PDO::FETCH_ASSOC);
+?>
 <div class="brands_products">
     <h2>Brands</h2>
     <div class="brands-name">
         <ul class="nav nav-pills nav-stacked">
-            <li><a href="#"> <span class="pull-right">(50)</span>Acne</a></li>
-            <li><a href="#"> <span class="pull-right">(56)</span>Grüne Erde</a></li>
-            <li><a href="#"> <span class="pull-right">(27)</span>Albiro</a></li>
-            <li><a href="#"> <span class="pull-right">(32)</span>Ronhill</a></li>
-            <li><a href="#"> <span class="pull-right">(5)</span>Oddmolly</a></li>
-            <li><a href="#"> <span class="pull-right">(9)</span>Boudestijn</a></li>
-            <li><a href="#"> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
+            <?php
+            foreach ($v as $brand) {
+                ?>
+                <li><a href="#"> <span class="pull-right">(<?php echo $brand['COUNT(*)'] ?>)</span><?php echo $brand['urun_firma'] ?></a></li>
+            <?php } ?>
         </ul>
     </div>
 </div>

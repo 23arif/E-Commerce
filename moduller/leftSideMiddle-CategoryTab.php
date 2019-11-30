@@ -1,5 +1,5 @@
 <?php
-$veri = $db->prepare("SELECT *FROM urunler ORDER BY urun_id DESC ");
+$veri = $db->prepare("SELECT *FROM urunler ORDER BY urun_id");
 $veri->execute(array());
 $v = $veri->fetchALL(PDO::FETCH_ASSOC);
 ?>
@@ -26,11 +26,13 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                                     <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                                     <h2> <?php echo parayaz($urun['urun_fiyat']) ?> </h2>
                                     <p><?php echo $urun['urun_title'] ?></p>
-                                    <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>
+                                    <button product-id="<?php echo $urun['urun_id'] ?>"
+                                            class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>
                                         Add
                                         to cart
                                     </button>
-                                    <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>" class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read
+                                    <a href="?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>"
+                                       class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read
                                         More</a>
                                 </div>
 
@@ -52,10 +54,13 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                                     <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                                     <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
                                     <p><?php echo $urun['urun_title'] ?></p>
-                                    <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
+                                    <button product-id="<?php echo $urun['urun_id'] ?>"
+                                            class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
                                         to
-                                        cart</button>
-                                    <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>" class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read
+                                        cart
+                                    </button>
+                                    <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>"
+                                       class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read
                                         More</a>
                                 </div>
 
@@ -78,10 +83,13 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                                     <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                                     <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
                                     <p><?php echo $urun['urun_title'] ?></p>
-                                    <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
+                                    <button product-id="<?php echo $urun['urun_id'] ?>"
+                                            class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
                                         to
-                                        cart</button>
-                                    <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>" class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read
+                                        cart
+                                    </button>
+                                    <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>"
+                                       class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read
                                         More</a>
                                 </div>
 
@@ -103,10 +111,14 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                                     <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                                     <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
                                     <p><?php echo $urun['urun_title'] ?></p>
-                                    <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
+                                    <button product-id="<?php echo $urun['urun_id'] ?>"
+                                            class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
                                         to
-                                        cart</button>
-                                    <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>" class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read More</a>
+                                        cart
+                                    </button>
+                                    <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>"
+                                       class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read
+                                        More</a>
                                 </div>
 
                             </div>
@@ -118,24 +130,30 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
 
         <div class="tab-pane fade" id="consumerElectronics">
             <?php foreach ($v as $urun) {
-            if ($urun['urun_kategori'] == 5) {
-            ?>
-            <div class="col-sm-3">
-                <div class="product-image-wrapper">
-                    <div class="single-products">
-                        <div class="productinfo text-center">
-                            <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
-                            <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
-                            <p><?php echo $urun['urun_title'] ?></p>
-                            <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
-                                cart</button>
-                            <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>" class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read More</a>
-                        </div>
+                if ($urun['urun_kategori'] == 5) {
+                    ?>
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
+                                    <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
+                                    <p><?php echo $urun['urun_title'] ?></p>
+                                    <button product-id="<?php echo $urun['urun_id'] ?>"
+                                            class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
+                                        to
+                                        cart
+                                    </button>
+                                    <a href="?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>"
+                                       class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read
+                                        More</a>
+                                </div>
 
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <?php }} ?>
+                <?php }
+            } ?>
         </div>
     </div>
 </div>

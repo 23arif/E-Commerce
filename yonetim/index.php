@@ -29,7 +29,7 @@ switch ($do) {
     default:
         ?>
         <header class="page-header">
-            <h2>Kontrol Paneli</h2>
+            <h2>Control Panel</h2>
         </header>
         <div class="row">
             <div class="col-md-6 col-lg-12 col-xl-6">
@@ -166,7 +166,7 @@ switch ($do) {
                                             </div>
                                         </div>
                                         <div class="summary-footer">
-                                            <a class="text-muted text-uppercase">(view all)</a>
+                                            <a class="text-muted text-uppercase" href="index.php?do=products">(view all)</a>
                                         </div>
                                     </div>
                                 </div>

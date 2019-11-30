@@ -1,3 +1,8 @@
+<?php
+$count = $db->prepare("SELECT * FROM urunler");
+$count->execute(array());
+$k = $count->rowCount();
+?>
     <!-- start: page -->
     <header class="page-header">
         <h2>Urunler</h2>
@@ -8,10 +13,10 @@
             <section class="panel">
                 <header class="panel-heading">
                     <div class="panel-actions">
-                        <a href="urun-ekle.php"><span href="#" class="fa fa-plus">&nbsp;&nbsp;Urun Ekle</span></a>
+                        <a href="index.php?do=add_product"><span href="#" class="fa fa-plus">&nbsp;&nbsp;Add Product</span></a>
                     </div>
 
-                    <h2 class="panel-title">Urunler Tablosu</h2>
+                    <h2 class="panel-title">Products Table - Total <?php echo $k ?> Products</h2>
                 </header>
                 <div class="panel-body">
                     <?php include 'inc/alert.php' ?>
@@ -19,11 +24,11 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Kategori</th>
-                            <th>Adi</th>
-                            <th>Firma</th>
-                            <th>Fiyati</th>
-                            <th>Islem</th>
+                            <th>Category</th>
+                            <th>Name</th>
+                            <th>Firm</th>
+                            <th>Price</th>
+                            <th>Proccess</th>
                         </tr>
                         </thead>
 
@@ -76,17 +81,17 @@
                                     </div>
                                     <div class="btn-group">
 
-                                    <a class="modal-basic btn btn-xs btn-danger btn-special" data-toggle="tooltip" data-placement="top" title="Sil"
+                                    <a class="modal-basic btn btn-xs btn-danger btn-special" data-toggle="tooltip" data-placement="top" title="Delete"
                                        href="#modalFullColorPrimary<?php echo $urunler['urun_id'] ?>"><i class="fa fa-trash"></i></a>
                                     <!--/Sil Butonu-->
 
                                     <!--Guncelle Butonu-->
-                                    <a href="index.php?do=edit_product&urun_id=<?php echo $urunler['urun_id'] ?>" data-toggle="tooltip" data-placement="top" title="Guncelle"
+                                    <a href="index.php?do=edit_product&urun_id=<?php echo $urunler['urun_id'] ?>" data-toggle="tooltip" data-placement="top" title="Update"
                                        class="btn btn-warning btn-xs btn-special"><i class="fa fa-cog"></i></a>
                                     <!--/Guncelle Butonu-->
 
                                     <!--Galery Butonu-->
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Galeri Olusdurucu"
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Galery Maker"
                                        class="btn btn-success btn-xs btn-special"><i class="fa fa-image"></i></a>
                                     <!--/Galery Butonu-->
                                     </div>

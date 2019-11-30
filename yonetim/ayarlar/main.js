@@ -81,4 +81,3 @@ $('#urunGuncelleBtn').on('click', function () {
 })
 
 
-

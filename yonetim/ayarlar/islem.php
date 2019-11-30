@@ -168,7 +168,7 @@ if (g('islem') == 'urunEkle') {
 
 
                 $ekle = $db->prepare("INSERT INTO urunler SET urun_resim=?,urun_title=?,urun_desc=?,urun_meta_desc=?,urun_meta_title=?,urun_meta_keyw=?,urun_firma=?,urun_fiyat=?,urun_kategori=?,urun_sira=?");
-                $ekleme = $ekle->execute(array($vtyol, $urun_title, $urun_desc, $urun_meta_desc, $urun_meta_title, $urun_meta_keyw,$urun_firma,noktasil($urun_fiyat), $urun_kategori, $urun_sira));
+                $ekleme = $ekle->execute(array($vtyol, $urun_title, $urun_desc, metaWords($urun_meta_desc), metaWords($urun_meta_title), $urun_meta_keyw,$urun_firma,noktasil($urun_fiyat), $urun_kategori, $urun_sira));
                 if ($ekleme) {
                     echo '<div class="alert alert-success">Urun ekleme isleminiz basariyla gerceklesdirildi.Yonlendirilirsiz...</div><meta http-equiv="refresh" content="2;url=index.php?do=products">';
                 } else {

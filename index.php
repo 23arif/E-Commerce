@@ -21,7 +21,9 @@ switch ($islem) {
     case 'contact-us':
         include_once 'contact-us.php';
         break;
-
+    case 'shop':
+        include_once 'shop.php';
+        break;
     default:
         ?>
         <!--Head Slider-->
@@ -71,19 +73,17 @@ switch ($islem) {
 
                         <!--Recommended Items Couresel Slider-->
                         <?php
-                        include 'moduller/body-couresel-slider.php';
+                        include_once 'moduller/body-couresel-slider.php';
                         ?>
-                        <!--/Recommended Items Couresel Slider-->
+                        <!--///Recommended Items Couresel Slider-->
 
                     </div>
                 </div>
             </div>
         </section>
+
         <?php
         break;
-
 }
-
 include 'inc/footer.php';
-
 ?>

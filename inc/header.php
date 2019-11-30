@@ -96,9 +96,11 @@ include_once 'ayarlar/islem.php';
                                 <li><a href="#"><i class="fa fa-user"></i><?php echo ucfirst(@$_SESSION['isim']) ?></a>
                                 </li>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-                                <li><a href="shop/E%20Shopper%20Free%20Website%20Template%20-%20Free-CSS.com/checkout.html"><i
+                                <li>
+                                    <a href="shop/E%20Shopper%20Free%20Website%20Template%20-%20Free-CSS.com/checkout.html"><i
                                                 class="fa fa-crosshairs"></i> Checkout</a></li>
-                                <li><a href="index.php?islem=cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge cart-count"><?php echo $total_count ?></span></a></li>
+                                <li><a href="index.php?islem=cart"><i class="fa fa-shopping-cart"></i> Cart <span
+                                                class="badge cart-count"><?php echo $total_count ?></span></a></li>
 
                                 <?php
                             }
@@ -137,23 +139,7 @@ include_once 'ayarlar/islem.php';
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="index.php" class="active">Home</a></li>
-                            <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                <ul role="menu" class="sub-menu">
-                                    <li>
-                                        <a href="shop/E%20Shopper%20Free%20Website%20Template%20-%20Free-CSS.com/shop.html">Products</a>
-                                    </li>
-                                    <li><a href="product-details.php">Product Details</a></li>
-                                    <li>
-                                        <a href="shop/E%20Shopper%20Free%20Website%20Template%20-%20Free-CSS.com/checkout.html">Checkout</a>
-                                    </li>
-                                    <li>
-                                        <a href="shop/E%20Shopper%20Free%20Website%20Template%20-%20Free-CSS.com/cart.html">Cart</a>
-                                    </li>
-                                    <li>
-                                        <a href="shop/E%20Shopper%20Free%20Website%20Template%20-%20Free-CSS.com/login.html">Login</a>
-                                    </li>
-                                </ul>
-                            </li>
+                            <li><a href="?islem=shop">Products</a></li>
                             <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li>
