@@ -1,5 +1,5 @@
 <?php
-$veri = $db->prepare("SELECT *FROM urunler ORDER BY urun_id");
+$veri = $db->prepare("SELECT *FROM urunler ORDER BY urun_id DESC ");
 $veri->execute(array());
 $v = $veri->fetchALL(PDO::FETCH_ASSOC);
 ?>
@@ -129,17 +129,21 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
         </div>
 
         <div class="tab-pane fade" id="consumerElectronics">
-            <?php foreach ($v as $urun) {
-                if ($urun['urun_kategori'] == 5) {
+            <?php
+            $v= $db->prepare("SELECT *FROM urunler ORDER BY urun_id DESC limit 0,4");
+            $v->execute(array());
+            $vv = $v->fetchALL(PDO::FETCH_ASSOC);
+            foreach ($vv as $urunler) {
+                if ($urunler['urun_kategori'] == 5) {
                     ?>
                     <div class="col-sm-3">
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
-                                    <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
-                                    <p><?php echo $urun['urun_title'] ?></p>
-                                    <button product-id="<?php echo $urun['urun_id'] ?>"
+                                    <img src="<?php echo $urunler['urun_resim'] ?>" alt=""/>
+                                    <h2><?php echo parayaz($urunler['urun_fiyat']) ?></h2>
+                                    <p><?php echo $urunler['urun_title'] ?></p>
+                                    <button product-id="<?php echo $urunler['urun_id'] ?>"
                                             class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add
                                         to
                                         cart

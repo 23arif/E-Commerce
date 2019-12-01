@@ -10,7 +10,7 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
             <?php
             foreach ($v as $brand) {
                 ?>
-                <li><a href="#"> <span class="pull-right">(<?php echo $brand['COUNT(*)'] ?>)</span><?php echo $brand['urun_firma'] ?></a></li>
+                <li><a href="?islem=brands&b=<?php echo $brand['urun_firma'] ?>"> <span class="pull-right">(<?php echo $brand['COUNT(*)'] ?>)</span><?php echo $brand['urun_firma'] ?></a></li>
             <?php } ?>
         </ul>
     </div>

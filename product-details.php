@@ -1,6 +1,6 @@
 <?php
 $urun_id = g('urun_id');
-$veri = $db->prepare("SELECT *FROM urunler where urun_id=?");
+$veri = $db->prepare("SELECT *FROM urunler INNER JOIN kategoriler ON kategoriler.kategori_id = urunler.urun_kategori WHERE urun_id=?");
 $veri->execute(array($urun_id));
 $v = $veri->fetchALL(PDO::FETCH_ASSOC);
 foreach ($v as $urun) ;
@@ -84,6 +84,7 @@ foreach ($v as $urun) ;
 										Add to cart
 									</button>
 								</span>
+                                <p><b>Category:</b> <?php echo $urun['kategori_title'] ?></p>
                                 <p><b>Availability:</b> In Stock</p>
                                 <p><b>Condition:</b> New</p>
                                 <p><b>Brand:</b> <?php echo $urun['urun_firma'] ?></p>

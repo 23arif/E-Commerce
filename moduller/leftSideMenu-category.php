@@ -12,7 +12,9 @@ $say = $veri->rowCount();
 
                 <?php
                 foreach ($v as $kat) {
-                    echo '<a href="" style="display:block">' . $kat['kategori_title'] . '</a><br>';
+                    ?>
+                    <a href="?islem=category&c=<?php echo $kat['kategori_id'] ?>" style="display:block"><?php echo $kat['kategori_title'] ?></a><br>
+                    <?php
                 }
                 ?>
             </h4>

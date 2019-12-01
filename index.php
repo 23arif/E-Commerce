@@ -24,6 +24,12 @@ switch ($islem) {
     case 'shop':
         include_once 'shop.php';
         break;
+    case 'category':
+        include_once 'category.php';
+        break;
+    case 'brands':
+        include_once 'brands.php';
+        break;
     default:
         ?>
         <!--Head Slider-->
