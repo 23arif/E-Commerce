@@ -55,4 +55,15 @@ $(document).ready(function () {
     })
 })
 
-
+//Contact Us
+$('#contactUsBtn').on('click', function () {
+    var data = $('#main-contact-form').serialize();
+    $.ajax({
+        url: "ayarlar/islem.php?islem=contactUs",
+        type: 'POST',
+        data: data,
+        success: function (response) {
+            $('#contactUsAlert').html(response).hide().fadeIn(700);
+        }
+    })
+})

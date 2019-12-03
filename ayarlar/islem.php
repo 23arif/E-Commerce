@@ -13,7 +13,7 @@ if (g('islem') == 'registration') {
     } elseif (empty($email)) {
         echo '<div class="alert alert-warning text-center">Please,Fill the email blank</div>';
     } elseif (filter_var($email, FILTER_VALIDATE_EMAIL) != true) {
-        echo '<div class="alert alert-warning text-center">Lutfen Gecerli Eposta adresi girin</div>';
+        echo '<div class="alert alert-warning text-center">Please enter a valid E-mail address</div>';
     } elseif (empty($pass)) {
         echo '<div class="alert alert-warning  text-center">Please,Fill the password blank</div>';
     } else {
@@ -116,4 +116,35 @@ if (isset($_GET['p'])) {
         }
     }
 
+}
+
+// Contact Us
+if (g('islem') == 'contactUs') {
+    $name = p('name');
+    $email = p('email');
+    $subject = p('subject');
+    $message = p('message');
+
+    if (empty($name)) {
+        echo '<div class="alert alert-warning text-center">Please, fill <strong>name</strong> blank</div>';
+    } elseif (empty($email)) {
+        echo '<div class="alert alert-warning text-center">Please, fill <strong>email</strong> blank</div>';
+    } elseif (filter_var($email, FILTER_VALIDATE_EMAIL) != true) {
+        echo '<div class="alert alert-warning text-center">Please enter a <strong>valid email</strong> address</div>';
+    } elseif (empty($subject)) {
+        echo '<div class="alert alert-warning text-center">Please, fill <strong>subject</strong> blank</div>';
+    } elseif (empty($message)) {
+        echo '<div class="alert alert-warning text-center">Please, fill <strong>message</strong> blank</div>';
+    } else {
+
+        $msg = $db->prepare("INSERT INTO message SET sender_name=?,sender_email=?,message_subject=?,message_content=?");
+        $m = $msg->execute(array($name, $email, $subject, $message));
+        if ($m) {
+            echo '<div class="alert alert-success text-center">Message sended successfully.</div>';
+            echo "<meta http-equiv='refresh' content='3;url=index.php?islem=contact-us'>";
+        } else {
+            echo '<div class="alert alert-warning text-center">Message could not be sent!</div>';
+            echo "<meta http-equiv='refresh' content='3;url=index.php?islem=contact-us'>";
+        }
+    }
 }

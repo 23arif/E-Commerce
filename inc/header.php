@@ -6,9 +6,11 @@ include_once 'ayarlar/islem.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Home | Alik Express</title>
+    <meta name="title" content="AliExpress:Shopping never had been exciting like now"/>
+    <meta name="description" content="AlikExpress Online shoping webpage.High quality and budget friendly products."/>
+    <meta name="keywords" content="shoping,alikexpress,budget friently,online shoping"/>
+
+    <title>AlikExpress: Shopping never had been exciting like now</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -154,11 +156,16 @@ include_once 'ayarlar/islem.php';
                         </ul>
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div class="search_box pull-right">
-                        <input type="text" placeholder="Search"/>
+                <form action="index.php?islem=ara" method="POST">
+                    <div class="col-sm-2 col-sm-offset-1">
+                        <div class="input-group input-group-icon">
+                            <input type="text" class="form-control" placeholder="Search" name="search">
+                            <span class="input-group-addon">
+                                    <span class="icon"><i class="fa fa-search"></i></span>
+                                </span>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div><!--/header-bottom-->

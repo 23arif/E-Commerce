@@ -16,24 +16,24 @@
                     <li class="nav-active">
                         <a href="index.php">
                             <i class="fa fa-home" aria-hidden="true"></i>
-                            <span>Kontol Paneli</span>
+                            <span>Dashboard</span>
                         </a>
                     </li>
 
                     <li class="nav-parent">
                         <a>
                             <i class="fa fa-columns" aria-hidden="true"></i>
-                            <span>Kategori Islemleri</span>
+                            <span>Category Processes</span>
                         </a>
                         <ul class="nav nav-children">
                             <li>
                                 <a href="index.php?do=categories">
-                                    Kategoriler
+                                    Categories
                                 </a>
                             </li>
                             <li>
                                 <a href="index.php?do=add_category">
-                                    Yeni Kategori Ekle
+                                    Add New Category
                                 </a>
                             </li>
                         </ul>
@@ -42,25 +42,31 @@
                     <li class="nav-parent">
                         <a>
                             <i class="fa fa-list-alt" aria-hidden="true"></i>
-                            <span>Urun Islemleri</span>
+                            <span>Product Processes</span>
                         </a>
                         <ul class="nav nav-children">
                             <li>
                                 <a href="index.php?do=products">
-                                    Urunler
+                                    Products
                                 </a>
                             </li>
                             <li>
                                 <a href="index.php?do=add_product">
-                                    Yeni Urun Ekle
+                                    Add New Product
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="ziyaretciTakip.php">
+                        <a href="index.php?do=user_spy">
                             <i class="fa fa-rss"  aria-hidden="true"></i>
-                            <span>Ziyaretci Islemleri</span>
+                            <span>User Control</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.php?do=messages">
+                            <i class="fa fa-comments"  aria-hidden="true"></i>
+                            <span>Messages</span>
                         </a>
                     </li>
                 </ul>

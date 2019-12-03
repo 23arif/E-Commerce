@@ -261,7 +261,5 @@ if (g('islem') == 'urunGuncelle') {
     }
 }
 if(g('islem') == 'siteyiGoruntule'){
-    session_destroy();
     header('Location:../../index.php');
-
 }

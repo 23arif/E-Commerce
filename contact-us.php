@@ -11,7 +11,7 @@
             <div class="col-sm-8">
                 <div class="contact-form">
                     <h2 class="title text-center">Get In Touch</h2>
-                    <div class="status alert alert-success" style="display: none"></div>
+                    <div id="contactUsAlert"></div>
                     <form id="main-contact-form" class="contact-form row" name="contact-form" method="post">
                         <div class="form-group col-md-6">
                             <input type="text" name="name" class="form-control" required="required" placeholder="Name">
@@ -29,7 +29,7 @@
                                       placeholder="Your Message Here"></textarea>
                         </div>
                         <div class="form-group col-md-12">
-                            <input type="submit" name="submit" class="btn btn-primary pull-right" value="Submit">
+                            <button id="contactUsBtn" class="btn btn-primary pull-right" type="button">Send Message</button>
                         </div>
                     </form>
                 </div>
