@@ -148,3 +148,28 @@ if (g('islem') == 'contactUs') {
         }
     }
 }
+
+// Search
+if (g('islem') == 'search') {
+    sleep(1);
+    $value = $_POST['value'];
+
+    if (empty($value)) {
+        echo '<div style="padding: 5px">You need to write what you want to search</div>';
+    } else {
+        $veri = $db->prepare("SELECT *FROM urunler WHERE urun_title LIKE ?");
+        $veri->execute(array('%' . $value . '%'));
+        $v = $veri->fetchALL(PDO::FETCH_ASSOC);
+        $l = $veri->rowCount();
+
+        if ($l) {
+            foreach ($v as $g){
+                ?>
+                <a href="?islem=pDetails&urun_id=<?php echo $g['urun_id'] ?>"><div id="productLister"><?php echo $g['urun_title'] ?></div></a>
+                <?php
+            }
+        } else {
+            echo '<div style="padding: 5px">No results found !</div>';
+        }
+    }
+}

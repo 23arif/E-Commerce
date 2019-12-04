@@ -67,3 +67,29 @@ $('#contactUsBtn').on('click', function () {
         }
     })
 })
+
+//Search
+$(function () {
+    $('#autoComplete').hide();
+
+    $('input[name=search]').keyup(function () {
+        var value = $(this).val();
+        var result = 'value=' + value;
+
+        $.ajax({
+            url: "ayarlar/islem.php?islem=search",
+            type: "POST",
+            data : result,
+            beforeSend: function(){
+                $('#autoComplete').fadeIn().html('<div style="display: flex;justify-content: center;align-items: center"><img  src="images/home/loading.gif"/></div>');
+            },
+            success : function (response) {
+                $('#autoComplete').show().html(response);
+            }
+        })
+    });
+
+    $(window).scroll(function(){
+        $('#autoComplete').fadeOut(400);
+    });
+})

@@ -126,7 +126,7 @@ include_once 'ayarlar/islem.php';
     <div class="header-bottom"><!--header-bottom-->
         <div class="container">
             <div class="row">
-                <div class="col-sm-9">
+                <div class="col-sm-12">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse"
                                 data-target=".navbar-collapse">
@@ -156,17 +156,14 @@ include_once 'ayarlar/islem.php';
                         </ul>
                     </div>
                 </div>
-                <form action="index.php?islem=ara" method="POST">
-                    <div class="col-sm-2 col-sm-offset-1">
-                        <div class="input-group input-group-icon">
-                            <input type="text" class="form-control" placeholder="Search" name="search">
-                            <span class="input-group-addon">
-                                    <span class="icon"><i class="fa fa-search"></i></span>
-                                </span>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </div><!--/header-bottom-->
+    <div class="col-sm-8 col-md-offset-2" id="tst">
+        <div class="form-group">
+            <input type="text" class="form-control" id="inp" placeholder="Search in AlikExpress ?" name="search"
+                   autocomplete="off">
+            <div id="autoComplete"></div>
+        </div>
+    </div>
 </header><!--/header-->
