@@ -1,17 +1,12 @@
     <!-- start: page -->
     <header class="page-header">
-        <h2>Kategori Ekle</h2>
+        <h2>Add New Category</h2>
     </header>
     <div class="row">
         <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
-                    <div class="panel-actions">
-                        <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
-                        <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
-                    </div>
-
-                    <h2 class="panel-title">Yeni Urun Ekle</h2>
+                    <h2 class="panel-title">Add New Category</h2>
                 </header>
                 <div class="panel-body">
                     <div id="kategoriEkleAlert"></div>
@@ -36,34 +31,34 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Kategori Baslik</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Category Title</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="kategori_title">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Kategori Aciklama</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Category Description</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="kategori_desc">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Anahtar Kelimeler</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Keywords</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="kategori_keyw" id="tags-input" data-role="tagsinput" data-tag-class="label label-primary">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Kategori Durum</label>
+                            <label class="col-md-3 control-label">Category Status</label>
                             <div class="col-md-6">
                                 <select class="form-control"name="kategori_durum">
-                                    <option value="1">Aktiv</option>
+                                    <option value="1">Active</option>
                                     <option value="00">Passiv</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6 col-md-offset-3">
-                        <div id="kategoriEkleBtn" class="btn btn-primary btn-lg pull-right">Ekle</div>
+                        <div id="kategoriEkleBtn" class="btn btn-primary btn-lg pull-right"><i class="fa fa-plus-circle" style="font-weight: 400"> Add</i></div>
                         </div>
 
                     </form>

@@ -80,3 +80,16 @@ $('#urunGuncelleBtn').on('click', function () {
     });
 })
 
+// Advertisements
+
+$('#addAdsBtn').on('click', function () {
+    var data = $('#addAdsForm').serialize();
+    $.ajax({
+        url: "ayarlar/islem.php?islem=addAds",
+        type: 'POST',
+        data: data,
+        success: function (response) {
+            $('#addAdsAlert').html(response).hide().fadeIn(700);
+        }
+    })
+})

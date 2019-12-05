@@ -76,8 +76,7 @@ switch ($islem) {
                         include 'moduller/leftSideMiddle-CategoryTab.php';
                         ?>
                         <!--/category-tab-->
-
-                        <!--Recommended Items Couresel Slider-->
+                        <!--Most Popular Products Couresel Slider-->
                         <?php
                         include_once 'moduller/body-couresel-slider.php';
                         ?>

@@ -1,31 +1,26 @@
     <!-- start: page -->
     <header class="page-header">
-        <h2>Urun Ekleme Paneli</h2>
+        <h2>Add New Product</h2>
     </header>
     <div class="row">
         <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
-                    <div class="panel-actions">
-                        <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
-                        <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
-                    </div>
-
-                    <h2 class="panel-title">Yeni Urun Ekle</h2>
+                   <h2 class="panel-title">Add New Product</h2>
                 </header>
                 <div class="panel-body">
                     <div id="urunEkleAlert"></div>
                     <form id="urunEkleForm" class="form-horizontal form-bordered" method="post" enctype="multipart/form-data">
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Urun Resmi</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Product Image</label>
                             <div class="col-md-6">
                                 <input type="file" class="form-control" name="urun_resim">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Urun Kategorisi</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Product Category</label>
                             <div class="col-md-6">
                                 <select class="form-control" name="urun_kategori">
                                     <?php
@@ -43,55 +38,55 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Urun Baslik</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Product Name</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="urun_title">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Urun Aciklama</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Product Description</label>
                             <div class="col-md-6">
                                 <textarea class="form-control" name="urun_desc" rows="5"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Urun Meta Baslik</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Product Meta Title</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="urun_meta_title">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Urun Meta Aciklama</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Product Meta Description</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="urun_meta_desc">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Meta Anahtar Kelimeler</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Meta Keywords</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="urun_meta_keyw" id="tags-input" data-role="tagsinput" data-tag-class="label label-primary">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Firma Adi</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Firm Name</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="firma_isim">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Urun Fiyat</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Product Price</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="urun_fiyat" onkeyup="javascript:this.value=ParaFormat(this.value)">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Urun Sira</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Product Queue</label>
                             <div class="col-md-6">
                                 <input type="number" class="form-control" name="urun_sira">
                             </div>
                         </div>
                         <div class="col-md-6 col-md-offset-3">
-                            <div id="urunEkleBtn" class="btn btn-primary btn-lg pull-right">Ekle</div>
+                            <div id="urunEkleBtn" class="btn btn-primary btn-lg pull-right"><i class="fa fa-plus-circle"></i> Add</div>
                         </div>
 
                     </form>

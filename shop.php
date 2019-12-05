@@ -3,6 +3,11 @@
         <img src="images/shop/ad.jpg" alt=""/>
     </div>
 </section>
+<section id="advertisement">
+    <div class="container" style="display: flex;justify-content: center;align-items: center">
+        <img src="<?php echo advertisements(1); ?>" height="250px">
+    </div>
+</section>
 
 <section>
     <div class="container">

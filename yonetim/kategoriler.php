@@ -1,6 +1,6 @@
 <!-- start: page -->
 <header class="page-header">
-    <h2>Kategoriler</h2>
+    <h2>Categories</h2>
 </header>
 
 <div class="row">
@@ -8,21 +8,21 @@
         <section class="panel">
             <header class="panel-heading">
                 <div class="panel-actions">
-                    <a href="kategori-ekle.php"><span href="#"
-                                                      class="fa fa-plus">&nbsp;&nbsp;Kategori Ekle</span></a>
+                    <a href="?do=add_category"><span href="#"
+                                                      class="fa fa-plus">&nbsp;&nbsp;Add New Category</span></a>
                 </div>
 
-                <h2 class="panel-title">Kategoriler Tablosu</h2>
+                <h2 class="panel-title">Category Table</h2>
             </header>
             <div class="panel-body">
                 <?php include 'inc/alert.php' ?>
                 <table class="table table-bordered table-striped mb-none">
                     <thead>
                     <tr>
-                        <th>Kategori Adi</th>
-                        <th>Kategori Aciklama</th>
-                        <th>Kategori Durum</th>
-                        <th>Islem</th>
+                        <th>Category Name</th>
+                        <th>Category Description</th>
+                        <th>Category Status</th>
+                        <th>Process</th>
                     </tr>
                     </thead>
 
@@ -47,7 +47,7 @@
                                     <td><?php echo $tumkategoriler['kategori_desc']; ?></td>
                                     <td>
                                         <?php
-                                        echo $tumkategoriler['kategori_durum'] == 1 ? '<div class="label label-success">Aktiv</div>' : '<div class="label label-danger ">Passiv</div>';
+                                        echo $tumkategoriler['kategori_durum'] == 1 ? '<div class="label label-success">Active</div>' : '<div class="label label-danger ">Passiv</div>';
                                         ?>
                                     </td>
                                     <td>
@@ -56,7 +56,7 @@
                                              class="modal-block modal-full-color modal-block-primary mfp-hide">
                                             <section class="panel">
                                                 <header class="panel-heading">
-                                                    <h2 class="panel-title">Eminmisiniz ?</h2>
+                                                    <h2 class="panel-title">Are you sure ?</h2>
                                                 </header>
                                                 <div class="panel-body">
                                                     <div class="modal-wrapper">
@@ -64,10 +64,8 @@
                                                             <i class="fa fa-question-circle"></i>
                                                         </div>
                                                         <div class="modal-text">
-                                                            <h4>Primary</h4>
-                                                            <p><?php echo $tumkategoriler['kategori_title'] ?>
-                                                                kategoriyansini silmek istediyinize eminsinizmi
-                                                                ?</p>
+                                                            <h4><?php echo $tumkategoriler['kategori_title'] ?></h4>
+                                                            <p>Do you really want to delete "<?php echo $tumkategoriler['kategori_title'] ?>" category ?</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -75,10 +73,8 @@
                                                     <div class="row">
                                                         <div class="col-md-12 text-right">
                                                             <a href="ayarlar/islem.php?kategoriSil=ok&kategori_id=<?php echo $tumkategoriler['kategori_id'] ?>"
-                                                               class="btn btn-danger">Sil</a>
-                                                            <button class="btn btn-default modal-dismiss">Imtina
-                                                                Et
-                                                            </button>
+                                                               class="btn btn-danger">Delete</a>
+                                                            <button class="btn btn-default modal-dismiss">Cancel</button>
                                                         </div>
                                                     </div>
                                                 </footer>
@@ -88,14 +84,14 @@
                                             <!--Sil Butonu-->
                                             <a class="modal-basic btn btn-xs btn-danger btn-special"
                                                href="#modalFullColorPrimary<?php echo $tumkategoriler['kategori_id'] ?>"
-                                               data-toggle="tooltip" data-placement="top" title="Sil"><i
+                                               data-toggle="tooltip" data-placement="top" title="Delete"><i
                                                         class="fa fa-trash"></i></a>
                                             <!--/Sil Butonu-->
 
                                             <!--Guncelle Butonu-->
                                             <a href="index.php?do=edit_category&kategori_id=<?php echo $tumkategoriler['kategori_id'] ?>"
                                                class="btn btn-warning btn-xs btn-special" data-toggle="tooltip"
-                                               data-placement="top" title="Guncelle"><i class="fa fa-cog"></i></a>
+                                               data-placement="top" title="Update"><i class="fa fa-cog"></i></a>
                                             <!--/Guncelle Butonu-->
                                         </div>
                                     </td>

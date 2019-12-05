@@ -4,7 +4,8 @@
         <div class="sidebar-title">
             Menu
         </div>
-        <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+        <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html"
+             data-fire-event="sidebar-left-toggle">
             <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
         </div>
     </div>
@@ -59,20 +60,38 @@
                     </li>
                     <li>
                         <a href="index.php?do=user_spy">
-                            <i class="fa fa-rss"  aria-hidden="true"></i>
+                            <i class="fa fa-rss" aria-hidden="true"></i>
                             <span>User Control</span>
                         </a>
                     </li>
                     <li>
                         <a href="index.php?do=messages">
-                            <i class="fa fa-comments"  aria-hidden="true"></i>
+                            <i class="fa fa-comments" aria-hidden="true"></i>
                             <span>Messages</span>
                         </a>
+                    </li>
+                    <li class="nav-parent">
+                        <a>
+                            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                            <span>Advertisements Processes</span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li>
+                                <a href="index.php?do=advertisements">
+                                    <span>Advertisements</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.php?do=add_ads">
+                                    Add New Advertisement
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>
 
-            <hr class="separator" />
+            <hr class="separator"/>
 
             <div class="sidebar-widget widget-tasks hidden">
                 <div class="widget-header">
@@ -88,7 +107,7 @@
                 </div>
             </div>
 
-            <hr class="separator" />
+            <hr class="separator"/>
 
             <div class="sidebar-widget widget-stats hidden">
                 <div class="widget-header">
@@ -101,7 +120,9 @@
                             <span class="stats-title">Stat 1</span>
                             <span class="stats-complete">85%</span>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;">
+                                <div class="progress-bar progress-bar-primary progress-without-number"
+                                     role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
+                                     style="width: 85%;">
                                     <span class="sr-only">85% Complete</span>
                                 </div>
                             </div>
@@ -110,7 +131,9 @@
                             <span class="stats-title">Stat 2</span>
                             <span class="stats-complete">70%</span>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+                                <div class="progress-bar progress-bar-primary progress-without-number"
+                                     role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"
+                                     style="width: 70%;">
                                     <span class="sr-only">70% Complete</span>
                                 </div>
                             </div>
@@ -119,7 +142,9 @@
                             <span class="stats-title">Stat 3</span>
                             <span class="stats-complete">2%</span>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-primary progress-without-number" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
+                                <div class="progress-bar progress-bar-primary progress-without-number"
+                                     role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"
+                                     style="width: 2%;">
                                     <span class="sr-only">2% Complete</span>
                                 </div>
                             </div>

@@ -148,7 +148,7 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                                         to
                                         cart
                                     </button>
-                                    <a href="?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>"
+                                    <a href="?islem=pDetails&urun_id=<?php echo $urunler['urun_id'] ?>"
                                        class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read
                                         More</a>
                                 </div>

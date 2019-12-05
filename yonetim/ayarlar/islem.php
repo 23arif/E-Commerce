@@ -145,7 +145,7 @@ if (g('islem') == 'urunEkle') {
         echo '<div class="alert alert-warning">Lutfen Urun Meta Aciklamasi girin</div>';
     } elseif (empty($urun_meta_keyw)) {
         echo '<div class="alert alert-warning">Lutfen Urun Meta Anahatar Kelimesi girin</div>';
-    }elseif (empty($urun_firma)) {
+    } elseif (empty($urun_firma)) {
         echo '<div class="alert alert-warning">Lutfen Firma Adi girin</div>';
     } elseif (empty($urun_fiyat)) {
         echo '<div class="alert alert-warning">Lutfen Urun Fiyati girin</div>';
@@ -168,7 +168,7 @@ if (g('islem') == 'urunEkle') {
 
 
                 $ekle = $db->prepare("INSERT INTO urunler SET urun_resim=?,urun_title=?,urun_desc=?,urun_meta_desc=?,urun_meta_title=?,urun_meta_keyw=?,urun_firma=?,urun_fiyat=?,urun_kategori=?,urun_sira=?");
-                $ekleme = $ekle->execute(array($vtyol, $urun_title, $urun_desc, metaWords($urun_meta_desc), metaWords($urun_meta_title), $urun_meta_keyw,$urun_firma,noktasil($urun_fiyat), $urun_kategori, $urun_sira));
+                $ekleme = $ekle->execute(array($vtyol, $urun_title, $urun_desc, metaWords($urun_meta_desc), metaWords($urun_meta_title), $urun_meta_keyw, $urun_firma, noktasil($urun_fiyat), $urun_kategori, $urun_sira));
                 if ($ekleme) {
                     echo '<div class="alert alert-success">Urun ekleme isleminiz basariyla gerceklesdirildi.Yonlendirilirsiz...</div><meta http-equiv="refresh" content="2;url=index.php?do=products">';
                 } else {
@@ -260,6 +260,40 @@ if (g('islem') == 'urunGuncelle') {
 
     }
 }
-if(g('islem') == 'siteyiGoruntule'){
+if (g('islem') == 'siteyiGoruntule') {
     header('Location:../../index.php');
+}
+// Advertisement
+if (g('islem') == 'addAds') {
+    $ads_name = p('ads_name');
+    $ads_link = p('ads_link');
+    $ads_status = p('ads_status');
+
+    if (empty($ads_name)) {
+        echo '<div class="alert alert-warning text-center">Please,fill <strong>name</strong> blank</div>';
+    } elseif (empty($ads_link)) {
+        echo '<div class="alert alert-warning text-center">Please,fill <strong>description</strong> blank</div>';
+    } elseif (empty($ads_status)) {
+        echo '<div class="alert alert-warning text-center">Please,fill <strong>status</strong> blank</div>';
+    } else {
+
+        $veri = $db->prepare("INSERT INTO advertisements SET ads_name=?, ads_code=?, ads_status=?");
+        $veri->execute(array($ads_name, $ads_link, $ads_status));
+        if ($veri) {
+            echo '<div class="alert alert-success text-center">Advertisements added successfully</div><meta http-equiv="refresh" content="3;url=?do=advertisements">';
+        }else{
+            echo '<div class="alert alert-danger text-center">Error while deleting!</div><meta http-equiv="refresh" content="3;url=?do=advertisements">';
+        }
+    }
+
+}
+if (g('deleteAds') == 'ok') {
+    $sil = $db->prepare("DELETE FROM advertisements WHERE ads_id=?");
+    $silme = $sil->execute(array(g("ads_id")));
+    if ($silme) {
+        git("../index.php?do=advertisements&silme=ok");
+    } else {
+        git("../index.php?do=advertisements&silme=no");
+    }
+
 }

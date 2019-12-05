@@ -34,6 +34,12 @@ switch ($do) {
     case 'fstMsg':
         include_once 'fastMessages.php';
         break;
+    case 'advertisements':
+        include_once 'advertisements.php';
+        break;
+    case 'add_ads':
+        include_once 'add-advertisement.php';
+        break;
     default:
         ?>
         <header class="page-header">
