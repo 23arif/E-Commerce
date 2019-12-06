@@ -1,11 +1,6 @@
-<section id="cart_items">
+<header><title>Cart - AlikExpress</title></header>
+<section id="cart_items" style="margin-top: 70px">
     <div class="container">
-        <div class="breadcrumbs">
-            <ol class="breadcrumb">
-                <li><a href="index.php">Home</a></li>
-                <li class="active">Shopping Cart</li>
-            </ol>
-        </div>
         <?php
         if ($total_count > 0) {
             ?>
@@ -30,7 +25,8 @@
                         ?>
                         <tr>
                             <td class="cart_product">
-                                <a href=""><img src="<?php echo $product->urun_resim ?>" width="120" height="130" alt=""></a>
+                                <a href=""><img src="<?php echo $product->urun_resim ?>" width="120" height="130"
+                                                alt=""></a>
                             </td>
                             <td class="cart_description">
                                 <h4 style="padding-left: 60px"><a href=""><?php echo $product->urun_title ?></a></h4>
@@ -40,20 +36,24 @@
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
-                                    <a class="cart_quantity_up" href="index.php?p=incCount&product_id=<?php echo $product->urun_id ?>"> + </a>
+                                    <a class="cart_quantity_up"
+                                       href="index.php?p=incCount&product_id=<?php echo $product->urun_id ?>"> + </a>
 
-                                    <input class="cart_quantity_input" type="text" name="quantity" value="<?php echo $product->count ?>"
+                                    <input class="cart_quantity_input" type="text" name="quantity"
+                                           value="<?php echo $product->count ?>"
                                            autocomplete="off"
                                            size="2">
 
-                                    <a class="cart_quantity_down" href="index.php?p=decCount&product_id=<?php echo $product->urun_id ?>"> - </a>
+                                    <a class="cart_quantity_down"
+                                       href="index.php?p=decCount&product_id=<?php echo $product->urun_id ?>"> - </a>
                                 </div>
                             </td>
                             <td class="cart_total">
                                 <p class="cart_total_price"><?php echo parayaz($product->total_price) ?></p>
                             </td>
                             <td class="cart_delete">
-                                <button product-id='<?php echo $product->urun_id ?>' class="cart_quantity_delete"><i class="fa fa-times"></i></button>
+                                <button product-id='<?php echo $product->urun_id ?>' class="cart_quantity_delete"><i
+                                            class="fa fa-times"></i></button>
                             </td>
                         </tr>
                         <?php

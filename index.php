@@ -37,6 +37,9 @@ switch ($islem) {
         include 'moduller/ust-slider.php';
         ?>
         <!--/Head Slider-->
+        <header>
+            <title>AlikExpress: Shopping never had been exciting like now!</title>
+        </header>
         <section>
             <div class="container">
                 <div class="row">
@@ -59,7 +62,9 @@ switch ($islem) {
                             include 'moduller/leftSideMenu-shipping.php';
                             ?>
                             <!--/shipping-->
-
+                            <div class="text-center">
+                            <img src="<?php echo advertisements(6)?>" alt="">
+                            </div>
                         </div>
                     </div>
 

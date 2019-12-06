@@ -67,5 +67,19 @@
 <script src="assets/javascripts/tables/examples.datatables.tabletools.js"></script>
 <!-- Modal Examples -->
 <script src="assets/javascripts/ui-elements/examples.modals.js"></script>
+
+<!------------------------->
+
+<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+<!-- JQUERY SCRIPTS -->
+<script src="assets/js/jquery-1.10.2.js"></script>
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="assets/js/bootstrap.js"></script>
+<!-- PAGE LEVEL SCRIPTS -->
+<script src="assets/js/bootstrap-fileupload.js"></script>
+<!-- METISMENU SCRIPTS -->
+<script src="assets/js/jquery.metisMenu.js"></script>
+<!-- CUSTOM SCRIPTS -->
+<script src="assets/js/custom.js"></script>
 </body>
 </html>

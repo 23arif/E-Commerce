@@ -34,6 +34,7 @@
                     <?php
                     foreach ($v as $urun) {
                         ?>
+                        <header><title><?php echo $category['kategori_title'] ?> - AlikExpress</title></header>
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">

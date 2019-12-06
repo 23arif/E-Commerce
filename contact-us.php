@@ -1,3 +1,4 @@
+<header><title>Contact - AlikExpress</title></header>
 <div id="contact-page" class="container">
     <div class="bg">
         <div class="row">

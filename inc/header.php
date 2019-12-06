@@ -10,7 +10,6 @@ include_once 'ayarlar/islem.php';
     <meta name="description" content="AlikExpress Online shoping webpage.High quality and budget friendly products."/>
     <meta name="keywords" content="shoping,alikexpress,budget friently,online shoping"/>
 
-    <title>AlikExpress: Shopping never had been exciting like now</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">

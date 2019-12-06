@@ -88,6 +88,24 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-parent">
+                        <a>
+                            <i class="fa fa-image" aria-hidden="true"></i>
+                            <span>Sliders Processes</span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li>
+                                <a href="index.php?do=slider">
+                                    <span>Slides</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.php?do=add_slide">
+                                    Add New Slide
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
 

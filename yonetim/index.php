@@ -43,6 +43,12 @@ switch ($do) {
     case 'update_ads':
         include_once 'update-advertisement.php';
         break;
+    case 'slider':
+        include_once 'slider.php';
+        break;
+    case 'add_slide':
+        include_once 'add_slide.php';
+        break;
     default:
         ?>
         <header class="page-header">

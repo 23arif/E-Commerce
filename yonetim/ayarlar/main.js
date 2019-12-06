@@ -104,3 +104,27 @@ $('#updateAdsBtn').on('click', function () {
         }
     });
 })
+
+//Slide
+$('#addSlideBtn').on('click', function () {
+    var data = $('#addSlideForm').serialize();
+    $.ajax({
+        url: "ayarlar/islem.php?islem=addSlide",
+        type: "POST",
+        data: data,
+        success: function (response) {
+            $('#addSlideAlert').html(response).hide().fadeIn(700);
+        }
+    });
+})
+// $('#kategoriGuncelleBtn').on('click', function () {
+//     var datakategori = $('#kategoriGuncelleForm').serialize();
+//     $.ajax({
+//         url: "ayarlar/islem.php?islem=kategoriGuncelle",
+//         type: "POST",
+//         data: datakategori,
+//         success: function (cevab) {
+//             $('#kategoriGuncelleAlert').html(cevab).hide().fadeIn(700);
+//         }
+//     });
+// })

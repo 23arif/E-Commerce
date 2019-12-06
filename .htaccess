@@ -1,2 +1,4 @@
 RewriteEngine on
 ErrorDocument 404 http://localhost:82/AlikExpress/404.php
+
+#RewriteRule ^index/([0-9a-zA-Z-_]+)$ http://localhost:82/AlikExpress/index.php?islem=shop

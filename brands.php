@@ -23,6 +23,7 @@
             $veri->execute(array($brand));
             $v = $veri->fetchALL(PDO::FETCH_ASSOC);
             ?>
+            <header><title><?php echo $brand ?> - AlikExpress</title></header>
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
                     <h2 class="title text-center"><span style="text-decoration: underline"><?php echo $brand ?></span> Products</h2>
