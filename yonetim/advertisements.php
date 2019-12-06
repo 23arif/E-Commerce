@@ -81,7 +81,7 @@
                                 <!--/Sil Butonu-->
 
                                 <!--Guncelle Butonu-->
-                                <a href="index.php?do=edit_advertisement&kategori_id=<?php echo $ads['ads_id'] ?>"
+                                <a href="index.php?do=update_ads&ads_id=<?php echo $ads['ads_id'] ?>"
                                    class="btn btn-warning btn-xs btn-special" data-toggle="tooltip"
                                    data-placement="top" title="Update"><i class="fa fa-cog"></i></a>
                                 <!--/Guncelle Butonu-->

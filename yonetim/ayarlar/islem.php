@@ -297,3 +297,25 @@ if (g('deleteAds') == 'ok') {
     }
 
 }
+if (g('islem') == 'updateAds') {
+    $ads_name = p('ads_name');
+    $ads_link = p('ads_link');
+    $ads_status = p('ads_status');
+    $ads_id = p('ads_id');
+
+    if (empty($ads_name)) {
+        echo "<div class='alert alert-warning text-center'>Please, fill <strong>name</strong> blank</div>";
+    } elseif (empty($ads_link)) {
+        echo "<div class='alert alert-warning text-center'>Please, fill <strong>link</strong> blank</div>";
+    } elseif (empty($ads_status)) {
+        echo "<div class='alert alert-warning text-center'>Please, fill <strong>status</strong> blank</div>";
+    }else {
+       $veri = $db->prepare("UPDATE advertisements SET ads_name=?,ads_code=?,ads_status=? WHERE ads_id='$ads_id'");
+       $veri->execute(array($ads_name,$ads_link,$ads_status));
+       if($veri){
+           echo '<div class="alert alert-success text-center">Advertisement updated successfully</div><meta http-equiv="refresh" content="3;url=index.php?do=advertisements&guncelle=ok">';
+       }else{
+           echo '<div class="alert alert-danger text-center">Advertisement could not updating</div><meta http-equiv="refresh" content="3;url=index.php?do=asvertisements">';
+       }
+    }
+}

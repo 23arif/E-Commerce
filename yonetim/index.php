@@ -40,6 +40,9 @@ switch ($do) {
     case 'add_ads':
         include_once 'add-advertisement.php';
         break;
+    case 'update_ads':
+        include_once 'update-advertisement.php';
+        break;
     default:
         ?>
         <header class="page-header">

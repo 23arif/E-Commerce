@@ -93,3 +93,14 @@ $('#addAdsBtn').on('click', function () {
         }
     })
 })
+$('#updateAdsBtn').on('click', function () {
+    var data = $('#adsUpdateForm').serialize();
+    $.ajax({
+        url: "ayarlar/islem.php?islem=updateAds",
+        type: "POST",
+        data: data,
+        success: function (response) {
+            $('#adsUpdateAlert').html(response).hide().fadeIn(700);
+        }
+    });
+})
