@@ -1,8 +1,14 @@
 <header><title>Products - AlikExpress</title></header>
+<!--<section id="advertisement">-->
+<!--    <div class="container">-->
+<!--        <img src="images/shop/ad.jpg" alt=""/>-->
+<!--    </div>-->
+<!--</section>-->
 <section id="advertisement">
-    <div class="container">
-        <img src="images/shop/ad.jpg" alt=""/>
+    <div class="container" >
+        <img src="test/christmas.gif" alt="" style="width: 100%;height: 100%">
     </div>
+
 </section>
 <section>
     <div class="container">

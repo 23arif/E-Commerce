@@ -19,6 +19,7 @@
                 <table class="table table-bordered table-striped mb-none">
                     <thead>
                     <tr>
+                        <th>#id</th>
                         <th>Advertisement Name</th>
                         <th>Advertisement Date</th>
                         <th>Advertisement Status</th>
@@ -34,6 +35,7 @@
                     foreach($v as $ads){
                     ?>
                     <tr class="gradeX">
+                        <td><?php echo $ads['ads_id'] ?></td>
                         <td><?php echo $ads['ads_name'] ?></td>
                         <td><?php echo $ads['ads_date']; ?></td>
                         <td>

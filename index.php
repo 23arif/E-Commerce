@@ -62,8 +62,8 @@ switch ($islem) {
                             include 'moduller/leftSideMenu-shipping.php';
                             ?>
                             <!--/shipping-->
-                            <div class="text-center">
-                            <img src="<?php echo advertisements(6)?>" alt="">
+                            <div class="text-center" style="height: 240px;margin-top: 15px">
+                                <img src="test/mu.gif" alt="" style="width: 100%;height: 100%">
                             </div>
                         </div>
                     </div>

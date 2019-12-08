@@ -83,11 +83,15 @@ $('#urunGuncelleBtn').on('click', function () {
 // Advertisements
 
 $('#addAdsBtn').on('click', function () {
-    var data = $('#addAdsForm').serialize();
+    var data = new FormData($('#addAdsForm')[0]);
     $.ajax({
         url: "ayarlar/islem.php?islem=addAds",
         type: 'POST',
         data: data,
+        async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
         success: function (response) {
             $('#addAdsAlert').html(response).hide().fadeIn(700);
         }
@@ -107,11 +111,15 @@ $('#updateAdsBtn').on('click', function () {
 
 //Slide
 $('#addSlideBtn').on('click', function () {
-    var data = $('#addSlideForm').serialize();
+    var data = new FormData($('#addSlideForm')[0]);
     $.ajax({
         url: "ayarlar/islem.php?islem=addSlide",
         type: "POST",
         data: data,
+        async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
         success: function (response) {
             $('#addSlideAlert').html(response).hide().fadeIn(700);
         }

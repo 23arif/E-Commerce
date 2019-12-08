@@ -49,6 +49,9 @@ switch ($do) {
     case 'add_slide':
         include_once 'add_slide.php';
         break;
+    case 'update_slide':
+        include_once 'update_slide.php';
+        break;
     default:
         ?>
         <header class="page-header">

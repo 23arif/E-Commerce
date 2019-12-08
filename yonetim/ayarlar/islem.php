@@ -266,115 +266,132 @@ if (g('islem') == 'siteyiGoruntule') {
 // Advertisement
 if (g('islem') == 'addAds') {
     $ads_name = p('ads_name');
-    $ads_link = p('ads_link');
+    $ads_url = p('ads_url');
     $ads_status = p('ads_status');
 
     if (empty($ads_name)) {
         echo '<div class="alert alert-warning text-center">Please,fill <strong>name</strong> blank</div>';
-    } elseif (empty($ads_link)) {
-        echo '<div class="alert alert-warning text-center">Please,fill <strong>description</strong> blank</div>';
     } elseif (empty($ads_status)) {
         echo '<div class="alert alert-warning text-center">Please,fill <strong>status</strong> blank</div>';
     } else {
 
-        $veri = $db->prepare("INSERT INTO advertisements SET ads_name=?, ads_code=?, ads_status=?");
-        $veri->execute(array($ads_name, $ads_link, $ads_status));
-        if ($veri) {
-            echo '<div class="alert alert-success text-center">Advertisements added successfully</div><meta http-equiv="refresh" content="3;url=?do=advertisements">';
-        }else{
-            echo '<div class="alert alert-danger text-center">Error while adding!</div><meta http-equiv="refresh" content="3;url=?do=advertisements">';
+
+        @$name = $_FILES['ads_img']['name'];
+        $yol = '../../adsImage';
+        $rn = resimadi();
+        $uzanti = uzanti($name);
+        $vtyol = "adsImage/$rn.$uzanti";
+
+        if ($_FILES['ads_img']["size"] > 1024 * 1024) {
+            echo '<div class="alert alert-warning text-center">Image size doesn\'t get bigger than 1mb</div>';
+        } else {
+
+            $resimyukleme = resimyukle2('ads_img', $rn, $yol);
+            if ($resimyukleme) {
+                $veri = $db->prepare("INSERT INTO advertisements SET ads_name=?, ads_code=?,ads_url=?, ads_status=?");
+                $veri->execute(array($ads_name, $vtyol,$ads_url, $ads_status));
+                if ($veri) {
+                    echo '<div class="alert alert-success text-center">Advertisements added successfully</div><meta http-equiv="refresh" content="3;url=?do=advertisements">';
+                } else {
+                    echo '<div class="alert alert-danger text-center">Error while adding!</div><meta http-equiv="refresh" content="3;url=?do=advertisements">';
+                }
+            } else {
+                echo '<div class="alert alert-warning text-center">Error while uploading advertisement image! Please,control again.</div>';
+            }
         }
     }
-
 }
 if (g('deleteAds') == 'ok') {
+    $ads_id = g('ads_id');
+    $veri = $db->prepare("SELECT *FROM advertisements WHERE ads_id=?");
+    $veri->execute(array($ads_id));
+    $v = $veri->fetchALL(PDO::FETCH_ASSOC);
+    foreach ($v as $ads) ;
+    $eskiresim = '../../' . $ads['ads_code'];
+
     $sil = $db->prepare("DELETE FROM advertisements WHERE ads_id=?");
-    $silme = $sil->execute(array(g("ads_id")));
+    $silme = $sil->execute(array($ads_id));
     if ($silme) {
+        unlink($eskiresim);
         git("../index.php?do=advertisements&silme=ok");
     } else {
         git("../index.php?do=advertisements&silme=no");
     }
-
 }
 if (g('islem') == 'updateAds') {
     $ads_name = p('ads_name');
-    $ads_link = p('ads_link');
     $ads_status = p('ads_status');
     $ads_id = p('ads_id');
 
     if (empty($ads_name)) {
         echo "<div class='alert alert-warning text-center'>Please, fill <strong>name</strong> blank</div>";
-    } elseif (empty($ads_link)) {
-        echo "<div class='alert alert-warning text-center'>Please, fill <strong>link</strong> blank</div>";
-    } elseif (empty($ads_status)) {
+    }elseif (empty($ads_status)) {
         echo "<div class='alert alert-warning text-center'>Please, fill <strong>status</strong> blank</div>";
-    }else {
-       $veri = $db->prepare("UPDATE advertisements SET ads_name=?,ads_code=?,ads_status=? WHERE ads_id='$ads_id'");
-       $veri->execute(array($ads_name,$ads_link,$ads_status));
-       if($veri){
-           echo '<div class="alert alert-success text-center">Advertisement updated successfully</div><meta http-equiv="refresh" content="3;url=index.php?do=advertisements&guncelle=ok">';
-       }else{
-           echo '<div class="alert alert-danger text-center">Advertisement could not updating</div><meta http-equiv="refresh" content="3;url=index.php?do=asvertisements">';
-       }
+    } else {
+        $veri = $db->prepare("UPDATE advertisements SET ads_name=?,ads_status=? WHERE ads_id='$ads_id'");
+        $veri->execute(array($ads_name, $ads_status));
+        if ($veri) {
+            echo '<div class="alert alert-success text-center">Advertisement updated successfully</div><meta http-equiv="refresh" content="3;url=index.php?do=advertisements&guncelle=ok">';
+        } else {
+            echo '<div class="alert alert-danger text-center">Advertisement could not updating</div><meta http-equiv="refresh" content="3;url=index.php?do=asvertisements">';
+        }
     }
 }
 
 //Slide
 if (g('islem') == 'addSlide') {
     $slide_name = p('slide_name');
-    $slide_path = p('slide_path');
     $slide_url = p('slide_url');
     $slide_queue = p('slide_queue');
 
     if (empty($slide_name)) {
         echo '<div class="alert alert-warning text-center">Please,fill <strong>name</strong> blank</div>';
-    } elseif (empty($slide_path)) {
-        echo '<div class="alert alert-warning text-center">Please,fill <strong>path</strong> blank</div>';
     } elseif (empty($slide_url)) {
         echo '<div class="alert alert-warning text-center">Please,fill <strong>url</strong> blank</div>';
-    }elseif (empty($slide_queue)) {
+    } elseif (empty($slide_queue)) {
         echo '<div class="alert alert-warning text-center">Please,fill <strong>queue</strong> blank</div>';
     } else {
 
-        $veri = $db->prepare("INSERT INTO slider SET slider_name=?, slider_path=?, slider_url=?,slider_queue=?");
-        $veri->execute(array($slide_name, $slide_path, $slide_url,$slide_queue));
-        if ($veri) {
-            echo '<div class="alert alert-success text-center">Slide added successfully</div><meta http-equiv="refresh" content="3;url=?do=slider">';
-        }else{
-            echo '<div class="alert alert-danger text-center">Error while adding!</div><meta http-equiv="refresh" content="3;url=?do=slider">';
+
+        @$name = $_FILES['slide_img']['name'];
+        $yol = '../../slideImage';
+        $rn = resimadi();
+        $uzanti = uzanti($name);
+        $vtyol = "slideImage/$rn.$uzanti";
+
+        if ($_FILES['slide_img']["size"] > 1024 * 1024) {
+            echo '<div class="alert alert-warning text-center">Image size doesn\'t get bigger than 1mb</div>';
+        } else {
+
+            $resimyukleme = resimyukle('slide_img', $rn, $yol);
+            if ($resimyukleme) {
+                $veri = $db->prepare("INSERT INTO slider SET slider_name=?, slider_path=?, slider_url=?,slider_queue=?");
+                $veri->execute(array($slide_name, $vtyol, $slide_url, $slide_queue));
+                if ($veri) {
+                    echo '<div class="alert alert-success text-center">Slide added successfully</div><meta http-equiv="refresh" content="3;url=?do=slider">';
+                } else {
+                    echo '<div class="alert alert-danger text-center">Error while adding!</div><meta http-equiv="refresh" content="3;url=?do=slider">';
+                }
+            } else {
+                echo '<div class="alert alert-warning text-center">Error while uploading slide image! Please,control again.</div>';
+            }
         }
     }
-
 }
 if (g('deleteSlide') == 'ok') {
+    $slide_id = g('slide_id');
+    $veri = $db->prepare("SELECT *FROM slider WHERE slider_id=?");
+    $veri->execute(array($slide_id));
+    $v = $veri->fetchALL(PDO::FETCH_ASSOC);
+    foreach ($v as $slide) ;
+    $eskiresim = '../../' . $slide['slider_path'];
+
     $sil = $db->prepare("DELETE FROM slider WHERE slider_id=?");
-    $silme = $sil->execute(array(g("slide_id")));
+    $silme = $sil->execute(array($slide_id));
     if ($silme) {
+        unlink($eskiresim);
         git("../index.php?do=slider&silme=ok");
     } else {
         git("../index.php?do=slider&silme=no");
     }
 }
-//if (g('islem') == 'updateAds') {
-//    $ads_name = p('ads_name');
-//    $ads_link = p('ads_link');
-//    $ads_status = p('ads_status');
-//    $ads_id = p('ads_id');
-//
-//    if (empty($ads_name)) {
-//        echo "<div class='alert alert-warning text-center'>Please, fill <strong>name</strong> blank</div>";
-//    } elseif (empty($ads_link)) {
-//        echo "<div class='alert alert-warning text-center'>Please, fill <strong>link</strong> blank</div>";
-//    } elseif (empty($ads_status)) {
-//        echo "<div class='alert alert-warning text-center'>Please, fill <strong>status</strong> blank</div>";
-//    }else {
-//        $veri = $db->prepare("UPDATE advertisements SET ads_name=?,ads_code=?,ads_status=? WHERE ads_id='$ads_id'");
-//        $veri->execute(array($ads_name,$ads_link,$ads_status));
-//        if($veri){
-//            echo '<div class="alert alert-success text-center">Advertisement updated successfully</div><meta http-equiv="refresh" content="3;url=index.php?do=advertisements&guncelle=ok">';
-//        }else{
-//            echo '<div class="alert alert-danger text-center">Advertisement could not updating</div><meta http-equiv="refresh" content="3;url=index.php?do=asvertisements">';
-//        }
-//    }
-//}

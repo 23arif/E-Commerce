@@ -19,22 +19,24 @@
                 <table class="table table-bordered table-striped mb-none">
                     <thead>
                     <tr>
+                        <th>#</th>
                         <th>Slide Name</th>
                         <th>Slide Path</th>
                         <th>Slide Url</th>
-                        <th>Process< /th>
+                        <th>Process </th>
                     </tr>
                     </thead>
 
                     <tbody>
                     <?php
-                    $veri = $db->prepare("SELECT *FROM slider");
+                    $veri = $db->prepare("SELECT *FROM slider ORDER BY slider_queue ASC");
                     $veri->execute(array());
                     $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                     foreach ($v as $slide) {
                         ?>
                         <tr class="gradeX">
 
+                            <td><?php echo $slide['slider_queue']; ?></td>
                             <td><?php echo $slide['slider_name']; ?></td>
                             <td><?php echo $slide['slider_path']; ?></td>
                             <td><?php echo $slide['slider_url']; ?></td>

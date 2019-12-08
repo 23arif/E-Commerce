@@ -111,6 +111,25 @@ function resimyukle($postisim, $yeniisim, $yol)
     }
     // Verot resim yukleme
 }
+function resimyukle2($postisim, $yeniisim, $yol)
+{
+    // Verot resim yukleme advertisementsler ucun
+    $foo = new \Verot\Upload\Upload($_FILES[$postisim]);
+    if ($foo->uploaded) {
+        $foo->allowed = array('image/*');
+        $foo->file_new_name_body = $yeniisim;
+        $foo->image_ratio_y = false;
+        $foo->Process($yol);
+        if ($foo->processed) {
+            $foo->clean();
+            return true;
+        } else {
+            return false;
+
+        }
+    }
+    // Verot resim yukleme
+}
 
 // para Funtion tablolarda gostermek ucun
 function parayaz($para)

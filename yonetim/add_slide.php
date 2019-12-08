@@ -10,17 +10,20 @@
                 </header>
                 <div class="panel-body">
                     <div id="addSlideAlert"></div>
-                    <form id="addSlideForm" class="form-horizontal form-bordered">
+                    <form id="addSlideForm" class="form-horizontal form-bordered" method="post" enctype="multipart/form-data">
+                        <form id="urunEkleForm" class="form-horizontal form-bordered" method="post" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputDefault">Slide Image</label>
+                            <div class="col-md-6">
+                                <input type="file" class="form-control" name="slide_img">
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="inputDefault">Slide Name</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="slide_name">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Slide Path</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="slide_path">
                             </div>
                         </div>
                         <div class="form-group">

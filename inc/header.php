@@ -96,8 +96,9 @@ include_once 'ayarlar/islem.php';
                                 ?>
                                 <li><a href="#"><i class="fa fa-user"></i><?php echo ucfirst(@$_SESSION['isim']) ?></a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-
+                                <?php if($_SESSION['yetki']==1){?>
+                                <li><a href="http://localhost:82/AlikExpress/yonetim"><i class="fa fa-dashboard"></i> Admin Dashboard</a></li>
+                                <?php } ?>
                                 <li><a href="index.php?islem=cart"><i class="fa fa-shopping-cart"></i> Cart <span
                                                 class="badge cart-count"><?php echo $total_count ?></span></a></li>
 
