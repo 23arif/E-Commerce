@@ -113,7 +113,7 @@ function resimyukle($postisim, $yeniisim, $yol)
 }
 function resimyukle2($postisim, $yeniisim, $yol)
 {
-    // Verot resim yukleme advertisementsler ucun
+    // Verot resim yukleme advertisementsler ve sliderler ucun
     $foo = new \Verot\Upload\Upload($_FILES[$postisim]);
     if ($foo->uploaded) {
         $foo->allowed = array('image/*');

@@ -20,6 +20,7 @@
                     <thead>
                     <tr>
                         <th>#id</th>
+                        <th>Advertisement Img</th>
                         <th>Advertisement Name</th>
                         <th>Advertisement Date</th>
                         <th>Advertisement Status</th>
@@ -29,13 +30,14 @@
 
                     <tbody>
                     <?php
-                    $veri = $db->prepare("SELECT *FROM advertisements");
+                    $veri = $db->prepare("SELECT *FROM advertisements ORDER BY ads_id DESC");
                     $veri->execute(array());
                     $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                     foreach($v as $ads){
                     ?>
                     <tr class="gradeX">
                         <td><?php echo $ads['ads_id'] ?></td>
+                        <td style="width: 500px;height: 200px"><img src="../<?php echo $ads['ads_code'] ?>" style="max-width: 100%;height: 100%;"></td>
                         <td><?php echo $ads['ads_name'] ?></td>
                         <td><?php echo $ads['ads_date']; ?></td>
                         <td>

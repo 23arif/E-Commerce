@@ -1,8 +1,9 @@
-<header><title>Cart - AlikExpress</title></header>
+<header><title>Cart - AlikExpress</title>
+</header>
 <section id="cart_items" style="margin-top: 70px">
     <div class="container">
         <?php
-        if ($total_count > 0) {
+        if (@$total_count > 0) {
             ?>
             <div class="cartAlert alert alert-info text-center">You have <strong
                         class="cartSpecialText"><?php echo $total_count ?></strong> products in the cart

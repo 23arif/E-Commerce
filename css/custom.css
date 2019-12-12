@@ -36,13 +36,19 @@
     box-shadow: none;
     border: 1px solid #f8a842;
 }
-
+#autoCompleteCenter{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 #autoComplete {
+    position: absolute;
+    z-index: 100;
     width: 100%;
     min-height: 10px;
     border: 2px solid #f8a842;
     border-top: 0;
-    margin-top: 2px;
+    margin-top: 36px;
     background: #f8a842;
     color: #fff;
     box-shadow: 0 2px 8px rgb(119, 116, 116);
@@ -64,7 +70,65 @@
 
 }
 
-.tst {
-    border: 3px solid red;
+.sekil{
+    max-height: 225px;
 }
-w
+.owl-carousel .owl-nav{
+    position: absolute;
+    top:32%;
+    width: 100%;
+    margin: 0!important;
+    padding: 0!important;
+}
+.owl-carousel .owl-nav .owl-prev{
+    float: left;
+    margin: 0!important;
+    padding: 0!important;
+}
+.owl-carousel .owl-nav .owl-next{
+    float: right;
+    margin: 0!important;
+    padding: 0!important;
+}
+.owl-carousel .owl-nav  span{
+    color:#f39313!important;
+    font-size: 40px;
+    font-weight: bold;
+    background: rgba(0,0,0,.7);
+    border-radius: 50px;
+    padding: 3px 20px;
+}
+.owl-carousel .owl-nav span:hover{
+    background: rgba(0,0,0,1)!important;
+
+
+}
+.owl-carousel .owl-nav button{
+    background: none!important;
+    outline: none!important;
+}
+.owl-carousel .owl-dots{
+    position: relative;
+    margin: auto!important;
+    min-width: 100%!important;
+    margin-top: 10px!important;
+}
+.owl-carousel .owl-dot.active span{
+    background: #f39313!important;
+}
+.owl-carousel .owl-dot:hover span{
+    background: #f39313!important;
+}
+.owl-carousel .owl-dot {
+    outline: none;
+}
+/*.owl-carousel .owl-nav .owl-prev:before{*/
+/*// fa-chevron-left*/
+/*content: "\f053";*/
+/*    margin-right:10px;*/
+/*}*/
+/*.owl-carousel .owl-nav .owl-next:after{*/
+/*//fa-chevron-right*/
+/*content: "\f054";*/
+/*    margin-right:10px;*/
+/*}*/

@@ -1,67 +1,26 @@
-<section id="slider"><!--slider-->
+<?php
+$veri = $db->prepare("SELECT *FROM slider ORDER BY slider_queue ASC");
+$veri->execute(array());
+$v = $veri->fetchALL(PDO::FETCH_ASSOC);
+?>
+<section id="slider">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#slider-carousel" data-slide-to="1"></li>
-                        <li data-target="#slider-carousel" data-slide-to="2"></li>
-                    </ol>
-
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <div class="col-sm-6">
-                                <h1><b><span>Alik</span><span style="color:#e43326">Express</span></b></h1>
-                                <p style="font-size: 25px;font-weight: bolder">Shopping never had been exciting like now!</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. </p>
-                                <button type="button" class="btn btn-default get">Get it now</button>
-                            </div>
-                            <div class="col-sm-6">
-                                <img src="images/home/girl1.jpg" class="girl img-responsive" alt=""/>
-                                <img src="images/home/pricing.png" class="pricing" alt=""/>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="col-sm-6">
-                                <h1><b><span>Alik</span><span style="color:#e43326">Express</span></b></h1>
-                                <p style="font-size: 25px;font-weight: bolder">Shopping never had been exciting like now!</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. </p>
-                                <button type="button" class="btn btn-default get">Get it now</button>
-                            </div>
-                            <div class="col-sm-6">
-                                <img src="images/home/girl2.jpg" class="girl img-responsive" alt=""/>
-                                <img src="images/home/pricing.png" class="pricing" alt=""/>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="col-sm-6">
-                                <h1><b><span>Alik</span><span style="color:#e43326">Express</span></b></h1>
-                                <p style="font-size: 25px;font-weight: bolder">Shopping never had been exciting like now!</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. </p>
-                                <button type="button" class="btn btn-default get">Get it now</button>
-                            </div>
-                            <div class="col-sm-6">
-                                <img src="images/home/girl3.jpg" class="girl img-responsive" alt=""/>
-                                <img src="images/home/pricing.png" class="pricing" alt=""/>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </div>
-
+        <div class="row col-sm-12">
+            <div class="col-sm-7">
+                <h1><b><span style="color:#f39313">Alik</span><span style="color:#e43326">Express</span></b></h1>
+                <p style="font-size: 25px;font-weight: bolder">Shopping never had been exciting like now!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. </p>
+                <button type="button" class="btn btn-default get">Get it now</button>
             </div>
+            <div class="col-sm-5" style="margin: 0!important;padding: 0!important;">
+                <div class="owl-carousel owl-theme">
+                    <?php foreach ($v as $slide) { ?>
+                        <div><img src="<?php echo $slide['slider_path']?>" class="sekil"></div>
+                    <?php } ?>
+                </div>
+            </div>
+
         </div>
     </div>
-</section><!--/slider-->
+</section>

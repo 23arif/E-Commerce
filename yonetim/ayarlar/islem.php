@@ -260,9 +260,12 @@ if (g('islem') == 'urunGuncelle') {
 
     }
 }
+
+//Siteyi Goster
 if (g('islem') == 'siteyiGoruntule') {
     header('Location:../../index.php');
 }
+
 // Advertisement
 if (g('islem') == 'addAds') {
     $ads_name = p('ads_name');
@@ -274,13 +277,11 @@ if (g('islem') == 'addAds') {
     } elseif (empty($ads_status)) {
         echo '<div class="alert alert-warning text-center">Please,fill <strong>status</strong> blank</div>';
     } else {
-
-
         @$name = $_FILES['ads_img']['name'];
-        $yol = '../../adsImage';
+        $yol = '../../uploads/elan';
         $rn = resimadi();
         $uzanti = uzanti($name);
-        $vtyol = "adsImage/$rn.$uzanti";
+        $vtyol = "uploads/elan/$rn.$uzanti";
 
         if ($_FILES['ads_img']["size"] > 1024 * 1024) {
             echo '<div class="alert alert-warning text-center">Image size doesn\'t get bigger than 1mb</div>';
@@ -289,7 +290,7 @@ if (g('islem') == 'addAds') {
             $resimyukleme = resimyukle2('ads_img', $rn, $yol);
             if ($resimyukleme) {
                 $veri = $db->prepare("INSERT INTO advertisements SET ads_name=?, ads_code=?,ads_url=?, ads_status=?");
-                $veri->execute(array($ads_name, $vtyol,$ads_url, $ads_status));
+                $veri->execute(array($ads_name, $vtyol, $ads_url, $ads_status));
                 if ($veri) {
                     echo '<div class="alert alert-success text-center">Advertisements added successfully</div><meta http-equiv="refresh" content="3;url=?do=advertisements">';
                 } else {
@@ -320,20 +321,21 @@ if (g('deleteAds') == 'ok') {
 }
 if (g('islem') == 'updateAds') {
     $ads_name = p('ads_name');
+    $ads_url = p('ads_url');
     $ads_status = p('ads_status');
     $ads_id = p('ads_id');
 
     if (empty($ads_name)) {
         echo "<div class='alert alert-warning text-center'>Please, fill <strong>name</strong> blank</div>";
-    }elseif (empty($ads_status)) {
+    } elseif (empty($ads_status)) {
         echo "<div class='alert alert-warning text-center'>Please, fill <strong>status</strong> blank</div>";
     } else {
-        $veri = $db->prepare("UPDATE advertisements SET ads_name=?,ads_status=? WHERE ads_id='$ads_id'");
-        $veri->execute(array($ads_name, $ads_status));
+        $veri = $db->prepare("UPDATE advertisements SET ads_name=?,ads_url=?, ads_status=? WHERE ads_id='$ads_id'");
+        $veri->execute(array($ads_name, $ads_url, $ads_status));
         if ($veri) {
             echo '<div class="alert alert-success text-center">Advertisement updated successfully</div><meta http-equiv="refresh" content="3;url=index.php?do=advertisements&guncelle=ok">';
         } else {
-            echo '<div class="alert alert-danger text-center">Advertisement could not updating</div><meta http-equiv="refresh" content="3;url=index.php?do=asvertisements">';
+            echo '<div class="alert alert-danger text-center">Advertisement could not updating</div><meta http-equiv="refresh" content="3;url=index.php?do=advertisements">';
         }
     }
 }
@@ -352,28 +354,39 @@ if (g('islem') == 'addSlide') {
         echo '<div class="alert alert-warning text-center">Please,fill <strong>queue</strong> blank</div>';
     } else {
 
-
-        @$name = $_FILES['slide_img']['name'];
-        $yol = '../../slideImage';
-        $rn = resimadi();
-        $uzanti = uzanti($name);
-        $vtyol = "slideImage/$rn.$uzanti";
-
-        if ($_FILES['slide_img']["size"] > 1024 * 1024) {
-            echo '<div class="alert alert-warning text-center">Image size doesn\'t get bigger than 1mb</div>';
+        $query = $db->prepare("SELECT slider_queue FROM slider WHERE  slider_queue=?");
+        $query->execute(array($slide_queue));
+        $v = $query->fetchALL(PDO::FETCH_ASSOC);
+        $s = $query->rowCount();
+        if ($s) {
+            ?>
+            <div class="alert alert-warning text-center">
+                "<strong><?php echo $slide_queue ?></strong>" queue number is already existed . Please, change <strong>queue</strong> number.
+            </div>
+            <?php
         } else {
+            @$name = $_FILES['slide_img']['name'];
+            $yol = '../../uploads/slide';
+            $rn = resimadi();
+            $uzanti = uzanti($name);
+            $vtyol = "uploads/slide/$rn.$uzanti";
 
-            $resimyukleme = resimyukle('slide_img', $rn, $yol);
-            if ($resimyukleme) {
-                $veri = $db->prepare("INSERT INTO slider SET slider_name=?, slider_path=?, slider_url=?,slider_queue=?");
-                $veri->execute(array($slide_name, $vtyol, $slide_url, $slide_queue));
-                if ($veri) {
-                    echo '<div class="alert alert-success text-center">Slide added successfully</div><meta http-equiv="refresh" content="3;url=?do=slider">';
-                } else {
-                    echo '<div class="alert alert-danger text-center">Error while adding!</div><meta http-equiv="refresh" content="3;url=?do=slider">';
-                }
+            if ($_FILES['slide_img']["size"] > 1024 * 1024) {
+                echo '<div class="alert alert-warning text-center">Image size doesn\'t get bigger than 1mb</div>';
             } else {
-                echo '<div class="alert alert-warning text-center">Error while uploading slide image! Please,control again.</div>';
+
+                $resimyukleme = resimyukle2('slide_img', $rn, $yol);
+                if ($resimyukleme) {
+                    $veri = $db->prepare("INSERT INTO slider SET slider_name=?, slider_path=?, slider_url=?,slider_queue=?");
+                    $veri->execute(array($slide_name, $vtyol, $slide_url, $slide_queue));
+                    if ($veri) {
+                        echo '<div class="alert alert-success text-center">Slide added successfully</div><meta http-equiv="refresh" content="3;url=?do=slider">';
+                    } else {
+                        echo '<div class="alert alert-danger text-center">Error while adding!</div><meta http-equiv="refresh" content="3;url=?do=slider">';
+                    }
+                } else {
+                    echo '<div class="alert alert-warning text-center">Error while uploading slide image! Please,control again.</div>';
+                }
             }
         }
     }
@@ -393,5 +406,28 @@ if (g('deleteSlide') == 'ok') {
         git("../index.php?do=slider&silme=ok");
     } else {
         git("../index.php?do=slider&silme=no");
+    }
+}
+if (g('islem') == 'updateSlide') {
+
+    $slider_id = p('slider_id');
+    $slider_name = p('slider_name');
+    $slider_url = p('slider_url');
+    $slider_queue = p('slider_queue');
+
+    if (empty($slider_name)) {
+        echo "<div class='alert alert-warning text-center'>Please, fill <strong>name</strong> blank</div>";
+    } elseif (empty($slider_url)) {
+        echo "<div class='alert alert-warning text-center'>Please, fill <strong>url</strong> blank</div>";
+    } elseif (empty($slider_queue)) {
+        echo "<div class='alert alert-warning text-center'>Please, fill <strong>queue</strong> blank</div>";
+    } else {
+        $veri = $db->prepare("UPDATE slider  SET slider_name=?,slider_url=?,slider_queue=? WHERE slider_id='$slider_id'");
+        $veri->execute(array($slider_name, $slider_url, $slider_queue));
+        if ($veri) {
+            echo '<div class="alert alert-success text-center">Slide Image updated successfully</div><meta http-equiv="refresh" content="3;url=index.php?do=slider&guncelle=ok">';
+        } else {
+            echo '<div class="alert alert-danger text-center">Slider Image could not updating</div><meta http-equiv="refresh" content="3;url=index.php?do=slider">';
+        }
     }
 }

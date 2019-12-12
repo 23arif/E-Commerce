@@ -30,11 +30,11 @@
                     $kat->execute(array($c));
                     $category = $kat->fetch(PDO::FETCH_ASSOC);
                     ?>
+                    <header><title><?php echo $category['kategori_title'] ?> - AlikExpress</title></header>
                     <h2 class="title text-center"><span style="text-decoration: underline"><?php echo $category['kategori_title'] ?></span> Category Products</h2>
                     <?php
                     foreach ($v as $urun) {
                         ?>
-                        <header><title><?php echo $category['kategori_title'] ?> - AlikExpress</title></header>
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">

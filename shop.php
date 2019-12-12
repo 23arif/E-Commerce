@@ -1,14 +1,13 @@
 <header><title>Products - AlikExpress</title></header>
 <!--<section id="advertisement">-->
 <!--    <div class="container">-->
-<!--        <img src="images/shop/ad.jpg" alt=""/>-->
+<!--        <img src="--><?php //advertisements(52); ?><!--" alt=""/>-->
 <!--    </div>-->
 <!--</section>-->
 <section id="advertisement">
     <div class="container" >
-        <img src="test/christmas.gif" alt="" style="width: 100%;height: 100%">
+        <img src="<?php advertisements(51); ?>" alt="" style="width: 100%;height: 100%">
     </div>
-
 </section>
 <section>
     <div class="container">
@@ -26,7 +25,6 @@
                     <!--shipping-->
                     <?php include_once 'moduller/leftSideMenu-shipping.php' ?>
                     <!--/shipping-->
-
                 </div>
             </div>
 

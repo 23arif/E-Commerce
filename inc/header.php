@@ -18,6 +18,13 @@ include_once 'ayarlar/islem.php';
     <link href="css/main.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
+
+
+<!--    ----------OWL_SLIDER-------------->
+    <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
+    <!--    ----------/OWL_SLIDER-------------->
+
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -97,7 +104,7 @@ include_once 'ayarlar/islem.php';
                                 <li><a href="#"><i class="fa fa-user"></i><?php echo ucfirst(@$_SESSION['isim']) ?></a>
                                 </li>
                                 <?php if($_SESSION['yetki']==1){?>
-                                <li><a href="http://localhost:82/AlikExpress/yonetim"><i class="fa fa-dashboard"></i> Admin Dashboard</a></li>
+                                <li><a href="dashboard"><i class="fa fa-dashboard"></i> Admin Dashboard</a></li>
                                 <?php } ?>
                                 <li><a href="index.php?islem=cart"><i class="fa fa-shopping-cart"></i> Cart <span
                                                 class="badge cart-count"><?php echo $total_count ?></span></a></li>
@@ -136,10 +143,10 @@ include_once 'ayarlar/islem.php';
                             <span class="icon-bar"></span>
                         </button>
                     </div>
-                    <div class="mainmenu pull-left">
+                    <div class="mainmenu pull-left col-sm-7">
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="index.php" class="active">Home</a></li>
-                            <li><a href="?islem=shop">Products</a></li>
+                            <li><a href="products">Products</a></li>
                             <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li>
@@ -151,19 +158,20 @@ include_once 'ayarlar/islem.php';
                                 </ul>
                             </li>
                             <li>
-                                <a href="index.php?islem=contact-us">Contact</a>
+                                <a href="contact">Contact</a>
                             </li>
                         </ul>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group" id="autoCompleteCenter">
+                            <input type="text" class="form-control" id="inp" placeholder="Search in AlikExpress ?" name="search"
+                                   autocomplete="off">
+                            <div  id="autoComplete"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div><!--/header-bottom-->
-    <div class="col-sm-8 col-md-offset-2" id="tst">
-        <div class="form-group">
-            <input type="text" class="form-control" id="inp" placeholder="Search in AlikExpress ?" name="search"
-                   autocomplete="off">
-            <div id="autoComplete"></div>
-        </div>
-    </div>
+    </div ><!--/header-bottom-->
+
 </header><!--/header-->

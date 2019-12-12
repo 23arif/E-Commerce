@@ -1,6 +1,6 @@
 <!-- start: page -->
 <header class="page-header">
-    <h2>Slides</h2>
+    <h2>Slider Images</h2>
 </header>
 
 <div class="row">
@@ -9,19 +9,21 @@
             <header class="panel-heading">
                 <div class="panel-actions">
                     <a href="?do=add_slide"><span href="#"
-                                                  class="fa fa-plus">&nbsp;&nbsp;Add New Slide</span></a>
+                                                  class="fa fa-plus">&nbsp;&nbsp;Add New Slider Image</span></a>
                 </div>
 
-                <h2 class="panel-title">Slides Table</h2>
+                <h2 class="panel-title">Slider Images Table</h2>
             </header>
             <div class="panel-body">
                 <?php include 'inc/alert.php' ?>
                 <table class="table table-bordered table-striped mb-none">
                     <thead>
                     <tr>
-                        <th>#</th>
+                        <th>#id</th>
+                        <th>Slide Img</th>
                         <th>Slide Name</th>
                         <th>Slide Path</th>
+                        <th>Slide Queue</th>
                         <th>Slide Url</th>
                         <th>Process </th>
                     </tr>
@@ -29,16 +31,18 @@
 
                     <tbody>
                     <?php
-                    $veri = $db->prepare("SELECT *FROM slider ORDER BY slider_queue ASC");
+                    $veri = $db->prepare("SELECT *FROM slider ORDER BY slider_id ASC");
                     $veri->execute(array());
                     $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                     foreach ($v as $slide) {
                         ?>
                         <tr class="gradeX">
 
-                            <td><?php echo $slide['slider_queue']; ?></td>
+                            <td><?php echo $slide['slider_id']; ?></td>
+                            <td style="width: 300px;height: 150px"><img src="../<?php echo $slide['slider_path']; ?>" style="max-width: 100%;height: 100%"></td>
                             <td><?php echo $slide['slider_name']; ?></td>
                             <td><?php echo $slide['slider_path']; ?></td>
+                            <td><?php echo $slide['slider_queue']; ?></td>
                             <td><?php echo $slide['slider_url']; ?></td>
                             <td>
                                 <!--Sil Butonu -->
@@ -80,7 +84,7 @@
                                     <!--/Sil Butonu-->
 
                                     <!--Guncelle Butonu-->
-                                    <a href="index.php?do=edit_slide&slide_id=<?php echo $slide['slider_id'] ?>"
+                                    <a href="index.php?do=update_slide&slide_id=<?php echo $slide['slider_id'] ?>"
                                        class="btn btn-warning btn-xs btn-special" data-toggle="tooltip"
                                        data-placement="top" title="Update"><i class="fa fa-cog"></i></a>
                                     <!--/Guncelle Butonu-->

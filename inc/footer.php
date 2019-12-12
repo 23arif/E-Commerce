@@ -26,7 +26,7 @@
                         <h2>Service</h2>
                         <ul class="nav nav-pills nav-stacked">
                             <li><a href="#">Online Help</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="contact">Contact Us</a></li>
                             <li><a href="#">Order Status</a></li>
                             <li><a href="#">Change Location</a></li>
                             <li><a href="#">FAQ’s</a></li>
@@ -102,6 +102,7 @@
 <script src="js/price-range.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
 <script src="ayarlar/main.js"></script>
+<script src="owlcarousel/owl.carousel.min.js"></script> <!--OWL_CAROUSEL-->
 </body>
 </html>
 <?php

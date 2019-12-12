@@ -23,6 +23,12 @@ $v = $veri->fetch(PDO::FETCH_ASSOC);
                                 <input type="text" class="form-control" name="ads_name" value="<?php echo $v['ads_name'] ?>">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="inputDefault">Advertisement Url</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="ads_url" value="<?php echo $v['ads_url'] ?>" placeholder="Optionally">
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label">Advertisement Status</label>

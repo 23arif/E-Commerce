@@ -50,7 +50,7 @@ switch ($do) {
         include_once 'add_slide.php';
         break;
     case 'update_slide':
-        include_once 'update_slide.php';
+        include_once 'update_slider.php';
         break;
     default:
         ?>
@@ -261,7 +261,7 @@ switch ($do) {
                                         <div class="summary">
                                             <h4 class="title">Today's Visitors</h4>
                                             <div class="info">
-                                                <strong class="amount">3765</strong>
+                                                <strong class="amount">3800</strong>
                                             </div>
                                         </div>
                                         <div class="summary-footer">

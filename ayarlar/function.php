@@ -208,6 +208,6 @@ function advertisements($n){
     GLOBAL $db;
     $ads = $db->prepare("SELECT *FROM advertisements WHERE ads_id=?");
     $ads->execute(array($n));
-    $v = $ads->fetchAll(PDO::FETCH_ASSOC);
-    return $v;
+    $v = $ads->fetch(PDO::FETCH_ASSOC);
+    echo $v['ads_code'];
 }
