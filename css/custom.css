@@ -70,6 +70,7 @@
 
 }
 
+/*Owl Slider Style*/
 .sekil{
     max-height: 225px;
 }
@@ -100,8 +101,6 @@
 }
 .owl-carousel .owl-nav span:hover{
     background: rgba(0,0,0,1)!important;
-
-
 }
 .owl-carousel .owl-nav button{
     background: none!important;
@@ -122,13 +121,3 @@
 .owl-carousel .owl-dot {
     outline: none;
 }
-/*.owl-carousel .owl-nav .owl-prev:before{*/
-/*// fa-chevron-left*/
-/*content: "\f053";*/
-/*    margin-right:10px;*/
-/*}*/
-/*.owl-carousel .owl-nav .owl-next:after{*/
-/*//fa-chevron-right*/
-/*content: "\f054";*/
-/*    margin-right:10px;*/
-/*}*/

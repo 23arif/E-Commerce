@@ -67,5 +67,11 @@
 <script src="assets/javascripts/tables/examples.datatables.tabletools.js"></script>
 <!-- Modal Examples -->
 <script src="assets/javascripts/ui-elements/examples.modals.js"></script>
+<!--File Upload-->
+<script src="assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
+<!--Settings page switch-->
+<script src="assets/vendor/ios7-switch/ios7-switch.js"></script>
+<script src="assets/javascripts/theme.init.js"></script>
+
 </body>
 </html>

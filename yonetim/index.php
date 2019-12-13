@@ -7,6 +7,9 @@ include "inc/header.php";
 <?php
 $do = g('do');
 switch ($do) {
+    case 'settings':
+        include_once 'settings.php';
+        break;
     case 'categories':
         include_once 'kategoriler.php';
         break;

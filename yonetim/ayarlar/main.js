@@ -1,3 +1,18 @@
+//Settings
+$('#settingsBtn').on('click', function () {
+    var data = $('#settingsForm').serialize();
+    $.ajax({
+        url: "ayarlar/islem.php?islem=settings",
+        type: "POST",
+        data: data,
+        success: function (response) {
+            $('#settingsAlert').html(response).hide().fadeIn(700);
+        }
+    })
+})
+//--Settings
+
+//Category
 $('#kategoriEkleBtn').on('click', function () {
     var datakategori = $('#kategoriEkleForm').serialize();
     $.ajax({
@@ -20,6 +35,8 @@ $('#kategoriGuncelleBtn').on('click', function () {
         }
     });
 })
+//--Category
+
 $('#yGiris').on('click', function () {
     var datakategori = $('#yGirisForm').serialize();
     $.ajax({
@@ -49,6 +66,7 @@ function ParaFormat(Num) {
     return x1 + x2;
 }
 
+//Products
 $('#urunEkleBtn').on('click', function () {
     var data = new FormData($('#urunEkleForm')[0]);
     $.ajax({
@@ -79,9 +97,9 @@ $('#urunGuncelleBtn').on('click', function () {
         }
     });
 })
+//--Products
 
 // Advertisements
-
 $('#addAdsBtn').on('click', function () {
     var data = new FormData($('#addAdsForm')[0]);
     $.ajax({
@@ -108,6 +126,7 @@ $('#updateAdsBtn').on('click', function () {
         }
     });
 })
+//--Advertisements
 
 //Slide
 $('#addSlideBtn').on('click', function () {
@@ -136,3 +155,11 @@ $('#slideUpdateBtn').on('click', function () {
         }
     });
 })
+//--Slide
+
+// //Slide Toggle
+// $('#slide_toggle').on('change', function () {
+//     var data = $('#slide_toggle').val();
+//     alert(data);
+// })
+// //--Slide Toggle

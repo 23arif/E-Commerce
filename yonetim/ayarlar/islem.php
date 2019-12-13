@@ -2,7 +2,77 @@
 require_once "baglanti.php";
 require_once 'class.upload.php';
 require_once "function.php";
+//Settings
+if (g('islem') == 'settings') {
+    $settings_name = p('settings_name');
+    $settings_desc = p('settings_desc');
+    $settings_keyw = p('settings_keyw');
+    $settings_phone = p('settings_phone');
+    $settings_email = p('settings_email');
+    $settings_location = p('settings_location');
+    $settings_copyright = p('settings_copyright');
+    $settings_facebook = p('settings_facebook');
+    $settings_twitter = p('settings_twitter');
+    $settings_fbSwitch = p('settings_fbSwitch');
+    $settings_twitterSwitch = p('settings_twitterSwitch');
+    $settings_linkedin = p('settings_linkedin');
+    $settings_linkedinSwitch = p('settings_linkedinSwitch');
 
+    if (empty($settings_name)) {
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>Web Page Name</strong> blank</div>";
+    } elseif (empty($settings_desc)) {
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>Web Page Description</strong> blank</div>";
+    } elseif (empty($settings_keyw)) {
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>Web Page Keyword</strong> blank</div>";
+    } elseif (empty($settings_phone)) {
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>Web Page Phone</strong> blank</div>";
+    } elseif (empty($settings_email)) {
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>Web Page Email</strong> blank</div>";
+    } elseif (filter_var($settings_email, FILTER_VALIDATE_EMAIL) != true) {
+        echo '<div class="alert alert-warning text-center">Please enter a <strong>valid email</strong> address</div>';
+    } elseif (empty($settings_location)) {
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>Web Page Location</strong> blank</div>";
+    } elseif (empty($settings_copyright)) {
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>Copyright</strong> blank</div>";
+    } else {
+        if (empty($settings_facebook)) {
+            $settings_fbSwitch = 'off';
+        } else {
+            if (empty($settings_fbSwitch)) {
+                $settings_fbSwitch = 'off';
+            } else {
+                $settings_fbSwitch = 'on';
+            }
+        }
+        if (empty($settings_twitter)) {
+            $settings_twitterSwitch = 'off';
+        } else {
+            if (empty($settings_twitterSwitch)) {
+                $settings_twitterSwitch = 'off';
+            } else {
+                $settings_twitterSwitch = 'on';
+            }
+        }
+        if (empty($settings_linkedin)) {
+            $settings_linkedinSwitch = 'off';
+        } else {
+            if (empty($settings_linkedinSwitch)) {
+                $settings_linkedinSwitch = 'off';
+            } else {
+                $settings_linkedinSwitch = 'on';
+            }
+        }
+
+
+        $veri = $db->prepare("UPDATE settings SET settings_name=?,settings_desc=?,settings_keywords=?,settings_phone=?,settings_email=?,settings_location=?,settings_copyright=?,settings_facebook=?,settings_fbSwitch=?,settings_twitter=?,settings_twitterSwitch=?,settings_linkedin=?,settings_linkedinSwitch=? WHERE settings_id=1");
+        $veri->execute(array($settings_name, $settings_desc, $settings_keyw, $settings_phone, $settings_email, $settings_location, $settings_copyright, $settings_facebook, $settings_fbSwitch, $settings_twitter, $settings_twitterSwitch, $settings_linkedin, $settings_linkedinSwitch));
+        if ($veri) {
+            echo "<div class='alert alert-success text-center'>Settings updated successfully.</div><meta http-equiv='refresh' content='1;url=index.php?do=settings'>";
+        } else {
+            echo "<div class='alert alert-success text-center'>Error while updating.</div><meta http-equiv='refresh' content='1;url=index.php?do=settings'>";
+        }
+    }
+}
 // kategori islemleri
 if (g('islem') == 'kategoriEkle') {
     $kategori_ust = p('kategori_ust');
@@ -12,15 +82,15 @@ if (g('islem') == 'kategoriEkle') {
     $kategori_durum = p('kategori_durum');
 
     if (empty($kategori_ust)) {
-        echo '<div class="alert alert-warning">Lutfen Kategori Modelinizi seciniz</div>';
+        echo "<div class='alert alert-warning text-center'>Please,choose <strong>Category Model</strong></div>";
     } elseif (empty($kategori_title)) {
-        echo '<div class="alert alert-warning">Lutfen Kategorinize isim belirleyin</div>';
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>Category title</strong> blank</div>";
     } elseif (empty($kategori_desc)) {
-        echo '<div class="alert alert-warning">Lutfen Kategorinize aciklama belirleyin</div>';
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>Category Description</strong> blank</div>";
     } elseif (empty($kategori_keyw)) {
-        echo '<div class="alert alert-warning">Lutfen Kategorinize anahtar kelime belirleyin</div>';
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>Category Keyword</strong> blank</div>";
     } elseif (empty($kategori_durum)) {
-        echo '<div class="alert alert-warning">Lutfen Kategorinize durum belirleyin</div>';
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>Category Status</strong> blank</div>";
     } else {
         $key = rand(99, 999);
         $key .= rand(99, 999);
@@ -32,10 +102,10 @@ if (g('islem') == 'kategoriEkle') {
         $ekle = $db->prepare("INSERT INTO kategoriler SET kategori_key=?, kategori_title=? , kategori_desc=?, kategori_keyw=?, kategori_ust=? , kategori_durum = ?");
         $ekleme = $ekle->execute(array($key, $kategori_title, $kategori_desc, $kategori_keyw, $kategori_ust, $kategori_durum));
         if ($ekleme) {
-            echo "<div class='alert alert-success'>Kategori Ekleme Isleminiz Basarila Gerceklesdi.</div><meta http-equiv='refresh' content='1;url=index.php?do=categories&ekle=ok'>";
+            echo "<div class='alert alert-success'>Adding category completed successfully.</div><meta http-equiv='refresh' content='1;url=index.php?do=categories&ekle=ok'>";
 
         } else {
-            echo "<div class='alert alert-danger'>Kategori Ekleme Islemi Sirasinda Hata Meydana Geldi!</div>";
+            echo '<div class="alert alert-danger text-center">Error while adding category!</div>';
         }
     }
 }
@@ -58,15 +128,15 @@ if (g('islem') == 'kategoriGuncelle') {
     $kategori_id = p('kategori_id');
 
     if (empty($kategori_ust)) {
-        echo "<div class='alert alert-warning'>Lutfen Kategori modeli secin</div>";
+        echo "<div class='alert alert-warning text-center'>Please,choose <strong>Category model</strong></div>";
     } elseif (empty($kategori_title)) {
-        echo "<div class='alert alert-warning'>Lutfen Kategori Ismi belirleyin</div>";
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>Category title</strong> blank</div>";
     } elseif (empty($kategori_desc)) {
-        echo "<div class='alert alert-warning'>Lutfen Kategori Aciklamasi belirleyin</div>";
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>Category Description</strong> blank</div>";
     } elseif (empty($kategori_keyw)) {
-        echo "<div class='alert alert-warning'>Lutfen Kategori Anahtar kelimesi belirleyin</div>";
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>Category Keyword</strong> blank</div>";
     } elseif (empty($kategori_durum)) {
-        echo "<div class='alert alert-warning'>Lutfen Kategori Durumu secin</div>";
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>Category Status</strong> blank</div>";
     } else {
         $guncelle = $db->prepare("UPDATE kategoriler set kategori_title=?, kategori_desc=?, kategori_keyw=?, kategori_ust=?, kategori_durum=? where kategori_id='$kategori_id'");
         $guncelleme = $guncelle->execute(array($kategori_title, $kategori_desc, $kategori_keyw, $kategori_ust, $kategori_durum));
@@ -136,23 +206,22 @@ if (g('islem') == 'urunEkle') {
     $urun_sira = p('urun_sira');
 
     if (empty($urun_title)) {
-        echo '<div class="alert alert-warning">Lutfen Urun Basligi girin</div>';
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>product title</strong> blank</div>";
     } elseif (empty($urun_desc)) {
-        echo '<div class="alert alert-warning">Lutfen Urun Aciklamasi girin</div>';
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>product description</strong> blank</div>";
     } elseif (empty($urun_meta_title)) {
-        echo '<div class="alert alert-warning">Lutfen Urun Meta Basligi girin</div>';
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>product meta title</strong> blank</div>";
     } elseif (empty($urun_meta_desc)) {
-        echo '<div class="alert alert-warning">Lutfen Urun Meta Aciklamasi girin</div>';
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>product meat description</strong> blank</div>";
     } elseif (empty($urun_meta_keyw)) {
-        echo '<div class="alert alert-warning">Lutfen Urun Meta Anahatar Kelimesi girin</div>';
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>product meta keyword</strong> blank</div>";
     } elseif (empty($urun_firma)) {
-        echo '<div class="alert alert-warning">Lutfen Firma Adi girin</div>';
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>product firm name</strong> blank</div>";
     } elseif (empty($urun_fiyat)) {
-        echo '<div class="alert alert-warning">Lutfen Urun Fiyati girin</div>';
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>product price</strong> blank</div>";
     } elseif (empty($urun_sira)) {
-        echo '<div class="alert alert-warning">Lutfen Urun Sirasi girin</div>';
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>product queue</strong> blank</div>";
     } else {
-
         @$name = $_FILES['urun_resim']['name'];
         $yol = '../../resimler';
         $rn = resimadi();
@@ -210,21 +279,21 @@ if (g('islem') == 'urunGuncelle') {
     $urunEskiResim = urunresimgetir($urun_id);
 
     if (empty($urun_kategori)) {
-        echo "<div class='alert alert-warning'>Urun Kategori Secin</div>";
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>product category</strong> blank</div>";
     } elseif (empty($urun_title)) {
-        echo "<div class='alert alert-warning'>Urun Basligi Yazin</div>";
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>product title</strong> blank</div>";
     } elseif (empty($urun_desc)) {
-        echo "<div class='alert alert-warning'>Urun Aciklamasi Yazin</div>";
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>product description</strong> blank</div>";
     } elseif (empty($urun_meta_title)) {
-        echo "<div class='alert alert-warning'>Urun Meta Basligi Yazin</div>";
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>product meta title</strong> blank</div>";
     } elseif (empty($urun_meta_desc)) {
-        echo "<div class='alert alert-warning'>Urun Meta Aciklama Yazin</div>";
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>product meta description</strong> blank</div>";
     } elseif (empty($urun_meta_keyw)) {
-        echo "<div class='alert alert-warning'>Urun Meta Anahtar Kelime Yazin</div>";
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>product meta keyword</strong> blank</div>";
     } elseif (empty($urun_fiyat)) {
-        echo "<div class='alert alert-warning'>Urun Fiyati Yazin</div>";
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>product price</strong> blank</div>";
     } elseif (empty($urun_sira)) {
-        echo "<div class='alert alert-warning'>Urun Sirasi Yazin</div>";
+        echo "<div class='alert alert-warning text-center'>Please,fill <strong>product queue</strong> blank</div>";
     } else {
         if ($_FILES["urun_resim"]["size"] == 0) {
             $guncelle = $db->prepare("UPDATE urunler SET urun_resim=?,urun_title=?,urun_desc=?,urun_meta_desc=?,urun_meta_title=?,urun_meta_keyw=?,urun_fiyat=?,urun_kategori=?,urun_sira=? WHERE urun_id='$urun_id'");
@@ -361,7 +430,8 @@ if (g('islem') == 'addSlide') {
         if ($s) {
             ?>
             <div class="alert alert-warning text-center">
-                "<strong><?php echo $slide_queue ?></strong>" queue number is already existed . Please, change <strong>queue</strong> number.
+                "<strong><?php echo $slide_queue ?></strong>" queue number is already existed . Please, change <strong>queue</strong>
+                number.
             </div>
             <?php
         } else {
@@ -431,3 +501,13 @@ if (g('islem') == 'updateSlide') {
         }
     }
 }
+
+////Slide Toggle
+//if (g('islem')=='slideToggle') {
+//    $slide_toggle=['slide_toggle'];
+//    if($slide_toggle=='on'){
+//        echo 'on';
+//    }else{
+//        echo 'off';
+//    }
+//}

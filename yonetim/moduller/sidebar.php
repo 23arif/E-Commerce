@@ -20,6 +20,12 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
+                    <li class="nav">
+                        <a href="?do=settings">
+                            <i class="fa fa-cog" aria-hidden="true"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
 
                     <li class="nav-parent">
                         <a>

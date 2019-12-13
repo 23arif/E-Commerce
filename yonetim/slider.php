@@ -1,3 +1,8 @@
+<?php
+$cog = $db->prepare("SELECT settings_slider FROM settings");
+$cog->execute(array());
+$sl = $cog->fetch(PDO::FETCH_ASSOC);
+?>
 <!-- start: page -->
 <header class="page-header">
     <h2>Slider Images</h2>
@@ -12,9 +17,17 @@
                                                   class="fa fa-plus">&nbsp;&nbsp;Add New Slider Image</span></a>
                 </div>
 
-                <h2 class="panel-title">Slider Images Table</h2>
+                <h2 class="panel-title">Slider Images Table &nbsp;
+                    <div class="switch switch-sm switch-dark">
+                        <input type="checkbox" name="slide_toggle" id="slide_toggle"
+                               data-plugin-ios-switch <?php if ($sl['settings_slider'] == '1') {
+                            echo 'checked="checked"';
+                        } ?> />
+                    </div>
+                </h2>
             </header>
             <div class="panel-body">
+                <div id="slideToggleAlert"></div>
                 <?php include 'inc/alert.php' ?>
                 <table class="table table-bordered table-striped mb-none">
                     <thead>
@@ -25,7 +38,7 @@
                         <th>Slide Path</th>
                         <th>Slide Queue</th>
                         <th>Slide Url</th>
-                        <th>Process </th>
+                        <th>Process</th>
                     </tr>
                     </thead>
 
@@ -39,7 +52,8 @@
                         <tr class="gradeX">
 
                             <td><?php echo $slide['slider_id']; ?></td>
-                            <td style="width: 300px;height: 150px"><img src="../<?php echo $slide['slider_path']; ?>" style="max-width: 100%;height: 100%"></td>
+                            <td style="width: 300px;height: 150px"><img src="../<?php echo $slide['slider_path']; ?>"
+                                                                        style="max-width: 100%;height: 100%"></td>
                             <td><?php echo $slide['slider_name']; ?></td>
                             <td><?php echo $slide['slider_path']; ?></td>
                             <td><?php echo $slide['slider_queue']; ?></td>

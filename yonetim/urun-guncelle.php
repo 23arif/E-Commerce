@@ -4,7 +4,7 @@ foreach (urungetir($urun_id) as $urun);
 ?>
     <!-- start: page -->
     <header class="page-header">
-        <h2>Urun Guncelleme Paneli</h2>
+        <h2>Product Update Panel</h2>
     </header>
     <div class="row">
         <div class="col-lg-12">
@@ -14,21 +14,34 @@ foreach (urungetir($urun_id) as $urun);
                         <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
                     </div>
 
-                    <h2 class="panel-title"><?php echo '" '.$urun['urun_title'].' "'.' urununun guncelleme paneli' ?></h2>
+                    <h2 class="panel-title">
+                        Update panel of &nbsp;<strong>" <?php echo $urun['urun_title'] ?> "&nbsp;</strong> product.
+                    </h2>
                 </header>
                 <div class="panel-body">
                     <div id="urunGuncelleAlert"></div>
                     <form id="urunGuncelleForm" class="form-horizontal form-bordered" method="post" enctype="multipart/form-data">
-
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Urun Resmi</label>
+                            <label class="col-md-3 control-label">Product Image</label>
                             <div class="col-md-6">
-                                <input type="file" class="form-control" name="urun_resim">
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                    <div class="input-append">
+                                        <div class="uneditable-input">
+                                            <i class="fa fa-file fileupload-exists"></i>
+                                            <span class="fileupload-preview"><?php echo $urun['urun_resim'] ?></span>
+                                        </div>
+                                        <span class="btn btn-default btn-file">
+																<span class="fileupload-exists">Change</span>
+																<span class="fileupload-new">Select file</span>
+																<input type="file" name="urun_resim"/>
+															</span>
+                                        <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Urun Kategorisi</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Product Category</label>
                             <div class="col-md-6">
                                 <select class="form-control" name="urun_kategori">
                                     <?php
@@ -46,56 +59,56 @@ foreach (urungetir($urun_id) as $urun);
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Urun Baslik</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Product Title</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="urun_title" value="<?php echo $urun['urun_title'] ?>">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Urun Aciklama</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Product Description</label>
                             <div class="col-md-6">
                                 <textarea class="form-control" name="urun_desc" rows="5" ><?php echo $urun['urun_desc'] ?></textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Urun Meta Baslik</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Product Meta Title</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="urun_meta_title" value="<?php echo $urun['urun_meta_title'] ?>">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Urun Meta Aciklama</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Product Meta Description</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="urun_meta_desc" value="<?php echo $urun['urun_meta_desc'] ?>">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Meta Anahtar Kelimeler</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Meta Keywords</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="urun_meta_keyw" value="<?php echo $urun['urun_meta_keyw'] ?>" id="tags-input" data-role="tagsinput" data-tag-class="label label-primary">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Firma Adi</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Firm Name</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="firma_isim" VALUE="<?php echo $urun['urun_firma'] ?>">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Urun Fiyat</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Product Price</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="urun_fiyat" value="<?php echo parayaz2($urun['urun_fiyat'])?>" onkeyup="javascript:this.value=ParaFormat(this.value)">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-3 control-label" for="inputDefault">Urun Sira</label>
+                            <label class="col-md-3 control-label" for="inputDefault">Product Queue</label>
                             <div class="col-md-6">
                                 <input type="number" class="form-control" name="urun_sira" value="<?php echo $urun['urun_sira'] ?>">
                             </div>
                         </div>
                         <input type="hidden" value="<?php echo $urun_id; ?>" name="urun_id">
                         <div class="col-md-6 col-md-offset-3">
-                            <div id="urunGuncelleBtn" class="btn btn-primary btn-lg pull-right">Guncelle</div>
+                            <div id="urunGuncelleBtn" class="btn btn-primary btn-lg pull-right"><i class="fa fa-cogs"></i>&nbsp;Update</div>
                         </div>
 
                     </form>

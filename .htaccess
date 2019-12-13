@@ -5,5 +5,6 @@ RewriteBase /index.php
 RewriteRule ^products$ http://localhost:82/AlikExpress/index.php?islem=shop [NC,L]
 RewriteRule ^contact$ http://localhost:82/AlikExpress/index.php?islem=contact-us [NC,L]
 RewriteRule ^dashboard$ http://localhost:82/AlikExpress/yonetim [NC,L]
+#RewriteRule ^category/([_0-9a-zA-Z-]+)$ http://localhost:82/AlikExpress/index.php?islem=category&c=$1 [NC,L]
 
 ErrorDocument 404 http://localhost:82/AlikExpress/404.php

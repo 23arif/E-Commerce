@@ -1,14 +1,17 @@
 <?php
 include_once 'ayarlar/islem.php';
+$veri = $db->prepare("SELECT *FROM settings");
+$veri->execute(array());
+$v = $veri->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="AliExpress:Shopping never had been exciting like now"/>
-    <meta name="description" content="AlikExpress Online shoping webpage.High quality and budget friendly products."/>
-    <meta name="keywords" content="shoping,alikexpress,budget friently,online shoping"/>
+    <meta name="title" content="<?php echo $v['settings_name'] ?>"/>
+    <meta name="description" content="<?php echo $v['settings_desc'] ?>"/>
+    <meta name="keywords" content="<?php echo $v['settings_keywords'] ?>"/>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -20,7 +23,7 @@ include_once 'ayarlar/islem.php';
     <link href="css/responsive.css" rel="stylesheet">
 
 
-<!--    ----------OWL_SLIDER-------------->
+    <!--    ----------OWL_SLIDER-------------->
     <link rel="stylesheet" href="owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="owlcarousel/assets/owl.theme.default.min.css">
     <!--    ----------/OWL_SLIDER-------------->
@@ -44,19 +47,33 @@ include_once 'ayarlar/islem.php';
                 <div class="col-sm-6">
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
-                            <li><a href="#"><i class="fa fa-phone"></i>+23 2323 2323</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i> info@alikexpress.com</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>&nbsp;<?php echo $v['settings_phone'] ?></a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i>&nbsp;<?php echo $v['settings_email'] ?></a>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="social-icons pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <?php if ($v['settings_fbSwitch'] == 'on') {
+                                ?>
+                                <li><a href="http://<?php echo $v['settings_facebook'] ?>" target="_blank"><i
+                                                class="fa fa-facebook"></i></a></li>
+                                <?php
+                            } ?>
+
+                            <?php if ($v['settings_twitterSwitch'] == 'on') {
+                                ?>
+                                <li><a href="http://<?php echo $v['settings_twitter'] ?>" target="_blank"><i
+                                                class="fa fa-twitter"></i></a></li>
+                                <?php
+                            } ?>
+                            <?php if ($v['settings_linkedinSwitch'] == 'on') {
+                                ?>
+                                <li><a href="http://<?php echo $v['settings_linkedin'] ?>" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                <?php
+                            } ?>
                         </ul>
                     </div>
                 </div>
@@ -103,8 +120,8 @@ include_once 'ayarlar/islem.php';
                                 ?>
                                 <li><a href="#"><i class="fa fa-user"></i><?php echo ucfirst(@$_SESSION['isim']) ?></a>
                                 </li>
-                                <?php if($_SESSION['yetki']==1){?>
-                                <li><a href="dashboard"><i class="fa fa-dashboard"></i> Admin Dashboard</a></li>
+                                <?php if ($_SESSION['yetki'] == 1) { ?>
+                                    <li><a href="dashboard"><i class="fa fa-dashboard"></i> Admin Dashboard</a></li>
                                 <?php } ?>
                                 <li><a href="index.php?islem=cart"><i class="fa fa-shopping-cart"></i> Cart <span
                                                 class="badge cart-count"><?php echo $total_count ?></span></a></li>
@@ -164,14 +181,15 @@ include_once 'ayarlar/islem.php';
                     </div>
                     <div class="col-sm-5">
                         <div class="form-group" id="autoCompleteCenter">
-                            <input type="text" class="form-control" id="inp" placeholder="Search in AlikExpress ?" name="search"
+                            <input type="text" class="form-control" id="inp" placeholder="Search in AlikExpress ?"
+                                   name="search"
                                    autocomplete="off">
-                            <div  id="autoComplete"></div>
+                            <div id="autoComplete"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div ><!--/header-bottom-->
+    </div><!--/header-bottom-->
 
 </header><!--/header-->
