@@ -40,6 +40,7 @@ function s($par)
 function yoneticikontrol()
 {
     if (!$_SESSION || !$_SESSION['yetki'] == 1) {
+        if($_SESSION){}
 //        echo "<meta http-equiv='refresh' content='0;url=giris.php'>";  EGER SERVERDE XETA VERERSE 'HEADER' BU SETRI ISTIFADE ET
         header('location:giris.php');
     }

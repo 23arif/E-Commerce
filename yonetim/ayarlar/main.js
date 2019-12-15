@@ -157,9 +157,43 @@ $('#slideUpdateBtn').on('click', function () {
 })
 //--Slide
 
-// //Slide Toggle
-// $('#slide_toggle').on('change', function () {
-//     var data = $('#slide_toggle').val();
-//     alert(data);
+//Slide Toggle
+$('#slide_toggle').on('change', function () {
+    var data = $('#slideToggleForm').serialize();
+    $.ajax({
+        url: "ayarlar/islem.php?islem=slideToggle",
+        type: "POST",
+        data: data,
+        success: function (response) {
+            $('#slideToggleAlert').html(response).hide().fadeIn(700);
+        }
+    })
+})
+//--Slide Toggle
+
+//Active class
+// $(document).ready(function(){
+//     $(document).on('click','#menu ul li',function(){
+//         $(this).addClass('nav-active').siblings().removeClass('nav-active');
+//     })
 // })
-// //--Slide Toggle
+
+// $(document).ready(function () {
+//     $("#menu ul li").click(function () {
+//         $('#dashboard').removeClass('nav-active');
+//         var id = $(this).attr("id");
+//
+//         $('#' + id).siblings().find(".nav-active").removeClass("nav-active");
+//         //                       ^ you forgot this
+//         $('#' + id).addClass("nav-active");
+//         localStorage.setItem("selectedolditem", id);
+//     });
+//
+//     var selectedolditem = localStorage.getItem('selectedolditem');
+//
+//     if (selectedolditem != null) {
+//         $('#' + selectedolditem).siblings().find(".nav-active").removeClass("nav-active");
+//         //                                        ^ you forgot this
+//         $('#' + selectedolditem).addClass("nav-active");
+//     }
+// });

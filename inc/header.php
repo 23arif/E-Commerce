@@ -163,7 +163,7 @@ $v = $veri->fetch(PDO::FETCH_ASSOC);
                     <div class="mainmenu pull-left col-sm-7">
                         <ul class="nav navbar-nav collapse navbar-collapse">
                             <li><a href="index.php" class="active">Home</a></li>
-                            <li><a href="products">Products</a></li>
+                            <li><a href="?islem=shop">Products</a></li>
                             <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li>

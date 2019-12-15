@@ -44,14 +44,14 @@
 
 				<div class="panel panel-sign">
 					<div class="panel-title-sign mt-xl text-right">
-						<h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i> Yonetici Girisi</h2>
+						<h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i> Admin Login</h2>
 					</div>
 					<div class="panel-body">
                         <div id="yGirisAlerti"></div>
 
 						<form id="yGirisForm" method="post">
 							<div class="form-group mb-lg">
-								<label>Eposta Adresi</label>
+								<label>Email Adress:</label>
 								<div class="input-group input-group-icon">
 									<input name="yeposta" type="text" class="form-control input-lg"/>
 									<span class="input-group-addon">
@@ -64,8 +64,8 @@
 
 							<div class="form-group mb-lg">
 								<div class="clearfix">
-									<label class="pull-left">Yonetici Sifresi</label>
-									<a href="#" class="pull-right">Sifremi Unutdum?</a>
+									<label class="pull-left">Admin Password</label>
+									<a href="#" class="pull-right">Forget password?</a>
 								</div>
 								<div class="input-group input-group-icon">
 									<input name="ysifre" type="password" class="form-control input-lg" />
@@ -85,7 +85,7 @@
 										$t= $s1 + $s2;
 										$y = md5($t);
 									?>
-									<label class="pull-left"><?php echo "$s1 + $s2 sayilarinin toplamini girin"?></label>
+									<label class="pull-left"><?php echo "Enter sum of : <strong>$s1 + $s2</strong>"?></label>
 								</div>
                                 <input type="hidden" value="<?php  echo $y;?>" name="toplam">
 								<div class="input-group input-group-icon">
@@ -100,7 +100,7 @@
 
 							<div class="row">
 								<div class="col-sm-12 text-center">
-                                    <div id="yGiris" class="btn btn-primary col-sm-12">Giris yap</div>
+                                    <div id="yGiris" class="btn btn-primary col-sm-12">Login</div>
 								</div>
 							</div>
 						</form>

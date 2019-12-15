@@ -2,7 +2,7 @@ RewriteEngine on
 RewriteBase /index.php
 #RewriteCond %{REQUEST_FILENAME} !-f
 #RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^products$ http://localhost:82/AlikExpress/index.php?islem=shop [NC,L]
+#RewriteRule ^products/([_0-9a-zA-Z-]+)$ http://localhost:82/AlikExpress/index.php?islem=shop?syf=$1 [NC,L]
 RewriteRule ^contact$ http://localhost:82/AlikExpress/index.php?islem=contact-us [NC,L]
 RewriteRule ^dashboard$ http://localhost:82/AlikExpress/yonetim [NC,L]
 #RewriteRule ^category/([_0-9a-zA-Z-]+)$ http://localhost:82/AlikExpress/index.php?islem=category&c=$1 [NC,L]

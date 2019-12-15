@@ -18,8 +18,23 @@
                 </div>
             </div>
             <?php
-            $c = g('c');
-            $veri = $db->prepare("SELECT *FROM urunler where urun_kategori=? ");
+            $c = g('c');//Category $_Get value
+
+            //Start pagination
+            $show = 9;
+            $pagination = $db->prepare("SELECT *FROM urunler where urun_kategori=?");
+            $pagination->execute(array($c));
+            $paginationCount = $pagination->rowCount();
+
+            $total_page = ceil($paginationCount / $show);
+            $page = isset($_GET['syf']) ? $_GET['syf'] : 1;
+            if ($page < 1) $page = 1;
+            if ($page > $total_page) $page = $total_page;
+            $limit = ($page - 1) * $show;
+            //End pagination
+
+
+            $veri = $db->prepare("SELECT *FROM urunler where urun_kategori=? LIMIT $limit,$show");
             $veri->execute(array($c));
             $v = $veri->fetchALL(PDO::FETCH_ASSOC);
             ?>
@@ -31,7 +46,9 @@
                     $category = $kat->fetch(PDO::FETCH_ASSOC);
                     ?>
                     <header><title><?php echo $category['kategori_title'] ?> - AlikExpress</title></header>
-                    <h2 class="title text-center"><span style="text-decoration: underline"><?php echo $category['kategori_title'] ?></span> Category Products</h2>
+                    <h2 class="title text-center"><span
+                                style="text-decoration: underline"><?php echo $category['kategori_title'] ?></span>
+                        Category Products</h2>
                     <?php
                     foreach ($v as $urun) {
                         ?>
@@ -57,11 +74,23 @@
                         </div>
                     <?php } ?>
                 </div><!--features_items-->
-                <ul class="pagination" >
-                    <li class="active"><a href="">1</a></li>
-                    <li><a href="">2</a></li>
-                    <li><a href="">3</a></li>
-                    <li><a href="">&raquo;</a></li>
+                <ul class="pagination pull-right">
+                    <?php
+                    $s = 0;
+                    while ($s < $total_page) {
+                        $s++;
+                        if ($s == $page) {
+                            ?>
+                            <li class="active"><a><?php echo $s ?></a></li>
+                            <?php
+                        } else {
+                            ?>
+                            <li><a href="?islem=category&c=<?php echo $c ?>&syf=<?php echo $s ?>"><?php echo $s ?></a>
+                            </li>
+                            <?php
+                        }
+                    }
+                    ?>
                 </ul>
             </div>
         </div>

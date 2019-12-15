@@ -211,3 +211,4 @@ function advertisements($n){
     $v = $ads->fetch(PDO::FETCH_ASSOC);
     echo $v['ads_code'];
 }
+

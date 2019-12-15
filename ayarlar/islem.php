@@ -65,7 +65,7 @@ if (g('islem') == 'signIn') {
                 $_SESSION['eposta'] = $pull['yonetim_eposta'];
                 $_SESSION['yetki'] = $pull['yonetim_yetki'];
 
-                echo '<div class="alert alert-success text-center">Login Completed Successfully. Redirecting...</div><meta http-equiv="refresh" content="3; url=index.php">';
+                echo '<div class="alert alert-success text-center">Login Successful.Please Wait...</div><meta http-equiv="refresh" content="3; url=index.php">';
             }
         } else {
             echo '<div class="alert alert-warning text-center">No such user !</div>';

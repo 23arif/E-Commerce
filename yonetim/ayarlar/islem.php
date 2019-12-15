@@ -166,13 +166,13 @@ if (g('islem') == 'yGiris') {
         echo '<div class="alert alert-warning">Dogrulama kodunuz hatali</div>';
     } else {
         $veri = $db->prepare("SELECT *FROM yonetim WHERE yonetim_eposta=? AND yonetim_sifre=?");
-        $veri->execute(array($eposta, $sifre));
+        $veri->execute(array($eposta, md5($sifre)));
         $v = $veri->fetchAll(PDO::FETCH_ASSOC);
         $say = $veri->rowCount();
         foreach ($v as $yonetim) ;
         if ($say) {
             if ($yonetim['yonetim_yetki'] != '1') {
-                echo '<div class="alert alert-warning">Giris Yetkiniz Bulunmamakdadir</div>';
+                echo '<div class="alert alert-warning text-center">You are not authorized to login</div>';
             } else {
                 $_SESSION['id'] = $yonetim['yonetim_id'];
                 $_SESSION['isim'] = $yonetim['yonetim_isim'];
@@ -180,10 +180,10 @@ if (g('islem') == 'yGiris') {
                 $_SESSION['eposta'] = $yonetim['yonetim_eposta'];
                 $_SESSION['yetki'] = $yonetim['yonetim_yetki'];
 
-                echo '<div class="alert alert-success">Giris Basarili.Lutfen Bekleyin</div><meta http-equiv="refresh" content="2;url=index.php">';
+                echo '<div class="alert alert-success text-center">Login Successful.Please Wait.</div><meta http-equiv="refresh" content="2;url=index.php">';
             }
         } else {
-            echo '<div class="alert alert-warning">Boyle bir Yonetici bulunmadi</div>';
+            echo '<div class="alert alert-warning text-center">No such Admin</div>';
         }
     }
 
@@ -502,12 +502,24 @@ if (g('islem') == 'updateSlide') {
     }
 }
 
-////Slide Toggle
-//if (g('islem')=='slideToggle') {
-//    $slide_toggle=['slide_toggle'];
-//    if($slide_toggle=='on'){
-//        echo 'on';
-//    }else{
-//        echo 'off';
-//    }
-//}
+//Slide Toggle
+if (g('islem') == 'slideToggle') {
+    $slide_toggle = p('slide_toggle');
+    if (empty($slide_toggle)) {
+        $veri = $db->prepare("UPDATE settings SET settings_slider='0'  WHERE settings_id='1'");
+        $veri->execute(array());
+        if ($veri) {
+            echo '<meta http-equiv="refresh" content="0;url=?do=slider&deactivatingSlider=ok">';
+        }else{
+            echo '<div class="alert alert-danger">Error while deactivating slider</div><meta http-equiv="refresh" content="3;url=?do=slider">';
+        }
+    } else {
+        $veri = $db->prepare("UPDATE settings SET settings_slider='1'  WHERE settings_id='1'");
+        $veri->execute(array());
+        if ($veri) {
+            echo '<meta http-equiv="refresh" content="0;url=?do=slider&activatingSlider=ok">';
+        }else{
+            echo '<div class="alert alert-danger">Error while activating slider</div><meta http-equiv="refresh" content="3;url=?do=slider">';
+        }
+    }
+}

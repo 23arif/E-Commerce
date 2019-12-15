@@ -1,3 +1,6 @@
-<div class="text-center" style="height: 240px;margin-top: 15px">
-    <img src="<?php advertisements(50) ?>" alt="">
+<div class="ads_poster" style="margin: 38px 0 10px 0">
+    <h2>Advertisement</h2>
+    <div class="text-center">
+        <img src="<?php advertisements(50) ?>" alt="" style="max-width: 100%;">
+    </div>
 </div>

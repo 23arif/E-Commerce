@@ -14,20 +14,20 @@
         <div class="nano-content">
             <nav id="menu" class="nav-main" role="navigation">
                 <ul class="nav nav-main">
-                    <li class="nav-active">
+                    <li class="nav nav-active" id="dashboard">
                         <a href="index.php">
                             <i class="fa fa-home" aria-hidden="true"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li class="nav">
+                    <li class="nav" id="settings">
                         <a href="?do=settings">
                             <i class="fa fa-cog" aria-hidden="true"></i>
                             <span>Settings</span>
                         </a>
                     </li>
 
-                    <li class="nav-parent">
+                    <li class="nav-parent" id="category">
                         <a>
                             <i class="fa fa-columns" aria-hidden="true"></i>
                             <span>Category Processes</span>
@@ -46,7 +46,7 @@
                         </ul>
                     </li>
 
-                    <li class="nav-parent">
+                    <li class="nav-parent" id="product">
                         <a>
                             <i class="fa fa-list-alt" aria-hidden="true"></i>
                             <span>Product Processes</span>
@@ -64,19 +64,19 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="nav" id="userControl">
                         <a href="index.php?do=user_spy">
                             <i class="fa fa-rss" aria-hidden="true"></i>
                             <span>User Control</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="nav" id="messages">
                         <a href="index.php?do=messages">
                             <i class="fa fa-comments" aria-hidden="true"></i>
                             <span>Messages</span>
                         </a>
                     </li>
-                    <li class="nav-parent">
+                    <li class="nav-parent" id="advertisements">
                         <a>
                             <i class="fa fa-newspaper-o" aria-hidden="true"></i>
                             <span>Advertisements Processes</span>
@@ -94,7 +94,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-parent">
+                    <li class="nav-parent" id="slider">
                         <a>
                             <i class="fa fa-image" aria-hidden="true"></i>
                             <span>Sliders Processes</span>

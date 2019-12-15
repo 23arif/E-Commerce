@@ -7,6 +7,9 @@ include "inc/header.php";
 <?php
 $do = g('do');
 switch ($do) {
+    case 'profile':
+        include_once 'user-profile.php';
+        break;
     case 'settings':
         include_once 'settings.php';
         break;
@@ -103,7 +106,8 @@ switch ($do) {
                                         </script>
 
                                         <!-- Flot: Sales Porto Drupal -->
-                                        <div class="chart chart-sm" data-sales-rel="Porto Drupal" id="flotDashSales2"
+                                        <div class="chart chart-sm" data-sales-rel="Porto Drupal"
+                                             id="flotDashSales2"
                                              class="chart-hidden"></div>
                                         <script>
 
@@ -126,7 +130,8 @@ switch ($do) {
                                         </script>
 
                                         <!-- Flot: Sales Porto Wordpress -->
-                                        <div class="chart chart-sm" data-sales-rel="Porto Wordpress" id="flotDashSales3"
+                                        <div class="chart chart-sm" data-sales-rel="Porto Wordpress"
+                                             id="flotDashSales3"
                                              class="chart-hidden"></div>
                                         <script>
 
