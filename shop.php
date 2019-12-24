@@ -57,27 +57,26 @@
                                         <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                                         <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
                                         <p><?php echo $urun['urun_title'] ?></p>
-                                        <button product-id="<?php echo $urun['urun_id'] ?>"
-                                                class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>
-                                            Add
-                                            to cart
-                                        </button>
+                                        <?php if (@$_SESSION) {
+                                            ?>
+                                            <button product-id="<?php echo $urun['urun_id'] ?>"
+                                                    class="btn btn-default add-to-cart"><i
+                                                        class="fa fa-shopping-cart"></i>
+                                                Add
+                                                to cart
+                                            </button>
+                                        <?php } ?>
                                         <a href="?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>"
                                            class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read
                                             More</a>
                                     </div>
 
                                 </div>
-                                <div class="choose">
-                                    <ul class="nav nav-pills nav-justified">
-                                        <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     <?php } ?>
                 </div><!--features_items-->
-                <ul class="pagination pull-right" >
+                <ul class="pagination pull-right">
                     <?php
                     $s = 0;
                     while ($s < $total_page) {
@@ -88,7 +87,7 @@
                             <?php
                         } else {
                             ?>
-                            <li ><a href="?islem=shop&syf=<?php echo $s ?>"><?php echo $s ?></a></li>
+                            <li><a href="?islem=shop&syf=<?php echo $s ?>"><?php echo $s ?></a></li>
                             <?php
                         }
                     }

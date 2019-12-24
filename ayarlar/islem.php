@@ -163,13 +163,21 @@ if (g('islem') == 'search') {
         $l = $veri->rowCount();
 
         if ($l) {
-            foreach ($v as $g){
+            foreach ($v as $g) {
                 ?>
-                <a href="?islem=pDetails&urun_id=<?php echo $g['urun_id'] ?>"><div id="productLister"><?php echo $g['urun_title'] ?></div></a>
+                <a href="?islem=pDetails&urun_id=<?php echo $g['urun_id'] ?>">
+                    <div id="productLister"><?php echo $g['urun_title'] ?></div>
+                </a>
                 <?php
             }
         } else {
             echo '<div style="padding: 5px">No results found !</div>';
         }
+    }
+}
+
+if (g('islem') == 'check') {
+    if (@!$_SESSION) {
+        echo '<div class="alert alert-warning text-center"><a href="?islem=login" style="font-weight: bold;text-decoration: underline" class="text-warning">Login</a> before adding product to cart.</div>';
     }
 }

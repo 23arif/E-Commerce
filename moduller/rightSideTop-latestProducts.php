@@ -17,26 +17,34 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                         <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                         <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
                         <p><?php echo $urun['urun_title'] ?></p>
-                        <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
-                            cart</button>
-                        <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>" class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read more</a>
+                        <?php if (@$_SESSION) {
+                            ?>
+                            <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-default add-to-cart"><i
+                                        class="fa fa-shopping-cart"></i>Add to
+                                cart
+                            </button>
+                        <?php } ?>
+                        <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>"
+                           class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read more</a>
                     </div>
                     <div class="product-overlay">
                         <div class="overlay-content">
-                            <p><?php echo substr($urun['urun_desc'],0,200)?> ...</p>
+                            <p><?php echo substr($urun['urun_desc'], 0, 200) ?> ...</p>
                             <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
                             <p><?php echo $urun['urun_title'] ?></p>
-                            <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to
-                                cart</button>
-                            <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>" class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read more</a>
+                            <?php if (@$_SESSION) {
+                                ?>
+                                <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-default add-to-cart">
+                                    <i
+                                            class="fa fa-shopping-cart"></i>Add to
+                                    cart
+                                </button>
+                            <?php } ?>
+                            <a href="index.php?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>"
+                               class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read more</a>
 
                         </div>
                     </div>
-                </div>
-                <div class="choose">
-                    <ul class="nav nav-pills nav-justified">
-                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                    </ul>
                 </div>
             </div>
         </div>

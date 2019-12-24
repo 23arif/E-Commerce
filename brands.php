@@ -41,7 +41,8 @@
             <header><title><?php echo $brand ?> - AlikExpress</title></header>
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center"><span style="text-decoration: underline"><?php echo $brand ?></span> Products</h2>
+                    <h2 class="title text-center"><span style="text-decoration: underline"><?php echo $brand ?></span>
+                        Products</h2>
                     <?php
                     foreach ($v as $urun) {
                         ?>
@@ -52,11 +53,15 @@
                                         <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                                         <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
                                         <p><?php echo $urun['urun_title'] ?></p>
-                                        <button product-id="<?php echo $urun['urun_id'] ?>"
-                                                class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>
-                                            Add
-                                            to cart
-                                        </button>
+                                        <?php if (@$_SESSION) {
+                                            ?>
+                                            <button product-id="<?php echo $urun['urun_id'] ?>"
+                                                    class="btn btn-default add-to-cart"><i
+                                                        class="fa fa-shopping-cart"></i>
+                                                Add
+                                                to cart
+                                            </button>
+                                        <?php } ?>
                                         <a href="?islem=pDetails&urun_id=<?php echo $urun['urun_id'] ?>"
                                            class="btn btn-default read-more"><i class="fa fa-external-link"></i> Read
                                             More</a>
@@ -78,7 +83,8 @@
                             <?php
                         } else {
                             ?>
-                            <li ><a href="?islem=brands&b=<?php echo $brand?>&syf=<?php echo $s ?>"><?php echo $s ?></a></li>
+                            <li><a href="?islem=brands&b=<?php echo $brand ?>&syf=<?php echo $s ?>"><?php echo $s ?></a>
+                            </li>
                             <?php
                         }
                     }

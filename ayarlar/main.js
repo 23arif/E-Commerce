@@ -108,3 +108,14 @@ $(document).ready(function(){
     });
 
 });
+
+
+//------
+$('#addToCartP-Details').on('click',function(){
+    $.ajax({
+        url:"ayarlar/islem.php?islem=check",
+        success : function (response) {
+            $('#detailsAlert').show().html(response);
+        }
+    })
+});

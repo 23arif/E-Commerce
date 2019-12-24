@@ -33,6 +33,7 @@ foreach ($v as $urun) ;
             </div>
 
             <div class="col-sm-9 padding-right">
+                <div id="detailsAlert"></div>
                 <div class="product-details"><!--product-details-->
                     <div class="col-sm-5">
                         <div class="view-product">
@@ -77,7 +78,7 @@ foreach ($v as $urun) ;
                             <h2><?php echo $urun['urun_desc'] ?></h2>
                             <img src="images/product-details/rating.png" alt=""/><br><br/>
                             <span id="money">US <?php echo parayaz2($urun['urun_fiyat']) ?>&nbsp;
-                            <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-fefault cart add-to-cart" style="margin: 0">
+                            <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-fefault cart <?php if(@$_SESSION){echo 'add-to-cart';} ?>" id="addToCartP-Details" style="margin: 0">
                                 <i class="fa fa-shopping-cart"></i>
                                 Add to cart
                             </button></span><br/><br/>
@@ -85,8 +86,7 @@ foreach ($v as $urun) ;
                             <p><b>Availability:</b> In Stock</p>
                             <p><b>Condition:</b> New</p>
                             <p><b>Brand:</b> <?php echo $urun['urun_firma'] ?></p>
-                            <a href=""><img src="images/product-details/share.png"
-                                            class="share img-responsive" alt=""/></a>
+
                         </div><!--/product-information-->
                     </div>
                 </div><!--/product-details-->

@@ -30,7 +30,8 @@
                                       placeholder="Your Message Here"></textarea>
                         </div>
                         <div class="form-group col-md-12">
-                            <button id="contactUsBtn" class="btn btn-primary pull-right" type="button">Send Message</button>
+                            <button id="contactUsBtn" class="btn btn-primary pull-right" type="button">Send Message
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -39,28 +40,39 @@
                 <div class="contact-info">
                     <h2 class="title text-center">Contact Info</h2>
                     <address>
-                        <p>AlikExpress Inc.</p>
-                        <p>935 W. Webster Ave New Streets Chicago, IL 60614, NY</p>
-                        <p>Newyork USA</p>
-                        <p>Mobile: +2323 23 23 23</p>
-                        <p>Fax: 2-323-2323-2323</p>
-                        <p>Email: info@alikexpress.com</p>
+                        <p><span
+                                    style="color:#fe980f;font-weight: bold">Alik <span
+                                        style="color:#e43225;">Express</span></p>
+                        <p><span class="contactInfoTxt">Address:</span> <?php echo $v['settings_location'] ?></p>
+                        <p><span class="contactInfoTxt">Mobile:</span> <?php echo $v['settings_phone'] ?></p>
+                        <p><span class="contactInfoTxt">Email:</span> <?php echo $v['settings_email'] ?></p>
                     </address>
                     <div class="social-networks">
-                        <h2 class="title text-center">Social Networking</h2>
+                        <?php if ($v['settings_fbSwitch'] == 'on' || $v['settings_linkedinSwitch'] == 'on' || $v['settings_twitterSwitch'] == 'on') {
+                            ?>
+                            <h2 class="title text-center">Social Networking</h2>
+                            <?php
+                        } ?>
                         <ul>
-                            <li>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-youtube"></i></a>
-                            </li>
+                            <?php if ($v['settings_fbSwitch'] == 'on') {
+                                ?>
+                                <li><a href="http://<?php echo $v['settings_facebook'] ?>" target="_blank"><i
+                                                class="fa fa-facebook-square"></i></a></li>
+                                <?php
+                            } ?>
+
+                            <?php if ($v['settings_twitterSwitch'] == 'on') {
+                                ?>
+                                <li><a href="http://<?php echo $v['settings_twitter'] ?>" target="_blank"><i
+                                                class="fa fa-twitter-square"></i></a></li>
+                                <?php
+                            } ?>
+                            <?php if ($v['settings_linkedinSwitch'] == 'on') {
+                                ?>
+                                <li><a href="http://<?php echo $v['settings_linkedin'] ?>" target="_blank"><i
+                                                class="fa fa-linkedin-square"></i></a></li>
+                                <?php
+                            } ?>
                         </ul>
                     </div>
                 </div>

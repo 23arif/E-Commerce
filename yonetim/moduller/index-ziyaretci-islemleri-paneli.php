@@ -1,6 +1,6 @@
 <?php
 include "../../ayarlar/function.php";
-$veri = $db->prepare("SELECT id,MAX(id) as son_id FROM ziyaretcitakip group by ziyaretci_ip ORDER BY ziyaretci_zaman desc");
+$veri = $db->prepare("SELECT id,MAX(id) as son_id FROM ziyaretcitakip group by ziyaretci_ip");
 $veri->execute(array());
 $v = $veri->fetchALL(PDO::FETCH_ASSOC);
 ?>

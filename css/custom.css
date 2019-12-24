@@ -121,3 +121,7 @@
 .owl-carousel .owl-dot {
     outline: none;
 }
+/*Contact Us Info*/
+.contactInfoTxt{
+    font-weight: bold;
+}

@@ -25,7 +25,7 @@
 
                     <tbody>
                     <?php
-                    $veri = $db->prepare("SELECT id,MAX(id) as son_id FROM ziyaretcitakip group by ziyaretci_ip ORDER BY id desc");
+                    $veri = $db->prepare("SELECT id,MAX(id) as son_id FROM ziyaretcitakip group by ziyaretci_ip");
                     $veri->execute(array());
                     $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                     foreach ($v as $za) {
