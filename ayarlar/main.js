@@ -55,6 +55,18 @@ $(document).ready(function () {
     })
 })
 
+//Cart Place Orders Btn
+$('#placeOrderBtn').on('click',function () {
+    var data = $('#main-contact-form').serialize();
+    $.ajax({
+        url: "ayarlar/islem.php?islem=checkout",
+        type: 'POST',
+        data: data,
+        success: function (response) {
+            $('#contactUsAlert').html(response).hide().fadeIn(700);
+        }
+    })
+})
 //Contact Us
 $('#contactUsBtn').on('click', function () {
     var data = $('#main-contact-form').serialize();
@@ -95,6 +107,7 @@ $(function () {
 })
 // --------------------------------------------
 
+//Owl carousel
 $(document).ready(function(){
     var owl = $('.owl-carousel');
     owl.owlCarousel({
@@ -109,8 +122,7 @@ $(document).ready(function(){
 
 });
 
-
-//------
+//Add to cart button on product details page
 $('#addToCartP-Details').on('click',function(){
     $.ajax({
         url:"ayarlar/islem.php?islem=check",
@@ -119,3 +131,16 @@ $('#addToCartP-Details').on('click',function(){
         }
     })
 });
+
+//Product details review form
+$('#reviewBtn').on('click',function () {
+    data = $('#reviewForm').serialize();
+    $.ajax({
+        url:"ayarlar/islem.php?islem=reviews",
+        type: 'POST',
+        data: data,
+        success:function (response) {
+            $('#reviewAlert').show().html(response);
+        }
+    })
+})

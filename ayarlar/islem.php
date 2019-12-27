@@ -176,8 +176,36 @@ if (g('islem') == 'search') {
     }
 }
 
+// Add to cart on product details page
 if (g('islem') == 'check') {
     if (@!$_SESSION) {
         echo '<div class="alert alert-warning text-center"><a href="?islem=login" style="font-weight: bold;text-decoration: underline" class="text-warning">Login</a> before adding product to cart.</div>';
+    }
+}
+
+// Reviews Form
+if (g('islem') == 'reviews') {
+    $reviewed_product = p('reviewed_product');
+    $review_author = p('review_author');
+    $review_email = p('review_email');
+    $review_content = p('review_content');
+    $review_rate = p('review_rate');
+
+    if (empty($review_author)) {
+        echo '<div class="alert alert-warning text-center">Please,fill <strong>name</strong> blank.</div>';
+    } elseif (empty($review_email)) {
+        echo '<div class="alert alert-warning text-center">Please,fill <strong>email</strong> blank.</div>';
+    } elseif (filter_var($review_email, FILTER_VALIDATE_EMAIL) != true) {
+        echo '<div class="alert alert-warning text-center">Please enter a <strong>valid email</strong> address.</div>';
+    } elseif (empty($review_content)) {
+        echo '<div class="alert alert-warning text-center">Please,fill <strong>review</strong> blank.</div>';
+    } else {
+        $review = $db->prepare("INSERT INTO reviews SET review_author=?,review_email=?,review_content=?,review_rate=?,reviewed_product=? ");
+        $review->execute(array($review_author, $review_email, $review_content, $review_rate, $reviewed_product));
+        if ($review) {
+            echo '<div class="alert alert-success text-center">Review added successfully.</div>';
+        } else {
+            echo '<div class="alert alert-danger text-center">Error while adding review.</div>';
+        }
     }
 }

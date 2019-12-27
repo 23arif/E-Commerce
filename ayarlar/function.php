@@ -204,10 +204,60 @@ function decCount($product_id)
 }
 
 // Advertisements
-function advertisements($n){
+function advertisements($n)
+{
     GLOBAL $db;
     $ads = $db->prepare("SELECT *FROM advertisements WHERE ads_id=?");
     $ads->execute(array($n));
     $v = $ads->fetch(PDO::FETCH_ASSOC);
     echo $v['ads_code'];
+}
+
+//Product Star
+function stars()
+{
+    global $db;
+    global $product_id;
+    $r = $db->prepare("SELECT review_rate, AVG(review_rate) as sum_review FROM reviews WHERE reviewed_product=?");
+    $r->execute(array($product_id));
+    $rev = $r->fetchALL(PDO::FETCH_ASSOC);
+    foreach ($rev as $k) {
+        $average_review = $k['sum_review'];
+        $average_review = floor($average_review);
+    }
+    if ($average_review > 5) {
+        for ($i = 0; $i < 5; $i++) {
+            ?>
+            <i class="fa fa-star" style="color:#f39313;font-size: 15px;margin:0;"></i>
+            <?php
+        }
+    } else {
+        for ($i = 0; $i < $average_review; $i++) {
+            ?>
+            <i class="fa fa-star" style="color:#f39313;font-size: 15px;margin:0;"></i>
+            <?php
+        }
+    }
+
+    $totalStar = 5;
+    $emptyStar = $totalStar - $i;
+    for ($k = 0; $k < $emptyStar; $k++) {
+        ?>
+        <i style="color:#f39313;font-size: 15px;margin: 0px;" class="fa fa-star-o"></i>
+        <?php
+    }
+}
+
+function totalReview()
+{
+    global $db;
+    global $product_id;
+    $veri = $db->prepare("SELECT *FROM reviews WHERE reviewed_product=?");
+    $veri->execute(array($product_id));
+    $totalReviews = $veri->rowCount();
+    if($totalReviews>1){
+        echo $totalReviews.' reviews';
+    }else{
+        echo $totalReviews.' review';
+    }
 }

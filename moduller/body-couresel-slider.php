@@ -17,9 +17,13 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                             <div class="single-products">
                                 <div class="productinfo text-center">
                                     <img src="<?php echo $urun['urun_resim'] ?>"
-                                         style="height:140px!important;width: 180px!important"/>
+                                         style="height:140px!important;width: 180px!important" alt="<?php echo $urun['urun_title'] ?>"/>
                                     <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
                                     <p><?php echo $urun['urun_title'] ?></p>
+                                    <?php
+                                    $product_id = $urun['urun_id']; //product id for detect which product is it for rating stars
+                                    stars();
+                                    ?><br>
                                     <?php if (@$_SESSION) {
                                         ?>
                                         <button product-id="<?php echo $urun['urun_id'] ?>"
@@ -50,10 +54,14 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img src="<?php echo $urunIki['urun_resim'] ?>" alt=""
+                                    <img src="<?php echo $urunIki['urun_resim'] ?>" alt="<?php echo $urunIki['urun_title'] ?>"
                                          style="height:140px!important;width: 180px!important"/>
                                     <h2><?php echo parayaz($urunIki['urun_fiyat']) ?></h2>
                                     <p><?php echo $urunIki['urun_title'] ?></p>
+                                    <?php
+                                    $product_id = $urunIki['urun_id']; //product id for detect which product is it for rating stars
+                                    stars();
+                                    ?><br>
                                     <?php if (@$_SESSION) {
                                         ?>
                                         <button product-id="<?php echo $urunIki['urun_id'] ?>"

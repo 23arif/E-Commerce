@@ -30,17 +30,40 @@
     color: #e43326;
 }
 
+#placeOrdersContainer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 50px 15px 0
+}
+
+#placeOrderBtn {
+    background: #fe980f;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all .2s;
+
+}
+
+#placeOrderBtn:hover {
+    background: #e43225;
+    transition: all .2s;
+}
+
 /*--Search*/
 #inp:focus {
     outline: none !important;
     box-shadow: none;
     border: 1px solid #f8a842;
 }
-#autoCompleteCenter{
+
+#autoCompleteCenter {
     width: 100%;
     display: flex;
     justify-content: center;
 }
+
 #autoComplete {
     position: absolute;
     z-index: 100;
@@ -71,57 +94,142 @@
 }
 
 /*Owl Slider Style*/
-.sekil{
+.sekil {
     max-height: 225px;
 }
-.owl-carousel .owl-nav{
+
+.owl-carousel .owl-nav {
     position: absolute;
-    top:32%;
+    top: 32%;
     width: 100%;
-    margin: 0!important;
-    padding: 0!important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
-.owl-carousel .owl-nav .owl-prev{
+
+.owl-carousel .owl-nav .owl-prev {
     float: left;
-    margin: 0!important;
-    padding: 0!important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
-.owl-carousel .owl-nav .owl-next{
+
+.owl-carousel .owl-nav .owl-next {
     float: right;
-    margin: 0!important;
-    padding: 0!important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
-.owl-carousel .owl-nav  span{
-    color:#f39313!important;
+
+.owl-carousel .owl-nav span {
+    color: #f39313 !important;
     font-size: 40px;
     font-weight: bold;
-    background: rgba(0,0,0,.7);
+    background: rgba(0, 0, 0, .7);
     border-radius: 50px;
     padding: 3px 20px;
 }
-.owl-carousel .owl-nav span:hover{
-    background: rgba(0,0,0,1)!important;
+
+.owl-carousel .owl-nav span:hover {
+    background: rgba(0, 0, 0, 1) !important;
 }
-.owl-carousel .owl-nav button{
-    background: none!important;
-    outline: none!important;
+
+.owl-carousel .owl-nav button {
+    background: none !important;
+    outline: none !important;
 }
-.owl-carousel .owl-dots{
+
+.owl-carousel .owl-dots {
     position: relative;
-    margin: auto!important;
-    min-width: 100%!important;
-    margin-top: 10px!important;
+    margin: auto !important;
+    min-width: 100% !important;
+    margin-top: 10px !important;
 }
-.owl-carousel .owl-dot.active span{
-    background: #f39313!important;
+
+.owl-carousel .owl-dot.active span {
+    background: #f39313 !important;
 }
-.owl-carousel .owl-dot:hover span{
-    background: #f39313!important;
+
+.owl-carousel .owl-dot:hover span {
+    background: #f39313 !important;
 }
+
 .owl-carousel .owl-dot {
     outline: none;
 }
+
 /*Contact Us Info*/
-.contactInfoTxt{
+.contactInfoTxt {
     font-weight: bold;
+}
+
+/*Rating Stars*/
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+
+.rate:not(:checked) > input {
+    position: absolute;
+    top: -9999px;
+}
+
+.rate:not(:checked) > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.rate input {
+    visibility: hidden
+}
+
+#verticalSeparator {
+    font-size: 20px;
+    color: #f39313;
+}
+
+#totalReviews {
+    color: #40403e;
+    margin: 0 15px 0 10px;
+}
+
+/*Reviews Form*/
+#reviewForm input, #reviewForm textarea {
+    color: #40403e !important;
+    font-weight: 500;
+    border: 1px solid transparent !important;
+    transition: all .4s;
+}
+
+#reviewForm input:hover, #reviewForm textarea:hover {
+    border: 1px solid #f39313 !important;
+    transition: all .4s;
+}
+
+#reviewForm input:focus, #reviewForm textarea:focus {
+    border: 1px solid #f39313 !important;
 }

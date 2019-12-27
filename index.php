@@ -6,6 +6,9 @@ takip();
 
 $islem = g('islem');
 switch ($islem) {
+    case 'checkout':
+        include_once 'checkout.php';
+        break;
     case 'login':
         include_once 'login.php';
         break;
@@ -39,7 +42,8 @@ switch ($islem) {
         <?php
         include_once 'moduller/ust-slider.php';
         ?>
-<!--        --><?php //include_once 'moduller/newSlide.php' ?>
+        <!--        --><?php //include_once 'moduller/newSlide.php'
+        ?>
         <!--/Head Slider-->
         <section>
             <div class="container">

@@ -26,6 +26,13 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                                     <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                                     <h2> <?php echo parayaz($urun['urun_fiyat']) ?> </h2>
                                     <p><?php echo $urun['urun_title'] ?></p>
+                                    <!--Rating Stars-->
+                                    <?php
+                                    $product_id = $urun['urun_id']; //product id for detect which product is it for rating stars
+                                    stars();
+                                    ?>
+                                    <!--/Rating Stars-->
+
                                     <?php if (@$_SESSION) {
                                         ?>
                                         <button product-id="<?php echo $urun['urun_id'] ?>"
@@ -58,6 +65,12 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                                     <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                                     <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
                                     <p><?php echo $urun['urun_title'] ?></p>
+                                    <!--Rating Stars-->
+                                    <?php
+                                    $product_id = $urun['urun_id']; //product id for detect which product is it for rating stars
+                                    stars();
+                                    ?>
+                                    <!--/Rating Stars-->
                                     <?php if (@$_SESSION) {
                                         ?>
                                         <button product-id="<?php echo $urun['urun_id'] ?>"
@@ -90,6 +103,10 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                                     <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                                     <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
                                     <p><?php echo $urun['urun_title'] ?></p>
+                                    <?php
+                                    $product_id = $urun['urun_id']; //product id for detect which product is it for rating stars
+                                    stars();
+                                    ?>
                                     <?php if (@$_SESSION) {
                                         ?>
                                         <button product-id="<?php echo $urun['urun_id'] ?>"
@@ -121,6 +138,10 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                                     <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                                     <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
                                     <p><?php echo $urun['urun_title'] ?></p>
+                                    <?php
+                                    $product_id = $urun['urun_id']; //product id for detect which product is it for rating stars
+                                    stars();
+                                    ?>
                                     <?php if (@$_SESSION) {
                                         ?>
                                         <button product-id="<?php echo $urun['urun_id'] ?>"
@@ -156,6 +177,10 @@ $v = $veri->fetchALL(PDO::FETCH_ASSOC);
                                     <img src="<?php echo $urunler['urun_resim'] ?>" alt=""/>
                                     <h2><?php echo parayaz($urunler['urun_fiyat']) ?></h2>
                                     <p><?php echo $urunler['urun_title'] ?></p>
+                                    <?php
+                                    $product_id = $urunler['urun_id']; //product id for detect which product is it for rating stars
+                                    stars();
+                                    ?>
                                     <?php if (@$_SESSION) {
                                         ?>
                                         <button product-id="<?php echo $urunler['urun_id'] ?>"

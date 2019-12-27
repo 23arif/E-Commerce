@@ -53,6 +53,13 @@
                                         <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
                                         <h2><?php echo parayaz($urun['urun_fiyat']) ?></h2>
                                         <p><?php echo $urun['urun_title'] ?></p>
+                                        <!--Rating Stars-->
+                                        <?php
+                                        $product_id = $urun['urun_id']; //product id for detect which product is it for rating stars
+                                        stars();
+                                        ?>
+                                        <!--/Rating Stars-->
+                                        <br>
                                         <?php if (@$_SESSION) {
                                             ?>
                                             <button product-id="<?php echo $urun['urun_id'] ?>"

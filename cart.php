@@ -67,6 +67,9 @@
                     <div>Total Price: <strong class="cartSpecialText"> <?php echo parayaz($total_price) ?> </strong>
                     </div>
                 </div>
+                <div id="placeOrdersContainer">
+                    <button class="btn" id="placeOrderBtn">Place Orders</button>
+                </div>
             </div>
             <?php
         } else {

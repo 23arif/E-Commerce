@@ -37,7 +37,7 @@ foreach ($v as $urun) ;
                 <div class="product-details"><!--product-details-->
                     <div class="col-sm-5">
                         <div class="view-product">
-                            <img src="<?php echo $urun['urun_resim'] ?>" alt=""/>
+                            <img src="<?php echo $urun['urun_resim'] ?>" alt="<?php echo $urun['urun_title'] ?>"/>
                             <h3>ZOOM</h3>
                         </div>
                         <div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -76,7 +76,10 @@ foreach ($v as $urun) ;
                         <div class="product-information"><!--/product-information-->
                             <img src="images/product-details/new.jpg" class="newarrival" alt=""/>
                             <h2><?php echo $urun['urun_desc'] ?></h2>
-                            <img src="images/product-details/rating.png" alt=""/><br><br/>
+                            <!--                    Rating stars-->
+                            <?php include_once 'moduller/rating_stars.php'?>
+                            <!--                    /Rating stars-->
+                            <br>
                             <span id="money">US <?php echo parayaz2($urun['urun_fiyat']) ?>&nbsp;
                             <button product-id="<?php echo $urun['urun_id'] ?>" class="btn btn-fefault cart <?php if(@$_SESSION){echo 'add-to-cart';} ?>" id="addToCartP-Details" style="margin: 0">
                                 <i class="fa fa-shopping-cart"></i>
