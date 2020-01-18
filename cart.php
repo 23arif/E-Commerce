@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div id="placeOrdersContainer">
-                    <button class="btn" id="placeOrderBtn">Place Orders</button>
+                    <a href="?islem=checkout"><button class="btn" id="placeOrderBtn">Place Orders</button></a>
                 </div>
             </div>
             <?php

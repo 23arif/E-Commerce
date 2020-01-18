@@ -42,7 +42,6 @@ switch ($islem) {
         <?php
         include_once 'moduller/ust-slider.php';
         ?>
-        <!--        --><?php //include_once 'moduller/newSlide.php'
         ?>
         <!--/Head Slider-->
         <section>

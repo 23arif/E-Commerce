@@ -6,7 +6,7 @@
 <!--</section>-->
 <section id="advertisement">
     <div class="container">
-        <img src="<?php advertisements(51); ?>" alt="" style="width: 100%;height: 100%">
+        <img src="<?php advertisements(51,'ads_code'); ?>" alt="" style="width: 100%;height: 100%">
     </div>
 </section>
 <section>

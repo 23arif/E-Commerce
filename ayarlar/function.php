@@ -204,13 +204,13 @@ function decCount($product_id)
 }
 
 // Advertisements
-function advertisements($n)
+function advertisements($n,$z)
 {
     GLOBAL $db;
     $ads = $db->prepare("SELECT *FROM advertisements WHERE ads_id=?");
     $ads->execute(array($n));
     $v = $ads->fetch(PDO::FETCH_ASSOC);
-    echo $v['ads_code'];
+    echo $v[$z];
 }
 
 //Product Star
@@ -255,9 +255,19 @@ function totalReview()
     $veri = $db->prepare("SELECT *FROM reviews WHERE reviewed_product=?");
     $veri->execute(array($product_id));
     $totalReviews = $veri->rowCount();
-    if($totalReviews>1){
-        echo $totalReviews.' reviews';
-    }else{
-        echo $totalReviews.' review';
+    if ($totalReviews > 1) {
+        echo $totalReviews . ' reviews';
+    } else {
+        echo $totalReviews . ' review';
     }
 }
+
+////Product loop
+//function productCounter($x)
+//{
+//    global $shopping_products;
+//    foreach ($shopping_products as $product) {
+////        print_r($product);
+//        print $product->$x;
+//    }
+//}

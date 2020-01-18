@@ -510,7 +510,7 @@ if (g('islem') == 'slideToggle') {
         $veri->execute(array());
         if ($veri) {
             echo '<meta http-equiv="refresh" content="0;url=?do=slider&deactivatingSlider=ok">';
-        }else{
+        } else {
             echo '<div class="alert alert-danger">Error while deactivating slider</div><meta http-equiv="refresh" content="3;url=?do=slider">';
         }
     } else {
@@ -518,8 +518,34 @@ if (g('islem') == 'slideToggle') {
         $veri->execute(array());
         if ($veri) {
             echo '<meta http-equiv="refresh" content="0;url=?do=slider&activatingSlider=ok">';
-        }else{
+        } else {
             echo '<div class="alert alert-danger">Error while activating slider</div><meta http-equiv="refresh" content="3;url=?do=slider">';
         }
+    }
+}
+//Profile Edit
+if (g('islem') == 'profileEdit') {
+    $profName = p('profileFirstName');
+    $profLastName = p('profileLastName');
+    $profEmail = p('profileEmail');
+    $profNewPass = p('profileNewPassword');
+    $profRepeatPass = p('profileNewPasswordRepeat');
+
+    if (empty($profName)) {
+        echo 'fill';
+    } elseif (empty($profLastName)) {
+        echo 'fill';
+    } elseif (empty($profEmail)) {
+        echo 'fill';
+    } elseif (filter_var($profEmail, FILTER_VALIDATE_EMAIL) != true) {
+        echo 'invalidEmail';
+    } elseif (empty($profNewPass)) {
+        echo 'fill';
+    } elseif (empty($profRepeatPass)){
+        echo'fill';
+    }elseif ($profNewPass != $profRepeatPass){
+        echo 'invalidPass';
+    }else{
+        echo 'yes';
     }
 }

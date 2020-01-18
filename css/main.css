@@ -1944,10 +1944,9 @@ h2.title {
     margin-left: 5%
 }
 
-
 .order-message textarea {
-    font-size: 12px;
-    height: 335px;
+    font-size: 14px;
+    height: 235px;
     margin-bottom: 20px;
     padding: 15px 20px;
 }
@@ -1959,7 +1958,6 @@ h2.title {
     margin-left: 10px;
     font-size: 14px
 }
-
 
 .review-payment h2 {
     color: #696763;
@@ -1980,6 +1978,7 @@ h2.title {
     font-weight: 300;
     margin-right: 30px;
 }
+
 
 #cart_items .cart_info
 .table.table-condensed.total-result {

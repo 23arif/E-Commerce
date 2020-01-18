@@ -55,18 +55,6 @@ $(document).ready(function () {
     })
 })
 
-//Cart Place Orders Btn
-$('#placeOrderBtn').on('click',function () {
-    var data = $('#main-contact-form').serialize();
-    $.ajax({
-        url: "ayarlar/islem.php?islem=checkout",
-        type: 'POST',
-        data: data,
-        success: function (response) {
-            $('#contactUsAlert').html(response).hide().fadeIn(700);
-        }
-    })
-})
 //Contact Us
 $('#contactUsBtn').on('click', function () {
     var data = $('#main-contact-form').serialize();
@@ -91,56 +79,74 @@ $(function () {
         $.ajax({
             url: "ayarlar/islem.php?islem=search",
             type: "POST",
-            data : result,
-            beforeSend: function(){
+            data: result,
+            beforeSend: function () {
                 $('#autoComplete').fadeIn().html('<div style="display: flex;justify-content: center;align-items: center"><img  src="images/home/loading.gif"/></div>');
             },
-            success : function (response) {
+            success: function (response) {
                 $('#autoComplete').show().html(response);
             }
         })
     });
 
-    $(window).scroll(function(){
+    $(window).scroll(function () {
         $('#autoComplete').fadeOut(400);
     });
 })
 // --------------------------------------------
 
 //Owl carousel
-$(document).ready(function(){
+$(document).ready(function () {
     var owl = $('.owl-carousel');
     owl.owlCarousel({
-        items:1,
-        loop:true,
-        margin:10,
-        autoplay:true,
-        autoplayTimeout:7000,
-        autoplayHoverPause:true,
+        items: 1,
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 7000,
+        autoplayHoverPause: true,
         nav: true
     });
 
 });
 
 //Add to cart button on product details page
-$('#addToCartP-Details').on('click',function(){
+$('#addToCartP-Details').on('click', function () {
     $.ajax({
-        url:"ayarlar/islem.php?islem=check",
-        success : function (response) {
+        url: "ayarlar/islem.php?islem=check",
+        success: function (response) {
             $('#detailsAlert').show().html(response);
         }
     })
 });
 
 //Product details review form
-$('#reviewBtn').on('click',function () {
+$('#reviewBtn').on('click', function () {
     data = $('#reviewForm').serialize();
     $.ajax({
-        url:"ayarlar/islem.php?islem=reviews",
+        url: "ayarlar/islem.php?islem=reviews",
         type: 'POST',
         data: data,
-        success:function (response) {
+        success: function (response) {
             $('#reviewAlert').show().html(response);
         }
     })
+})
+
+//Checkout Btn on checkout page
+$('#checkoutBtn').on('click', function () {
+    data = $('#customerInfo,#customerInfo2,#customerInfo3').serialize();
+    $.ajax({
+        url: "ayarlar/islem.php?islem=submitOrders",
+        type: 'POST',
+        data: data,
+        success: function (data) {
+            var response = JSON.parse(data);
+            Swal.fire(
+                response.title,
+                response.message,
+                response.status
+            )}
+    });
+    return false;
 })

@@ -23,15 +23,29 @@ Theme Version: 	1.4.1
 
 	$('#default-notice').click(function() {
 		new PNotify({
-			title: 'Regular Notice',
-			text: 'Check me out! I\'m a notice.'
+			title: 'Warning',
+			text: 'Please,fill all blanks.'
+		});
+	});
+
+	$('#default-invalidEmailNotice').click(function() {
+		new PNotify({
+			title: 'Warning',
+			text: 'Please,enter <strong>valid</strong> email address.'
+		});
+	});
+
+	$('#default-invalidPassNotice').click(function() {
+		new PNotify({
+			title: 'Warning',
+			text: 'Please,enter <strong>valid</strong> password.'
 		});
 	});
 
 	$('#default-success').click(function() {
 		new PNotify({
-			title: 'Regular Notice',
-			text: 'Check me out! I\'m a notice.',
+			title: 'Congratulations !',
+			text: 'Changes updated successfully.',
 			type: 'success'
 		});
 	});
@@ -46,8 +60,8 @@ Theme Version: 	1.4.1
 
 	$('#default-error').click(function() {
 		new PNotify({
-			title: 'Regular Notice',
-			text: 'Check me out! I\'m a notice.',
+			title: 'Error !',
+			text: 'Changes could not updated.',
 			type: 'error'
 		});
 	});

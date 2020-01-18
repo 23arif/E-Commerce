@@ -32,9 +32,6 @@ $v = $veri->fetch(PDO::FETCH_ASSOC);
                             <ul class="nav nav-pills nav-stacked">
                                 <li><a href="#">Online Help</a></li>
                                 <li><a href="contact">Contact Us</a></li>
-                                <li><a href="#">Order Status</a></li>
-                                <li><a href="#">Change Location</a></li>
-                                <li><a href="#">FAQ’s</a></li>
                             </ul>
                         </div>
                     </div>
@@ -42,11 +39,14 @@ $v = $veri->fetch(PDO::FETCH_ASSOC);
                         <div class="single-widget">
                             <h2>Quock Shop</h2>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">T-Shirt</a></li>
-                                <li><a href="#">Mens</a></li>
-                                <li><a href="#">Womens</a></li>
-                                <li><a href="#">Gift Cards</a></li>
-                                <li><a href="#">Shoes</a></li>
+                                <?php
+                                $veri = $db->prepare("SELECT *FROM kategoriler");
+                                $veri->execute(array());
+                                $v = $veri->fetchALL(PDO::FETCH_ASSOC);
+                                foreach ($v as $cat){
+                                ?>
+                                <li><a href="#"><?php echo $cat['kategori_title'] ?></a></li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
@@ -111,6 +111,9 @@ $v = $veri->fetch(PDO::FETCH_ASSOC);
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="ayarlar/main.js"></script>
     <script src="owlcarousel/owl.carousel.min.js"></script> <!--OWL_CAROUSEL-->
+<!--    SweetAlert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<!--    //SweetAlert-->
 
     </body>
     </html>

@@ -1,0 +1,29 @@
+name: coverage
+
+on:
+  # TODO: re-enable when https://github.com/cypress-io/cypress/issues/6053 is fixed
+  push:
+    branches:
+      - master_skip
+  # pull_request:
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Install npm dependencies
+      run: yarn install
+
+    - name: Prepare src folder for generating coverage report
+      run: yarn nyc:instrument
+
+    - name: Test & publish code coverage to codeclimate.com
+      uses: paambaati/codeclimate-action@v2.3.0
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      with:
+        coverageCommand: yarn cy:run:headless

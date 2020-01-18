@@ -102,6 +102,7 @@ if (isset($_SESSION['shoppingCart'])) {
     $total_count = 0;
     $total_price = 0.0;
 }
+//IncCount DecCount
 if (isset($_GET['p'])) {
     $islem = $_GET['p'];
     if ($islem == 'incCount') {
@@ -113,6 +114,22 @@ if (isset($_GET['p'])) {
         $id = $_GET['product_id'];
         if (decCount($id)) {
             header('location:index.php?islem=cart');
+        }
+    }
+
+}
+//IncCount DecCount for checkout page
+if (isset($_GET['p'])) {
+    $islem = $_GET['p'];
+    if ($islem == 'incCountCheckOut') {
+        $id = $_GET['product_id'];
+        if (incCount($id)) {
+            header('location:index.php?islem=checkout&#pMovingCtrl');
+        }
+    } elseif ($islem == 'decCountCheckOut') {
+        $id = $_GET['product_id'];
+        if (decCount($id)) {
+            header('location:index.php?islem=checkout&#pMovingCtrl');
         }
     }
 
@@ -209,3 +226,48 @@ if (g('islem') == 'reviews') {
         }
     }
 }
+
+//Checkout Submiting orders
+if (g('islem') == 'submitOrders') {
+    $customerFirstName = p('customerFirstName');
+    $customerLastName = p('customerLastName');
+    $customerEmail = p('customerEmail');
+    $customerAddress1 = p('customerAddress1');
+    $customerAddress2 = p('customerAddress2');
+    $customerZip = p('customerZip');
+    $customerCountry = p('customerCountry');
+    $customerState = p('customerState');
+    $customerPhone = p('customerPhone');
+    $customerMobile = p('customerMobile');
+    $customerNotes = p('customerNotes');
+    $paymentType = p('paymentType');
+
+    if (empty($customerFirstName) || empty($customerLastName) || empty($customerEmail) || empty($customerAddress1) || empty($customerAddress2) || empty($customerZip) || empty($customerCountry) || empty($customerState) || empty($customerPhone) || empty($customerMobile) || empty($customerNotes) || empty($paymentType)) {
+        $data['status'] = 'info';
+        $data['title'] = 'Attention!';
+        $data['message'] = 'Please,fill in all blanks';
+        echo json_encode($data);
+    } elseif (filter_var($customerEmail, FILTER_VALIDATE_EMAIL) != true) {
+        $data['status'] = 'info';
+        $data['title'] = 'Attention!';
+        $data['message'] = 'Please enter a valid e-mail address!';
+        echo json_encode($data);
+    } else {
+        $veri = $db->prepare("INSERT INTO  orders SET order_firstname=?,order_lastname=?,order_email=?,order_ad_first=?,order_ad_second=?,order_zip=?,order_country=?,order_state=?,order_phone=?,order_mobile=?,order_notes=?,order_payment_type=?");
+        $ekleme = $veri->execute(array($customerFirstName,$customerLastName,$customerEmail,$customerAddress1,$customerAddress2,$customerZip,$customerCountry,$customerState,$customerPhone,$customerMobile,$customerNotes,$paymentType));
+
+        if($ekleme){
+            $data['status'] = 'success';
+            $data['title'] = 'Cangrulation!';
+            $data['message'] = 'Order submitted successfully.';
+            echo json_encode($data);
+        }else{
+            $data['status'] = 'error';
+            $data['title'] = 'Error!';
+            $data['message'] = 'Order could not submitted.';
+            echo json_encode($data);
+        }
+    }
+}
+
+

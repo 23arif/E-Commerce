@@ -45,6 +45,10 @@
     <!--    File Upload-->
     <link rel="stylesheet" href="assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css"/>
 
+    <!--    Profile Notifications-->
+    <link rel="stylesheet" href="assets/vendor/pnotify/pnotify.custom.css"/>
+
+
 </head>
 <body>
 <section class="body">

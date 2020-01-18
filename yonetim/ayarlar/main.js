@@ -171,29 +171,24 @@ $('#slide_toggle').on('change', function () {
 })
 //--Slide Toggle
 
-//Active class
-// $(document).ready(function(){
-//     $(document).on('click','#menu ul li',function(){
-//         $(this).addClass('nav-active').siblings().removeClass('nav-active');
-//     })
-// })
-
-// $(document).ready(function () {
-//     $("#menu ul li").click(function () {
-//         $('#dashboard').removeClass('nav-active');
-//         var id = $(this).attr("id");
-//
-//         $('#' + id).siblings().find(".nav-active").removeClass("nav-active");
-//         //                       ^ you forgot this
-//         $('#' + id).addClass("nav-active");
-//         localStorage.setItem("selectedolditem", id);
-//     });
-//
-//     var selectedolditem = localStorage.getItem('selectedolditem');
-//
-//     if (selectedolditem != null) {
-//         $('#' + selectedolditem).siblings().find(".nav-active").removeClass("nav-active");
-//         //                                        ^ you forgot this
-//         $('#' + selectedolditem).addClass("nav-active");
-//     }
-// });
+// Profile
+$('#profileBtn').on('click',function () {
+    var data = $('#profileForm').serialize();
+    $.ajax({
+        url: "ayarlar/islem.php?islem=profileEdit",
+        type: "POST",
+        data: data,
+        success: function (response) {
+            if(response == 'yes'){
+                $('#default-success').click();
+            }else if(response== 'fill'){
+                $('#default-notice').click();
+            }else if(response== 'invalidEmail'){
+                $('#default-invalidEmailNotice').click();
+            }else if(response == 'invalidPass'){
+                $('#default-invalidPassNotice').click();
+            }
+        }
+    })
+})
+// --Profile

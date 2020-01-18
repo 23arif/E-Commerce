@@ -233,3 +233,36 @@
 #reviewForm input:focus, #reviewForm textarea:focus {
     border: 1px solid #f39313 !important;
 }
+/*Sweet Alert*/
+.swal2-popup {
+    font-size: 1.6rem !important;
+}
+
+/*Checkout page forms*/
+.order-messageForm{
+    border: 2px solid transparent!important;
+    transition: all .3s;
+}
+
+.order-message textarea:hover, .order-message textarea:focus, .form-one input:hover, .form-one input:focus, .form-two input:hover, .form-two input:focus, .form-two select:hover, .form-two select:focus {
+    border: 2px solid #f39313 !important;
+    transition: all .3s;
+    outline: none;
+}
+
+
+.payment-options #checkoutBtn {
+    background: #f39313;
+    font-weight: bold;
+    color: #fff;
+    border: 3px solid transparent;
+    transition: all .3s;
+}
+
+.payment-options #checkoutBtn:hover {
+    color: #f39313;
+    font-weight: bold;
+    background: transparent;
+    border: 3px solid #f39313;
+    transition: all .3s;
+}

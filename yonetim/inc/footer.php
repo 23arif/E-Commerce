@@ -71,7 +71,9 @@
 <script src="assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
 <!--Settings page switch-->
 <script src="assets/vendor/ios7-switch/ios7-switch.js"></script>
-<script src="assets/javascripts/theme.init.js"></script>
+<!-- Profile Notification -->
+<script src="assets/vendor/pnotify/pnotify.custom.js"></script>
+<script src="assets/javascripts/ui-elements/examples.notifications.js"></script>
 
 </body>
 </html>
