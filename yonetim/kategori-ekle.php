@@ -1,3 +1,4 @@
+<head><title>Add New Category | AlikExpress</title></head>
     <!-- start: page -->
     <header class="page-header">
         <h2>Add New Category</h2>

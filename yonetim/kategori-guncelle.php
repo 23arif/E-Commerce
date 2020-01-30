@@ -1,3 +1,4 @@
+<head><title>Update Category | AlikExpress</title></head>
 <?php
 $kategori_id = g('kategori_id');
 $veri = $db->prepare("SELECT * FROM kategoriler WHERE kategori_id='$kategori_id'");

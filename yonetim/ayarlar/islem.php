@@ -523,13 +523,56 @@ if (g('islem') == 'slideToggle') {
         }
     }
 }
+
 //Profile Edit
-if (g('islem') == 'profileEdit') {
+if (g('islem') == 'profilePhotoEdit') {
+
+    $user_id = $_SESSION['id'];
+//    Query of previous profile photo
+    $veri = $db->prepare("SELECT yonetim_image FROM yonetim WHERE yonetim_id='$user_id'");
+    $veri->execute(array());
+    $v = $veri->fetch(PDO::FETCH_ASSOC);
+    $preProfilePhoto = $v['yonetim_image'];
+//    --Query of previous profile photo
+
+
+    @$name = $_FILES['profile_image']['name'];
+
+    if (empty($name)) {
+        echo 'fill';
+    } else {
+
+        $yol = '../../uploads/profileImg';
+        $rn = resimadi();
+        $uzanti = uzanti($name);
+        $vtyol = "uploads/profileImg/$rn.$uzanti";
+
+        if ($_FILES['profile_image']["size"] > 1024 * 1024) {
+            echo 'oversize';
+        } else {
+
+            $resimyukleme = resimyukle('profile_image', $rn, $yol);
+            if ($resimyukleme) {
+
+                //Delete previous profile photo
+                $veri = $db->prepare("UPDATE yonetim SET yonetim_image=? WHERE yonetim_id='$user_id'");
+                $veri->execute(array($vtyol));
+                if ($preProfilePhoto != '!sample-user.jpg') {
+                    unlink("../../$preProfilePhoto");
+                }
+                //--Delete previous profile photo
+                echo 'yes';
+            } else {
+                echo 'error';
+            }
+        }
+    }
+}
+if (g('islem') == 'profileInfoEdit') {
+    $user_id = $_SESSION['id'];
     $profName = p('profileFirstName');
     $profLastName = p('profileLastName');
     $profEmail = p('profileEmail');
-    $profNewPass = p('profileNewPassword');
-    $profRepeatPass = p('profileNewPasswordRepeat');
 
     if (empty($profName)) {
         echo 'fill';
@@ -539,13 +582,45 @@ if (g('islem') == 'profileEdit') {
         echo 'fill';
     } elseif (filter_var($profEmail, FILTER_VALIDATE_EMAIL) != true) {
         echo 'invalidEmail';
-    } elseif (empty($profNewPass)) {
+    } else {
+
+        $veri = $db->prepare("UPDATE yonetim SET yonetim_eposta=?,yonetim_isim=?,yonetim_soyisim=? WHERE yonetim_id='$user_id'");
+        $veri->execute(array($profEmail, $profName, $profLastName));
+        if ($veri) {
+
+            $veri = $db->prepare("SELECT *FROM yonetim WHERE yonetim_id='$user_id'");
+            $veri->execute(array());
+            $v = $veri->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($v as $yonetim) ;
+
+            $_SESSION['id'] = $yonetim['yonetim_id'];
+            $_SESSION['isim'] = $yonetim['yonetim_isim'];
+            $_SESSION['soyisim'] = $yonetim['yonetim_soyisim'];
+            $_SESSION['eposta'] = $yonetim['yonetim_eposta'];
+            $_SESSION['yetki'] = $yonetim['yonetim_yetki'];
+
+            echo 'yes';
+        } else {
+            echo 'error';
+        }
+    }
+}
+if (g('islem') == 'profilePassEdit') {
+    $profNewPass = p('profileNewPassword');
+    $profRepeatPass = p('profileNewPasswordRepeat');
+
+    if (empty($profNewPass)) {
         echo 'fill';
-    } elseif (empty($profRepeatPass)){
-        echo'fill';
-    }elseif ($profNewPass != $profRepeatPass){
-        echo 'invalidPass';
-    }else{
-        echo 'yes';
+    } elseif (empty($profRepeatPass)) {
+        echo 'fill';
+    } elseif ($profNewPass != $profRepeatPass) {
+        echo 'invalidP';
+    } else {
+        $user_id = $_SESSION['id'];
+        $veri = $db->prepare("UPDATE yonetim SET yonetim_sifre=? WHERE yonetim_id='$user_id'");
+        $veri->execute(array(md5($profNewPass)));
+        if ($veri) {
+            echo 'yes';
+        }
     }
 }

@@ -1,3 +1,4 @@
+<head><title>Advertisements | AlikExpress</title></head>
 <!-- start: page -->
 <header class="page-header">
     <h2>Advertisements</h2>

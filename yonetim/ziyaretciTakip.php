@@ -1,3 +1,4 @@
+<head><title>User Control | AlikExpress</title></head>
 <!-- start: page -->
 <header class="page-header">
     <h2>User Control</h2>

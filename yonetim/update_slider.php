@@ -1,3 +1,4 @@
+<head><title>Update Slide | AlikExpress</title></head>
 <?php
 $slide_id = g('slide_id');
 $veri = $db->prepare("SELECT *FROM slider where slider_id=?");

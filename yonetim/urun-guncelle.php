@@ -1,3 +1,4 @@
+<head><title>Update Products | AlikExpress</title></head>
 <?php
 $urun_id = g('urun_id');
 foreach (urungetir($urun_id) as $urun);

@@ -1,3 +1,4 @@
+<head><title>Add New Advertisement | AlikExpress</title></head>
 <!-- start: page -->
 <header class="page-header">
     <h2>Add Advertisement</h2>

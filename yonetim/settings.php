@@ -1,3 +1,4 @@
+<head><title>Settings | AlikExpress</title></head>
 <?php
 $veri = $db->prepare("SELECT *FROM settings");
 $veri->execute(array());

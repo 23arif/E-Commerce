@@ -40,9 +40,8 @@ function s($par)
 function yoneticikontrol()
 {
     if (!$_SESSION || !$_SESSION['yetki'] == 1) {
-        if($_SESSION){}
-//        echo "<meta http-equiv='refresh' content='0;url=giris.php'>";  EGER SERVERDE XETA VERERSE 'HEADER' BU SETRI ISTIFADE ET
-        header('location:giris.php');
+//        echo "<meta htt p-equiv='refresh' content='0;url=giris.php'>";  EGER SERVERDE XETA VERERSE 'HEADER' BU SETRI ISTIFADE ET
+            header('location:giris.php');
     }
 }
 
@@ -112,6 +111,7 @@ function resimyukle($postisim, $yeniisim, $yol)
     }
     // Verot resim yukleme
 }
+
 function resimyukle2($postisim, $yeniisim, $yol)
 {
     // Verot resim yukleme advertisementsler ve sliderler ucun
@@ -138,7 +138,9 @@ function parayaz($para)
     $para = number_format($para, 2, ',', '.') . " $";
     return $para;
 }
-function parayaz2($para){
+
+function parayaz2($para)
+{
     $para = number_format($para, 2, ',', '.');
     return $para;
 }
@@ -152,44 +154,62 @@ function noktasil($s)
     return $s;
 }
 
-function urungetir($par){
+function urungetir($par)
+{
     Global $db;
     $veri = $db->prepare("SELECT *FROM urunler WHERE urun_id=$par");
     $veri->execute(array());
     $v = $veri->fetchALL(PDO::FETCH_ASSOC);
     return $v;
 }
-function urunresimgetir($id){
+
+function urunresimgetir($id)
+{
     Global $db;
     $veri = $db->prepare("SELECT urun_resim FROM urunler WHERE urun_id='$id'");
     $veri->execute(array());
     $v = $veri->fetchALL(PDO::FETCH_ASSOC);
-    foreach($v as $ur);
+    foreach ($v as $ur) ;
     return $ur['urun_resim'];
 }
 
 // ZIYARETCI ISLEMLERI
 
-function onlinemi($ip){
+function onlinemi($ip)
+{
     global $db;
     date_default_timezone_set('Asia/Baku');
-    setlocale(LC_ALL,'tr_TR.UTF-8','tr_TR','tr','turkish');
-    $zaman = date('Y-m-d H:i:s',time()-300);
+    setlocale(LC_ALL, 'tr_TR.UTF-8', 'tr_TR', 'tr', 'turkish');
+    $zaman = date('Y-m-d H:i:s', time() - 300);
     $veri = $db->prepare("SELECT *FROM ziyaretcitakip where ziyaretci_ip ='$ip' AND ziyaretci_zaman > '$zaman'");
     $veri->execute(array());
     $v = $veri->rowCount();
-    if($v >0){
+    if ($v > 0) {
         return 1;
-    }else{
+    } else {
         return 0;
     }
 }
+
 // ------ZIYARETCI ISLEMLERI
 
 
 //Urun Eklerken Meta Title ve Meta Desc Convertor
-function metawords($string){
+function metawords($string)
+{
     $string = strtolower(preg_replace('/\s+/', '-', $string));
     return $string;
 }
 //----Urun Eklerken Meta Title ve Meta Desc Convertor
+
+// Yonetim Data Query Function
+function yonetimData($data){
+    global $db;
+    $veri = $db->prepare("SELECT *FROM yonetim WHERE yonetim_id=?");
+    $veri->execute(array($_SESSION['id']));
+    $v = $veri->fetchALL(PDO::FETCH_ASSOC);
+    foreach ($v as $p) ;
+    return $p[$data];
+
+}
+// --Yonetim Data Query Function

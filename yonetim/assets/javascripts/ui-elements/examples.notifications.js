@@ -28,20 +28,6 @@ Theme Version: 	1.4.1
 		});
 	});
 
-	$('#default-invalidEmailNotice').click(function() {
-		new PNotify({
-			title: 'Warning',
-			text: 'Please,enter <strong>valid</strong> email address.'
-		});
-	});
-
-	$('#default-invalidPassNotice').click(function() {
-		new PNotify({
-			title: 'Warning',
-			text: 'Please,enter <strong>valid</strong> password.'
-		});
-	});
-
 	$('#default-success').click(function() {
 		new PNotify({
 			title: 'Congratulations !',

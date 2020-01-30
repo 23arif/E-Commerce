@@ -1,12 +1,13 @@
+<head><title>Sliders | AlikExpress</title></head>
 <?php
 $cog = $db->prepare("SELECT settings_slider FROM settings");
 $cog->execute(array());
 $sl = $cog->fetch(PDO::FETCH_ASSOC);
 ?>
-<!-- start: page -->
 <header class="page-header">
     <h2>Slider Images</h2>
 </header>
+<!-- start: page -->
 
 <div class="row">
     <div class="col-md-12">

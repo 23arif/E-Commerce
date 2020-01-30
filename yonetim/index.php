@@ -58,8 +58,12 @@ switch ($do) {
     case 'update_slide':
         include_once 'update_slider.php';
         break;
+    case '404page':
+        include_once '404page.php';
+        break;
     default:
         ?>
+        <head><title>Dashboard | AlikExpress: Online shoping page</title></head>
         <header class="page-header">
             <h2>Dashboard</h2>
         </header>

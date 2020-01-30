@@ -1,6 +1,3 @@
-<?php
-yoneticikontrol();
-?>
 <header class="header">
     <div class="logo-container">
         <a href="../" class="logo">
@@ -120,57 +117,6 @@ yoneticikontrol();
                     </div>
                 </div>
             </li>
-<!--            <li>-->
-<!--                <a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">-->
-<!--                    <i class="fa fa-bell"></i>-->
-<!--                    <span class="badge">3</span>-->
-<!--                </a>-->
-<!---->
-<!--                <div class="dropdown-menu notification-menu">-->
-<!--                    <div class="notification-title">-->
-<!--                        <span class="pull-right label label-default">3</span>-->
-<!--                        Alerts-->
-<!--                    </div>-->
-<!---->
-<!--                    <div class="content">-->
-<!--                        <ul>-->
-<!--                            <li>-->
-<!--                                <a href="#" class="clearfix">-->
-<!--                                    <div class="image">-->
-<!--                                        <i class="fa fa-thumbs-down bg-danger"></i>-->
-<!--                                    </div>-->
-<!--                                    <span class="title">Server is Down!</span>-->
-<!--                                    <span class="message">Just now</span>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <a href="#" class="clearfix">-->
-<!--                                    <div class="image">-->
-<!--                                        <i class="fa fa-lock bg-warning"></i>-->
-<!--                                    </div>-->
-<!--                                    <span class="title">User Locked</span>-->
-<!--                                    <span class="message">15 minutes ago</span>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <a href="#" class="clearfix">-->
-<!--                                    <div class="image">-->
-<!--                                        <i class="fa fa-signal bg-success"></i>-->
-<!--                                    </div>-->
-<!--                                    <span class="title">Connection Restaured</span>-->
-<!--                                    <span class="message">10/10/2014</span>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!---->
-<!--                        <hr/>-->
-<!---->
-<!--                        <div class="text-right">-->
-<!--                            <a href="#" class="view-more">View All</a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </li>-->
         </ul>
 
         <span class="separator"></span>
@@ -178,8 +124,7 @@ yoneticikontrol();
         <div id="userbox" class="userbox">
             <a href="#" data-toggle="dropdown">
                 <figure class="profile-picture">
-                    <img src="assets/images/!logged-user.jpg" alt="Joseph Doe" class="img-circle"
-                         data-lock-picture="assets/images/!logged-user.jpg"/>
+                    <img src="../<?php echo yonetimData('yonetim_image') ?>" class="img-circle"/>
                 </figure>
                 <div class="profile-info" >
                     <span class="name"><?php echo s("isim") . " " . s('soyisim'); ?></span>

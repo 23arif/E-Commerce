@@ -1,3 +1,4 @@
+<head><title>Add New Product | AlikExpress</title></head>
     <!-- start: page -->
     <header class="page-header">
         <h2>Add New Product</h2>

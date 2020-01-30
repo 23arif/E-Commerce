@@ -1,3 +1,4 @@
+<head><title>Products | AlikExpress</title></head>
 <?php
 $count = $db->prepare("SELECT * FROM urunler");
 $count->execute(array());

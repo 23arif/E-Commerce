@@ -1,3 +1,4 @@
+<head><title>Categories | AlikExpress</title></head>
 <!-- start: page -->
 <header class="page-header">
     <h2>Categories</h2>

@@ -5,6 +5,7 @@ $veri->execute(array());
 $v = $veri->fetchALL(PDO::FETCH_ASSOC);
 $say = $veri->rowCount();
 ?>
+<head><title><?php if($say>0){echo '('.$say.')';} ?> Messages | AlikExpress</title></head>
 <header class="page-header">
     <h2><?php echo $say ?> - Messages</h2>
 </header>

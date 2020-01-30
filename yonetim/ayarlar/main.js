@@ -172,23 +172,156 @@ $('#slide_toggle').on('change', function () {
 //--Slide Toggle
 
 // Profile
-$('#profileBtn').on('click',function () {
-    var data = $('#profileForm').serialize();
+$('#profilePhotoBtn').on('click', function () {
+    var data = new FormData($('#profilePhotoForm')[0]);
     $.ajax({
-        url: "ayarlar/islem.php?islem=profileEdit",
+        url: "ayarlar/islem.php?islem=profilePhotoEdit",
         type: "POST",
         data: data,
+        async: true,
+        cache: false,
+        contentType: false,
+        processData: false,
         success: function (response) {
-            if(response == 'yes'){
-                $('#default-success').click();
-            }else if(response== 'fill'){
-                $('#default-notice').click();
-            }else if(response== 'invalidEmail'){
-                $('#default-invalidEmailNotice').click();
-            }else if(response == 'invalidPass'){
-                $('#default-invalidPassNotice').click();
+            if (response == 'yes') {
+                PNotify.removeAll();
+                new PNotify({
+                    title: 'Congratulations !',
+                    text: 'Profile picture updated successfully.',
+                    type: 'success',
+                    addclass: 'notification-primary',
+                    icon: 'fa fa-check-circle',
+                    width: '350px'
+                });
+                setTimeout(function () {
+                    window.location.href = "?do=profile";
+                }, 2000);
+            } else if (response == 'error') {
+                PNotify.removeAll();
+                new PNotify({
+                    title: 'Error',
+                    text: 'Error Found During Update.',
+                    type: 'error',
+                    addclass: 'notification-primary',
+                    icon: 'fa fa-warning'
+                });
+            }else if (response == 'fill') {
+                PNotify.removeAll();
+                new PNotify({
+                    title: 'Warning',
+                    text: 'Please,select image for updating profile photo.',
+                    type: 'warning',
+                    addclass: 'notification-primary',
+                    icon: 'fa fa-warning',
+                    width: '400px'
+
+                });
+            }else if (response == 'oversize') {
+                PNotify.removeAll();
+                new PNotify({
+                    title: 'Warning',
+                    text: 'Image could not be bigger than <strong>1mb</strong>',
+                    type: 'warning',
+                    addclass: 'notification-primary',
+                    icon: 'fa fa-warning',
+                    width: '350px'
+                });
             }
         }
     })
+})
+
+$('#profileBtn').on('click', function () {
+    var info = $('#profileInfoForm').serialize();
+
+    $.ajax({
+        url: "ayarlar/islem.php?islem=profileInfoEdit",
+        type: "POST",
+        data: info,
+        success: function (response) {
+            if (response == 'yes') {
+                PNotify.removeAll();
+                new PNotify({
+                    title: 'Congratulations !',
+                    text: 'Changes updated successfully.',
+                    type: 'success',
+                    addclass: 'notification-primary',
+                    icon: 'fa fa-check-circle'
+                });
+                setTimeout(function () {
+                    window.location.href = "?do=profile";
+                }, 2000);
+            } else if (response == 'error') {
+                PNotify.removeAll();
+                new PNotify({
+                    title: 'Error',
+                    text: 'Error Found During Update.',
+                    type: 'error',
+                    addclass: 'notification-primary',
+                    icon: 'fa fa-warning'
+                });
+            }else if (response == 'fill') {
+                PNotify.removeAll();
+                new PNotify({
+                    title: 'Warning',
+                    text: 'Please,fill all blanks.',
+                    type: 'warning',
+                    addclass: 'notification-primary',
+                    icon: 'fa fa-warning'
+                });
+            } else if (response == 'invalidEmail') {
+                PNotify.removeAll();
+                new PNotify({
+                    title: 'Warning',
+                    text: 'Please,enter <strong>valid</strong> email address.',
+                    type: 'warning',
+                    addclass: 'notification-primary',
+                    icon: 'fa fa-warning'
+                });
+            }
+        }
+    })
+})
+
+$('#profilePassBtn').on('click', function () {
+    var data = $('#profilePassForm').serialize();
+    $.ajax({
+        url: "ayarlar/islem.php?islem=profilePassEdit",
+        type: "POST",
+        data: data,
+        success: function (response) {
+            if (response == 'yes') {
+                PNotify.removeAll();
+                new PNotify({
+                    title: 'Congratulations !',
+                    text: 'Password updated successfully.',
+                    type: 'success',
+                    addclass: 'notification-primary',
+                    icon: 'fa fa-check-circle'
+                });
+                setTimeout(function () {
+                    window.location.href = "?do=profile";
+                }, 2000);
+            } else if (response == 'fill') {
+                PNotify.removeAll();
+                new PNotify({
+                    title: 'Warning',
+                    text: 'Please,fill all blanks.',
+                    type: 'warning',
+                    addclass: 'notification-primary',
+                    icon: 'fa fa-warning'
+                });
+            } else if (response == 'invalidP') {
+                PNotify.removeAll();
+                new PNotify({
+                    title: 'Warning',
+                    text: 'Please,enter <strong>valid</strong> password.',
+                    type: 'warning',
+                    addclass: 'notification-primary',
+                    icon: 'fa fa-warning'
+                });
+            }
+            }
+        })
 })
 // --Profile

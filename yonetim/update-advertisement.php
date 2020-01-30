@@ -1,3 +1,4 @@
+<head><title>Update Advertisement | AlikExpress</title></head>
 <?php
 $ads_id = g('ads_id');
 $veri = $db->prepare("SELECT * FROM advertisements WHERE ads_id=? ");

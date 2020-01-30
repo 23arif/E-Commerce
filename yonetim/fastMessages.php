@@ -1,15 +1,16 @@
+<?php
+$id = g('id');
+$veri = $db->prepare("SELECT *FROM message where id=? ");
+$veri->execute(array($id));
+$v = $veri->fetch(PDO::FETCH_ASSOC);
+?>
+<head><title><?php echo ucfirst($v['sender_name']) ?>'s&nbsp;&nbsp;message</title></head>
 <header class="page-header">
     <h2>Messages</h2>
 </header>
 
 <!-- start: page -->
 <div class="row">
-    <?php
-    $id = g('id');
-    $veri = $db->prepare("SELECT *FROM message where id=? ");
-    $veri->execute(array($id));
-    $v = $veri->fetch(PDO::FETCH_ASSOC);
-    ?>
     <div class="col-md-6 col-lg-offset-3">
         <form>
             <section class="panel">
