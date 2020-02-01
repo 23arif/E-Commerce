@@ -73,7 +73,7 @@ $('#urunEkleBtn').on('click', function () {
         url: "ayarlar/islem.php?islem=urunEkle",
         type: "POST",
         data: data,
-        async: false,
+        // async: false,
         cache: false,
         contentType: false,
         processData: false,

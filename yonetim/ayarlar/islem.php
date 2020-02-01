@@ -194,7 +194,6 @@ if (g('islem') == 'cikis') {
 }
 //Urun Islemleri
 if (g('islem') == 'urunEkle') {
-
     $urun_kategori = p('urun_kategori');
     $urun_title = p('urun_title');
     $urun_desc = p('urun_desc');
@@ -229,7 +228,7 @@ if (g('islem') == 'urunEkle') {
         $vtyol = "resimler/$rn.$uzanti";
 
         if ($_FILES['urun_resim']["size"] > 1024 * 1024) {
-            echo 'Resim boyutu 1mb-dan buyuk olamaz';
+            echo '<div class="alert alert-warning text-center">Image could not be bigger than <strong>1mb</strong></div>';
         } else {
 
             $resimyukleme = resimyukle('urun_resim', $rn, $yol);
@@ -239,12 +238,12 @@ if (g('islem') == 'urunEkle') {
                 $ekle = $db->prepare("INSERT INTO urunler SET urun_resim=?,urun_title=?,urun_desc=?,urun_meta_desc=?,urun_meta_title=?,urun_meta_keyw=?,urun_firma=?,urun_fiyat=?,urun_kategori=?,urun_sira=?");
                 $ekleme = $ekle->execute(array($vtyol, $urun_title, $urun_desc, metaWords($urun_meta_desc), metaWords($urun_meta_title), $urun_meta_keyw, $urun_firma, noktasil($urun_fiyat), $urun_kategori, $urun_sira));
                 if ($ekleme) {
-                    echo '<div class="alert alert-success">Urun ekleme isleminiz basariyla gerceklesdirildi.Yonlendirilirsiz...</div><meta http-equiv="refresh" content="2;url=index.php?do=products">';
+                    echo '<div class="alert alert-success text-center">Product added successfully . Redirecting...</div><meta http-equiv="refresh" content="2;url=index.php?do=products">';
                 } else {
-                    echo '<div class="alert alert-danger">Urun ekleme islemi sirasinda xeta bas verdi.Lutfen tekrar kontol edin ve yeniden deneyin</div>';
+                    echo '<div class="alert alert-danger text-center">Error found during <strong>adding</strong> . Please,check form and try again</div>';
                 }
             } else {
-                echo '<div class="alert alert-warning">Urun resmi yuklenirken xeta bas verdi.Lutfen yeniden kontrol edin</div>';
+                echo '<div class="alert alert-warning text-center">Error found during <strong>adding product photo</strong>.Please,check it and try again.</div>';
             }
 
         }
@@ -543,7 +542,7 @@ if (g('islem') == 'profilePhotoEdit') {
     } else {
 
         $yol = '../../uploads/profileImg';
-        $rn = resimadi();
+        $rn = $_SESSION['isim'].resimadi();
         $uzanti = uzanti($name);
         $vtyol = "uploads/profileImg/$rn.$uzanti";
 

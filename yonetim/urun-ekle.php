@@ -24,7 +24,7 @@
                                         <span class="btn btn-default btn-file">
 																<span class="fileupload-exists">Change</span>
 																<span class="fileupload-new">Select file</span>
-																<input type="file" name="urun_resim"/>
+																<input type="file" name="urun_resim" accept=".png,.jpg,.jpeg"/>
 															</span>
                                         <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                                     </div>
