@@ -85,7 +85,7 @@ $v = $veri->fetch(PDO::FETCH_ASSOC);
     <div class="header-middle"><!--header-middle-->
         <div class="container">
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-md-6 col-sm-12 ">
                     <div class="logo pull-left">
                         <a href="index.php"><img src="images/home/logo.png" alt="" width="139" height="39"/></a>
                     </div>
@@ -111,9 +111,10 @@ $v = $veri->fetch(PDO::FETCH_ASSOC);
                                 <li><a href="#">Pound</a></li>
                             </ul>
                         </div>
+                       <?php include('moduller/exchange.php') ?>
                     </div>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-md-6 col-sm-12">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
                             <?php

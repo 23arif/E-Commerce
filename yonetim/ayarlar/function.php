@@ -41,7 +41,7 @@ function yoneticikontrol()
 {
     if (!$_SESSION || !$_SESSION['yetki'] == 1) {
 //        echo "<meta htt p-equiv='refresh' content='0;url=giris.php'>";  EGER SERVERDE XETA VERERSE 'HEADER' BU SETRI ISTIFADE ET
-            header('location:giris.php');
+        header('location:giris.php');
     }
 }
 
@@ -200,10 +200,12 @@ function metawords($string)
     $string = strtolower(preg_replace('/\s+/', '-', $string));
     return $string;
 }
+
 //----Urun Eklerken Meta Title ve Meta Desc Convertor
 
 // Yonetim Data Query Function
-function yonetimData($data){
+function yonetimData($data)
+{
     global $db;
     $veri = $db->prepare("SELECT *FROM yonetim WHERE yonetim_id=?");
     $veri->execute(array($_SESSION['id']));
@@ -212,4 +214,13 @@ function yonetimData($data){
     return $p[$data];
 
 }
+
 // --Yonetim Data Query Function
+
+function proccessControl()
+{
+    if (empty($_SESSION['eposta'])) {
+        header('Location:../../?unknownUser');
+        exit;
+    }
+}

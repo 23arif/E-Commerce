@@ -110,6 +110,8 @@ if (g('islem') == 'kategoriEkle') {
     }
 }
 if (g('kategoriSil') == 'ok') {
+    proccessControl();
+
     $sil = $db->prepare("DELETE FROM kategoriler WHERE kategori_id=?");
     $silme = $sil->execute(array(g("kategori_id")));
     if ($silme) {
@@ -250,6 +252,7 @@ if (g('islem') == 'urunEkle') {
     }
 }
 if (g('urunSil') == 'ok') {
+    proccessControl();
     $u = urungetir(g('urun_id'));
     foreach ($u as $urun) ;
     $eskiresim = '../../' . $urun['urun_resim'];
@@ -371,6 +374,8 @@ if (g('islem') == 'addAds') {
     }
 }
 if (g('deleteAds') == 'ok') {
+    proccessControl();
+
     $ads_id = g('ads_id');
     $veri = $db->prepare("SELECT *FROM advertisements WHERE ads_id=?");
     $veri->execute(array($ads_id));
@@ -461,6 +466,8 @@ if (g('islem') == 'addSlide') {
     }
 }
 if (g('deleteSlide') == 'ok') {
+    proccessControl();
+
     $slide_id = g('slide_id');
     $veri = $db->prepare("SELECT *FROM slider WHERE slider_id=?");
     $veri->execute(array($slide_id));
@@ -542,7 +549,7 @@ if (g('islem') == 'profilePhotoEdit') {
     } else {
 
         $yol = '../../uploads/profileImg';
-        $rn = $_SESSION['isim'].resimadi();
+        $rn = $_SESSION['isim'] . resimadi();
         $uzanti = uzanti($name);
         $vtyol = "uploads/profileImg/$rn.$uzanti";
 
